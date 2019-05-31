@@ -2,13 +2,9 @@
 
 A shared library of react components for surveillance one.
 
----
-
 ## Repository Definitions
 
 Below are requirements that must be fulfilled by each type of component in this repository to maintain consistency and a clean SOC.
-
----
 
 Presentation Component
 ---
