@@ -1,7 +1,7 @@
 {
   "name": "react-components",
   "version": "1.0.0",
-  "description": "Surveillance One react components library",
+  "description": "a react component library for surveillance one",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +19,7 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.1"
   }
 }
