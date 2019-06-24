@@ -1,0 +1,25 @@
+{
+  "name": "react-components",
+  "version": "1.0.0",
+  "description": "a react component library for surveillance one",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surveillance-one/react-components.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/surveillance-one/react-components/issues"
+  },
+  "homepage": "https://github.com/surveillance-one/react-components#readme",
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "styled-components": "^4.2.1"
+  }
+}
