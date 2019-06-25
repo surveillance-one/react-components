@@ -1,6 +1,6 @@
 import React, {
  Children, cloneElement, useState, useCallback
-} from "./node_modules/react";
+} from "react";
 
 /**
  * @title Tabs component

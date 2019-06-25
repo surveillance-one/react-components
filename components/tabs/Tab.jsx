@@ -1,5 +1,5 @@
-import React from "./node_modules/react";
-import { Icon } from "./node_modules/Components";
+import React from "react";
+import Icon from "../icon";
 
 const Tab = ({
 	label, iconName, className, onTabClick

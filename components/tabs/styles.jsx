@@ -1,6 +1,6 @@
 
-import { css } from "./node_modules/styled-components";
-import { rgba } from "./node_modules/polished";
+import { css } from "styled-components";
+import { rgba } from "polished";
 
 export const TabsBase = css`& {
 	font-size: ${props => props.theme["default-font-size"] || "1rem"};

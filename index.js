@@ -1,6 +1,16 @@
-export default from "./components/tabs";
-export { Dropdown } from "./components/dropdown";
-export { Button } from "./components/button/Button";
-export { Icon } from "./components/icon";
-export { Card } from "./components/card/Card";
-export { CardGroup } from "./components/card/CardGroup";
+import Tabs from "./components/tabs";
+import Dropdown from "./components/dropdown";
+import Button from "./components/button/Button";
+import Icon from "./components/icon/Icon";
+import Card from "./components/card/Card";
+import CardGroup from "./components/card/CardGroup";
+
+
+export {
+	Tabs,
+	Dropdown,
+	Button,
+	Icon,
+	Card,
+	CardGroup
+};

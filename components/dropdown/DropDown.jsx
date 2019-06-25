@@ -2,7 +2,7 @@ import React, {
 	useState, useEffect, Children, cloneElement, useCallback, useRef
 } from "react";
 
-import { Icon } from "../Icon";
+import Icon from "../icon";
 import { useOutsideClick } from "hooks";
 
 const Dropdown = ({
@@ -54,6 +54,18 @@ const Dropdown = ({
 				</ul> }
 			</div>
 		</div>
+	);
+};
+
+Dropdown.ListItem = ({
+	onItemClick, className, currentSelection, item, status, children, value
+}) => {
+  const onItemsClick = useCallback(() => onItemClick(children, value || item));
+	return (
+		<li className={`dropdown__list--item ${className}`} key={item} onClick={onItemsClick}>
+			{children} {currentSelection && <Icon icon="check"/>}
+			{status && <span style={{ float: "right" }}>{status}</span>}
+		</li>
 	);
 };
 

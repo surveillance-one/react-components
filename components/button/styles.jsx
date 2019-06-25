@@ -1,5 +1,5 @@
 import { css } from "styled-components";
-import { rgba } from "../tabs/node_modules/polished";
+import { rgba } from "polished";
 
 export const ButtonBase = css`
   font-size: ${props => props.theme["default-font-size"] || "1rem"};

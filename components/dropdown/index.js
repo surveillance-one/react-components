@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import * as Styles from "./styles";
+import { defaultTheme } from "../themes";
 
 import Dropdown from "./Dropdown";
-import ListItem from "./List";
 
 
 const StyledDropDown = styled(Dropdown)`
@@ -11,11 +11,9 @@ const StyledDropDown = styled(Dropdown)`
 	${Styles.DropdownActive};
 `;
 
-const StyledListItem = styled(ListItem)`
-	/** Main Theme */
-	${Styles.ListBase};
-`;
+StyledDropDown.defaultProps = {
+	theme: defaultTheme
+}
 
-StyledDropDown.ListItem = StyledListItem;
 
 export default StyledDropDown;

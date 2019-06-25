@@ -2,7 +2,7 @@
   "name": "react-components",
   "version": "0.3.0",
   "description": "a react component library for surveillance one",
-  "main": "components/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
