@@ -1,4 +1,4 @@
-export { Tabs } from "./tabs";
+export default from "./tabs";
 export { Dropdown } from "./dropdown";
 export { Button } from "./button/Button";
 export { Icon } from "./icon";

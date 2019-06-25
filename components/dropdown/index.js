@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import * as Styles from "./styles";
 
-import DropDown from "./DropDown";
+import Dropdown from "./Dropdown";
 import ListItem from "./List";
 
 
-const StyledDropDown = styled(DropDown)`
+const StyledDropDown = styled(Dropdown)`
 	/** Main Theme */
 	${Styles.DropdownBase};
 	${Styles.DropdownActive};

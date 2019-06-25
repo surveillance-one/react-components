@@ -2,7 +2,7 @@ import React, {
 	useState, useEffect, Children, cloneElement, useCallback, useRef
 } from "react";
 
-import { Icon } from "../tabs/node_modules/Components";
+import { Icon } from "../Icon";
 import { useOutsideClick } from "hooks";
 
 const Dropdown = ({
