@@ -1,6 +1,7 @@
 import { css } from "styled-components";
 import { rgba } from "polished";
 
+/** Button Base <button> */
 export const ButtonBase = css`
   font-size: ${props => props.theme["default-font-size"] || "1rem"};
   &,
