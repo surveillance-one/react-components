@@ -57,8 +57,6 @@ const Dropdown = ({
 	);
 };
 
-<<<<<<< HEAD
-=======
 Dropdown.ListItem = ({
 	onItemClick, className, currentSelection, item, status, children, value
 }) => {
@@ -71,5 +69,4 @@ Dropdown.ListItem = ({
 	);
 };
 
->>>>>>> master
 export default Dropdown;
