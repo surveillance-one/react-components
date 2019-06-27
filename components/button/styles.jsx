@@ -1,6 +1,7 @@
 import { css } from "styled-components";
-import { rgba } from "../tabs/node_modules/polished";
+import { rgba } from "polished";
 
+/** Button Base <button> */
 export const ButtonBase = css`
   font-size: ${props => props.theme["default-font-size"] || "1rem"};
   &,
@@ -83,27 +84,29 @@ export const ButtonAnimations = css`
 `;
 
 export const ButtonPrimary = css`&{
-	${({ theme }) => {
+  ${({ theme }) => {
 		const color = theme["primary-btn-color"];
 		return css`
-			background: ${theme["primary-btn-bg"]};
-			color: ${color};
-			&:hover {
-				color: ${rgba(color, 0.8)}};
-			}
-	`; }}
+      background: ${theme["primary-btn-bg"]};
+      color: ${color};
+      &:hover {
+        color: ${rgba(color, 0.8)}};
+      }
+  `;
+	}}
 }`;
 
 export const ButtonSecondary = css`&{
-	${({ theme }) => {
+  ${({ theme }) => {
 		const color = theme["secondary-btn-color"];
 		return css`
-			background: ${theme["secondary-btn-bg"]};
-			color: ${color};
-			&:hover {
-				color: ${rgba(color, 0.8)}};
-			}
-	`; }}
+      background: ${theme["secondary-btn-bg"]};
+      color: ${color};
+      &:hover {
+        color: ${rgba(color, 0.8)}};
+      }
+  `;
+	}}
 }`;
 
 export const ButtonLarge = css`&{
@@ -133,17 +136,17 @@ export const ButtonIcons = css`&{
     display: inline-flex;
     justify-content: center;
     order: 1;
-		padding-right: 4em !important;
+    padding-right: 4em !important;
     padding-left: 1.5em !important;
 
     
 
-    ${iconPosition == "left" && css`
+    ${iconPosition === "left" && css`
       padding-left: 4em !important;
       padding-right: 1.5em !important;
     `};
 
-    ${iconPosition == "right" && css`
+    ${iconPosition === "right" && css`
       padding-right: 4em !important;
       padding-left: 1.5em !important;
     `};
@@ -159,26 +162,26 @@ export const ButtonIcons = css`&{
       height: 100%;
       padding: ${props => props.theme["default-padding-tb"] || ".79em 1em .79em 1em"};
       vertical-align: middle;
-			order: 1;
-			border-top-right-radius: inherit;
-			border-bottom-right-radius: inherit;
-			right: 0;
+      order: 1;
+      border-top-right-radius: inherit;
+      border-bottom-right-radius: inherit;
+      right: 0;
 
       &::before {
         content: ' ';
-    display: inline-block;
-    vertical-align: middle;  /* vertical alignment of the inline element */
-    height: 100%;
+        display: inline-block;
+        vertical-align: middle;  /* vertical alignment of the inline element */
+        height: 100%;
       }
 
-      ${iconPosition == "right" && css`
+      ${iconPosition === "right" && css`
         order: 1;
         border-top-right-radius: inherit;
         border-bottom-right-radius: inherit;
         right: 0;
       `};
 
-      ${iconPosition == "left" && css`
+      ${iconPosition === "left" && css`
         order: 0;
         border-top-left-radius: inherit;
         border-bottom-left-radius: inherit;

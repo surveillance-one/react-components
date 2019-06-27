@@ -1,6 +1,10 @@
 {
   "name": "react-components",
+<<<<<<< HEAD
   "version": "0.2.0",
+=======
+  "version": "0.4.0",
+>>>>>>> master
   "description": "a react component library for surveillance one",
   "main": "index.js",
   "scripts": {
@@ -17,9 +21,24 @@
   },
   "homepage": "https://github.com/surveillance-one/react-components#readme",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "babel-eslint": "^10.0.2",
+    "polished": "^3.4.1",
+>>>>>>> master
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "styled-components": "^4.2.1"
+<<<<<<< HEAD
+=======
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.14.2"
+>>>>>>> master
   }
 }

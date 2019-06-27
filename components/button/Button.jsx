@@ -1,7 +1,12 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
+<<<<<<< HEAD
 import { Icon } from "../tabs/node_modules/Components";
+=======
+import Icon from "../icon";
+import { defaultTheme } from "../themes";
+>>>>>>> master
 
 import * as Styles from "./styles";
 
@@ -52,6 +57,13 @@ const StyledButton = styled(Button)`
 
 `;
 
+<<<<<<< HEAD
+=======
+StyledButton.defaultProps = {
+	theme: defaultTheme
+};
+
+>>>>>>> master
 Button.propTypes = {
 	iconName: PropTypes.string,
 	iconPosition: PropTypes.string,
@@ -61,4 +73,8 @@ Button.propTypes = {
 	children: PropTypes.string,
 };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 export default StyledButton;
