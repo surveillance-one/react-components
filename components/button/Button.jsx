@@ -55,7 +55,7 @@ const StyledButton = styled(Button)`
 
 StyledButton.defaultProps = {
 	theme: defaultTheme
-}
+};
 
 Button.propTypes = {
 	iconName: PropTypes.string,

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/surveillance-one/react-components#readme",
   "dependencies": {
+    "babel-eslint": "^10.0.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
