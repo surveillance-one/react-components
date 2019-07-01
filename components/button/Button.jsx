@@ -25,7 +25,6 @@ import * as Styles from "./styles";
  */
 const Button = props => (
 	<button className={className} onClick={onClick} {...props}>
-		<Styles.btnLabel>{children}</Styles.btnLabel>
 		<Styles.iconWrapper><Icon icon={iconName}/></Styles.iconWrapper>
 	</button>
 );

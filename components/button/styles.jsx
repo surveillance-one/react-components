@@ -195,4 +195,6 @@ export const btnLabel = styled.span`
   ${props => props.squared && css`
     display: none !important;
   `};
+
+  ${props => props.children}
 `;
