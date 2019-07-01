@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../icon";
 import * as defaultTheme from "../themes";
+import * as Global from "../themes/global_styles";
 
 import * as Styles from "./styles";
 
@@ -19,22 +20,18 @@ import * as Styles from "./styles";
 
 /**
 	* Component Declaration
-	* - Base HTML button
-	* - Nested styled-components for styling
+	* - Default Props
+	* - theme
  */
-
-const iconWrapper = props => (
-	<span className={props.className}>
-		<Icon icon={props.iconName}/>
-	</span>
-);
-
 const Button = props => (
-	<button className={props.className} onClick={props.onClick} {...props}>
-		<Styles.btnLabel>
+	<button className={className} onClick={onClick} {...props}>
+		{ !props.squared && <Styles.btnLabel>
 			{props.children}
-		</Styles.btnLabel>
-		<iconWrapper {...props}/>
+		</Styles.btnLabel> }
+
+		{ props.iconName && <Styles.iconWrapper iconPosition={props.iconPosition}>
+			<Icon icon={props.iconName}/>
+		</Styles.iconWrapper>}
 	</button>
 );
 
@@ -65,7 +62,6 @@ Button.defaultProps = {
  * Component Styles and Props
  * - Global styles
  * - Different props
- * - These will affect everything
  */
 const StyledButton = styled(Button)`
 	/** Main Theme */
