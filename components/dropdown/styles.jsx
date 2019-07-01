@@ -69,8 +69,6 @@ export const DropdownBase = css`
       border: ${props => props.theme["default-border"] || "1rem"};
       border-radius: ${props => props.theme["default-border-radius"] || ".3rem"};
       box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
-<<<<<<< HEAD
-=======
 
       &--item {
         padding: ${props => props.theme["default-padding"] || ".75em 1em .75em 1em"};
@@ -81,7 +79,6 @@ export const DropdownBase = css`
           background-color: ${props => props.theme["default-bg-lightgray-a5"] || "lightgray"};
         }
       }
->>>>>>> master
     }
 
     /**
@@ -99,19 +96,6 @@ export const DropdownBase = css`
 
 `;
 
-<<<<<<< HEAD
-export const ListBase = css`
-  padding: ${props => props.theme["default-padding"] || ".75em 1em .75em 1em"};
-  line-height: 14px;
-  z-index: 12;
-
-  &:hover {
-    background-color: ${props => props.theme["default-bg-lightgray-a5"] || "lightgray"};
-  }
-`;
-
-=======
->>>>>>> master
 export const DropdownActive = css`&{
   /** Active class for this component instead of using styled component props */
   .dropdown--active {
