@@ -1,18 +1,31 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
-import Tabs from "./components/tabs";
-import Dropdown from "./components/dropdown";
-import Button from "./components/button/Button";
-import Icon from "./components/icon/Icon";
-import Card from "./components/card/Card";
-import CardGroup from "./components/card/CardGroup";
+import StyledTabs from "./components/tabs";
+import StyledDropdown from "./components/dropdown";
+import StyledButton from "./components/button/Button";
+import StyledIcon from "./components/icon/Icon";
+import StyledCard from "./components/card/Card";
+import StyledCardGroup from "./components/card/CardGroup";
 
 const globalStyles = css`&{
 	background-color: blue !important;
 }`;
 
-const update = styled(Button)`
+export const Button = styled(StyledButton)`
 	${globalStyles}
 `;
-
-export default update;
+export const Tabs = styled(StyledTabs)`
+	${globalStyles}
+`;
+export const Dropdown = styled(StyledDropdown)`
+	${globalStyles}
+`;
+export const Icon = styled(StyledIcon)`
+	${globalStyles}
+`;
+export const Card = styled(StyledCard)`
+	${globalStyles}
+`;
+export const CardGroup = styled(StyledCardGroup)`
+	${globalStyles}
+`;

@@ -2,7 +2,8 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../icon";
-import { defaultTheme } from "../themes";
+import * as defaultTheme from "../themes";
+import * as Global from "../themes/global_styles";
 
 import * as Styles from "./styles";
 
@@ -17,23 +18,25 @@ import * as Styles from "./styles";
  */
 
 
-const Button = ({
-	children = "",
-	className = "",
-	iconName = "",
-	squared = false,
-	rounded = false,
-	largeButton = false,
-	onClick,
-	...props
-}) => (
+/**
+	* Component Declaration
+	* - Default Props
+	* - theme
+ */
+const Button = props => (
 	<button className={className} onClick={onClick} {...props}>
-		{ !squared && <span className="btn__label">{children}</span> }
-		{ iconName && <span className="icon-wrapper"><Icon icon={iconName}/></span>}
+		<Styles.iconWrapper><Icon icon={iconName}/></Styles.iconWrapper>
 	</button>
 );
 
+
+/**
+ * Component Styles and Props
+ * - Global styles
+ * - Different props
+ */
 const StyledButton = styled(Button)`
+	${Global}
 	/** Main Theme */
 	${Styles.ButtonBase};
 
@@ -50,12 +53,12 @@ const StyledButton = styled(Button)`
 
 	/** Button Animations */
 	${props => (props.animations ? Styles.ButtonAnimations : "")}
-
 `;
 
-StyledButton.defaultProps = {
-	theme: defaultTheme
-};
+
+/**
+ * PropTypes
+ */
 
 Button.propTypes = {
 	iconName: PropTypes.string,
@@ -66,5 +69,14 @@ Button.propTypes = {
 	children: PropTypes.string,
 };
 
+Button.defaultProps = {
+	children: "",
+	className: "",
+	iconName: "",
+	squared: false,
+	rounded: false,
+	largeButton: false,
+	theme: defaultTheme,
+}
 
 export default StyledButton;
