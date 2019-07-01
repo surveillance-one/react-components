@@ -3,7 +3,6 @@ import * as PropTypes from "prop-types";
 import styled from "styled-components";
 import Icon from "../icon";
 import * as defaultTheme from "../themes";
-import * as Global from "../themes/global_styles";
 
 import * as Styles from "./styles";
 
@@ -20,41 +19,24 @@ import * as Styles from "./styles";
 
 /**
 	* Component Declaration
-	* - Default Props
-	* - theme
+	* - Base HTML button
+	* - Nested styled-components for styling
  */
-const Button = props => (
-	<button className={className} onClick={onClick} {...props}>
-		<Styles.iconWrapper><Icon icon={iconName}/></Styles.iconWrapper>
-	</button>
+
+const iconWrapper = props => (
+	<span className={props.className}>
+		<Icon icon={props.iconName}/>
+	</span>
 );
 
-
-/**
- * Component Styles and Props
- * - Global styles
- * - Different props
- */
-const StyledButton = styled(Button)`
-	${Global}
-	/** Main Theme */
-	${Styles.ButtonBase};
-
-	/** Color Variants */
-	${props => (props.primary && !props.secondary ? Styles.ButtonPrimary : "")};
-	${props => (props.secondary && !props.primary ? Styles.ButtonSecondary : "")};
-
-	/** Button Types */
-	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
-	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
-
-	/** Icons */
-	${props => (props.iconName ? Styles.ButtonIcons : "")};
-
-	/** Button Animations */
-	${props => (props.animations ? Styles.ButtonAnimations : "")}
-`;
-
+const Button = props => (
+	<button className={props.className} onClick={props.onClick} {...props}>
+		<Styles.btnLabel>
+			{props.children}
+		</Styles.btnLabel>
+		<iconWrapper {...props}/>
+	</button>
+);
 
 /**
  * PropTypes
@@ -77,6 +59,32 @@ Button.defaultProps = {
 	rounded: false,
 	largeButton: false,
 	theme: defaultTheme,
-}
+};
+
+/**
+ * Component Styles and Props
+ * - Global styles
+ * - Different props
+ * - These will affect everything
+ */
+const StyledButton = styled(Button)`
+	/** Main Theme */
+	${Styles.ButtonBase};
+
+	/** Color Variants */
+	${props => (props.primary && !props.secondary ? Styles.ButtonPrimary : "")};
+	${props => (props.secondary && !props.primary ? Styles.ButtonSecondary : "")};
+
+	/** Button Types */
+	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
+	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
+
+	/** Icons */
+	${props => (props.iconName ? Styles.ButtonIcons : "")};
+
+	/** Button Animations */
+	${props => (props.animations ? Styles.ButtonAnimations : "")}
+`;
+
 
 export default StyledButton;
