@@ -52,6 +52,7 @@ export const iconWrapper = styled.span`
  * Button Base <button>
  */
 export const ButtonBase = css`
+${props => console.log(props.theme)}
   font-size: ${props => props.theme["default-font-size"] || "1rem"};
   &,
   &:link,

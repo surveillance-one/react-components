@@ -2,8 +2,8 @@ import React, {
 	useState, useEffect, Children, cloneElement, useCallback, useRef
 } from "react";
 
-import Icon from "../icon";
 import { useOutsideClick } from "hooks";
+import { Icon } from "components";
 
 const Dropdown = ({
 	valueChange,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
+import { defaultTheme } from "themes";
 import * as Styles from "./styles";
-import { defaultTheme } from "../themes";
 
 import Dropdown from "./Dropdown";
 

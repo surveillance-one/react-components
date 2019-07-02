@@ -2,7 +2,7 @@
   "name": "react-components",
   "version": "0.6.0",
   "description": "a react component library for surveillance one",
-  "main": "index.js",
+  "main": "src/components/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
@@ -19,11 +19,15 @@
   },
   "homepage": "https://github.com/surveillance-one/react-components#readme",
   "dependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.19",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "babel-eslint": "^10.0.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.5.3",
     "styled-components": "^4.2.1"
   },
   "devDependencies": {

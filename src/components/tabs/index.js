@@ -1,7 +1,7 @@
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
+import { defaultTheme } from "themes";
 import * as Styles from "./styles";
-import { defaultTheme } from "../themes";
 
 import Tabs from "./Tabs";
 import Tab from "./Tab";
@@ -35,6 +35,6 @@ StyledTabs.Tab = StyledTab;
 
 StyledTabs.defaultProps = {
 	theme: defaultTheme
-}
+};
 
 export default StyledTabs;
