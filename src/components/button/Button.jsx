@@ -83,6 +83,7 @@ const Button = styled(PreButton)`
 	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
 	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
 	${props => (props.circle ? Styles.ButtonCircle : "")};
+	${props => (props.largeButton ? Styles.ButtonLarge : "")};
 
 	/** Icons */
 	${props => (props.iconName ? Styles.ButtonIcons : "")};

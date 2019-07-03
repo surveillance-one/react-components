@@ -12,7 +12,7 @@ import styled from "styled-components";
 const Flex = styled.div`
 	justify-content: ${props => (props.spacebetween ? "space-between" : "space-evenly")}
 	button, div {
-		margin: 0 0.3em;
+		margin: 0.3em;
 	}
 `;
 
@@ -34,6 +34,8 @@ storiesOf("Button", module)
 					<Button onClick={action("clicked")} rounded iconName="camera">Hello Button</Button>
 					<Button onClick={action("clicked")} squared iconName="camera">Hello Button</Button>
 					<Button onClick={action("clicked")} circle iconName="camera">Hello Button</Button>
+					<Button onClick={action("clicked")} largeButton>Hello Button</Button>
+					<Button onClick={action("clicked")} largeButton iconName="camera">Hello Button</Button>
 				</Flex>
 			</div>
 			<div>

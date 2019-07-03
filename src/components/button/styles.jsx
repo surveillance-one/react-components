@@ -3,14 +3,31 @@ import { rgba } from "polished";
 
 import { globalStyles } from "ui/styles/globals";
 
+/**
+ * Styled components for Button.
+ */
 
+
+/**
+ * Styled-Component
+ * @name globalScoped
+ * @see Button
+ * @description Applies global styles like font size and line height and anything else you need to apply to the entire component
+ *
+ * @see globalStyles (ui/styles/global.js)
+ */
 export const globalScoped = css`
   ${globalStyles};
   padding: .79em 1em;
 `;
 
 /**
- * Styled React components
+ * Styled-Component
+ * @name btnLabel
+ * @see Button (components/Button)
+ * @description child of <button> that holds the label position
+ *
+ * @param {boolean} squared props => props.squared
  */
 export const btnLabel = styled.span`
   ${props => props.squared && css`
@@ -18,20 +35,33 @@ export const btnLabel = styled.span`
   `};
 `;
 
+/**
+ * Styled-Component
+ * @name iconWrapper
+ * @see Button (components/Button)
+ * @description child of <button> that holds the the icons
+ *
+ * @param {string} iconPosition props => props.iconPosition
+ * @param {boolean} squared props => props.squared
+ * @param {boolean} circle props => props.circle
+ */
 export const iconWrapper = styled.span`
   position: absolute;
   text-align: center;
+  top: 0;
+  bottom: 0;
   margin: 0;
   /* width: 3.6rem; */
   background-color: rgba(0,0,0,.1);
   box-shadow: -1px 0 0 0 transparent inset;
-  padding: 1em;
+  padding: .79em 1em;
   vertical-align: middle;
   order: 1;
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
   right: 0;
 
+  /** ::before to help align icon */
   &::before {
     content: ' ';
     display: inline-block;
@@ -72,6 +102,7 @@ export const ButtonBase = css`
     position: relative;
     display: inline-block;
     min-height:1em;
+    height: 2.5em;
     max-height: 3em;
     outline:0;
     border:none;
@@ -170,8 +201,9 @@ export const ButtonSecondary = css`&{
 }`;
 
 export const ButtonLarge = css`&{
-  padding: 0 2rem;
-  height: 4.6rem;
+  height: 4em;
+  max-height: 5em;
+  padding: 1.5em;
 }`;
 
 export const ButtonRounded = css`&{
