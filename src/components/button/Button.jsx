@@ -2,7 +2,7 @@ import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
 import { defaultTheme } from "themes";
-import { Icon } from "components";
+import Icon from "components/icon";
 
 import * as Styles from "./styles";
 
@@ -16,7 +16,7 @@ import * as Styles from "./styles";
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
-
+console.log(Icon);
 /**
 	* Component Declaration
 	* - Default Props
@@ -27,17 +27,24 @@ const PreButton = ({
 	iconName = "",
 	squared = false,
 	rounded = false,
+	circle = false,
 	largeButton = false,
+	iconPosition = "right",
 	className,
 	onClick,
 	...props
 }) => (
 	<button className={className} onClick={onClick} {...props}>
-		{ !squared && <Styles.btnLabel>
+		{ (!squared && !circle) && <Styles.btnLabel>
 			{children}
 		</Styles.btnLabel> }
 
-		{ iconName && <Styles.iconWrapper iconPosition={iconPosition}>
+		{ iconName
+		&& <Styles.iconWrapper
+			iconPosition={iconPosition} 
+			squared={squared}
+			circle={circle}
+			rounded={rounded}>
 			<Icon icon={iconName}/>
 		</Styles.iconWrapper>}
 	</button>
@@ -58,14 +65,13 @@ PreButton.propTypes = {
 	children: PropTypes.string,
 };
 
-
-
 /**
  * Component Styles and Props
  * - Global styles
  * - Different props
  */
 const Button = styled(PreButton)`
+	${Styles.globalScoped};
 	/** Main Theme */
 	${Styles.ButtonBase};
 
@@ -76,6 +82,7 @@ const Button = styled(PreButton)`
 	/** Button Types */
 	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
 	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
+	${props => (props.circle ? Styles.ButtonCircle : "")};
 
 	/** Icons */
 	${props => (props.iconName ? Styles.ButtonIcons : "")};

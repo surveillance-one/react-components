@@ -1,6 +1,14 @@
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
 
+import { globalStyles } from "ui/styles/globals";
+
+
+export const globalScoped = css`
+  ${globalStyles};
+  padding: .79em 1em;
+`;
+
 /**
  * Styled React components
  */
@@ -14,12 +22,10 @@ export const iconWrapper = styled.span`
   position: absolute;
   text-align: center;
   margin: 0;
-  width: 3.6rem;
+  /* width: 3.6rem; */
   background-color: rgba(0,0,0,.1);
   box-shadow: -1px 0 0 0 transparent inset;
-  line-height: 1.4rem;
-  height: 100%;
-  padding: ${props => props.theme["default-padding-tb"] || ".79em 1em .79em 1em"};
+  padding: 1em;
   vertical-align: middle;
   order: 1;
   border-top-right-radius: inherit;
@@ -46,14 +52,19 @@ export const iconWrapper = styled.span`
     border-bottom-left-radius: inherit;
     left: 0;
   `};
+
+  ${props => (props.squared || props.circle) && css`
+    margin-right: 0;
+    padding: 0;
+    position: relative;
+    background: none;
+  `};
 `;
 
 /**
  * Button Base <button>
  */
 export const ButtonBase = css`
-${props => console.log(props.theme)}
-  font-size: ${props => props.theme["default-font-size"] || "1rem"};
   &,
   &:link,
   &:visited {
@@ -61,6 +72,7 @@ ${props => console.log(props.theme)}
     position: relative;
     display: inline-block;
     min-height:1em;
+    max-height: 3em;
     outline:0;
     border:none;
     vertical-align:baseline;
@@ -80,9 +92,8 @@ ${props => console.log(props.theme)}
     overflow: hidden;
 
     color: ${props => props.theme.color || "black"};
-    padding: ${props => props.theme["default-padding"] || ".79em 1em .79em 1em"};
+
     box-shadow: ${props => props.theme["default-box-shadow"] || "0 1px 2px 0 rgba(34,36,38,.15)"};
-    line-height: ${props => props.theme["default-line-height"] || "1em"};
     border-radius: ${props => props.theme["default-border-radius"] || ".3rem"};
     background-color: ${props => props.theme["default-bg-lightgray"] || "lightgray"};
   }
@@ -168,16 +179,18 @@ export const ButtonRounded = css`&{
 }`;
 
 export const ButtonSquared = css`&{
-  height: 3.6rem;
-  width: 3.6rem;
-  padding: 0;
+  height: 2.5em;
+  width: 2.5em;
   display: inline;
   justify-content: center;
-  span {
-    margin-right: 0;
-    font-size: 1.786rem;
-  }
+  padding: 1em !important;
+  position: relative;
 }`;
+
+export const ButtonCircle = css`
+  ${ButtonRounded};
+  ${ButtonSquared};
+`;
 
 export const ButtonIcons = css`&{
   ${({ iconName, iconPosition }) => iconName && css`
@@ -185,17 +198,17 @@ export const ButtonIcons = css`&{
     display: inline-flex;
     justify-content: center;
     order: 1;
-    padding-right: 4em !important;
-    padding-left: 1.5em !important;
+    padding-right: 4em;
+    padding-left: 1.5em;
 
     ${iconPosition === "left" && css`
-      padding-left: 4em !important;
-      padding-right: 1.5em !important;
+      padding-left: 4em;
+      padding-right: 1.5em;
     `};
 
     ${iconPosition === "right" && css`
-      padding-right: 4em !important;
-      padding-left: 1.5em !important;
+      padding-right: 4em;
+      padding-left: 1.5em;
     `};
   `};
 }`;
