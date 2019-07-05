@@ -7,6 +7,8 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Button.
  */
 
+ /** TODO: fix lINE HEIGHT ON BUTTONS */
+
 
 /**
  * Styled-Component
@@ -17,8 +19,11 @@ import { globalStyles } from "ui/styles/globals";
  * @see globalStyles (ui/styles/global.js)
  */
 export const globalScoped = css`
+  /** Global Styles */
   ${globalStyles};
-  padding: .79em 1em;
+
+  /** Per-componenet parent styles */
+  padding: calc(.375em - 1px) .75em;
 `;
 
 /**
@@ -27,12 +32,12 @@ export const globalScoped = css`
  * @see Button (components/Button)
  * @description child of <button> that holds the label position
  *
- * @param {boolean} squared props => props.squared
+ * @param {boolean} squared p => p.squared
  */
 export const btnLabel = styled.span`
-  ${props => props.squared && css`
-    display: none !important;
-  `};
+  line-height: 24px;
+  display: block;
+  position: static;
 `;
 
 /**
@@ -41,58 +46,25 @@ export const btnLabel = styled.span`
  * @see Button (components/Button)
  * @description child of <button> that holds the the icons
  *
- * @param {string} iconPosition props => props.iconPosition
- * @param {boolean} squared props => props.squared
- * @param {boolean} circle props => props.circle
+ * @param {string} iconPosition p => p.iconPosition
+ * @param {boolean} squared p => p.squared
+ * @param {boolean} circle p => p.circle
  */
 export const iconWrapper = styled.span`
-  position: absolute;
+  display: inline-flex;
   text-align: center;
-  top: 0;
-  bottom: 0;
-  margin: 0;
-  /* width: 3.6rem; */
   background-color: rgba(0,0,0,.1);
   box-shadow: -1px 0 0 0 transparent inset;
-  padding: .79em 1em;
-  vertical-align: middle;
-  order: 1;
-  border-top-right-radius: inherit;
-  border-bottom-right-radius: inherit;
-  right: 0;
-
-  /** ::before to help align icon */
-  &::before {
-    content: ' ';
-    display: inline-block;
-    vertical-align: middle;  /* vertical alignment of the inline element */
-    height: 100%;
-  }
-
-  ${props => props.iconPosition === "right" && css`
-    order: 1;
-    border-top-right-radius: inherit;
-    border-bottom-right-radius: inherit;
-    right: 0;
-  `};
-
-  ${props => props.iconPosition === "left" && css`
-    order: 0;
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-    left: 0;
-  `};
-
-  ${props => (props.squared || props.circle) && css`
-    margin-right: 0;
-    padding: 0;
-    position: relative;
-    background: none;
-  `};
+  padding: .75em;
+  line-height: 24px;
 `;
 
 /**
- * Button Base <button>
+ * Styled-Component CSS
+ * @name ButtonBase
+ * @see Button (components/Button)
+ * @description <button> base styles
+ *
  */
 export const ButtonBase = css`
   &,
@@ -100,46 +72,38 @@ export const ButtonBase = css`
   &:visited {
     cursor:pointer;
     position: relative;
-    display: inline-block;
     min-height:1em;
     height: 2.5em;
     max-height: 3em;
     outline:0;
     border:none;
     vertical-align:baseline;
-    font-family:Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin:0;
     text-transform:none;
     text-shadow:none;
-    font-weight:700;
-
+    font-weight: 700;
     font-style:normal;
     text-align:center;
     text-decoration:none;
     user-select:none;
     transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease;
-    will-change:'';
     white-space: nowrap;
     overflow: hidden;
 
-    color: ${props => props.theme.color || "black"};
-
-    box-shadow: ${props => props.theme["default-box-shadow"] || "0 1px 2px 0 rgba(34,36,38,.15)"};
-    border-radius: ${props => props.theme["default-border-radius"] || ".3rem"};
-    background-color: ${props => props.theme["default-bg-lightgray"] || "lightgray"};
+    color: ${p => p.theme.color || "black"};
+    box-shadow: ${p => p.theme["default-box-shadow"] || "0 1px 2px 0 rgba(34,36,38,.15)"};
+    border-radius: .3rem;
+    background-color: ${p => p.theme["default-bg-lightgray"] || "lightgray"};
   }
   /**
   * Pseudo Classes
   * HOVER - ACTIVE - FOCUS - AFTER - DISABLED
   */ 
   &:hover {
-    color:  ${props => props.theme["hover-color"] || "lightgray"};
+    color:  ${p => p.theme["hover-color"] || "lightgray"};
   }
 
-  &:active{
-    outline: none;
-  }
-
+  &:active,
   &:focus {
     outline: none;
   }
@@ -200,23 +164,21 @@ export const ButtonSecondary = css`&{
 	}}
 }`;
 
-export const ButtonLarge = css`&{
-  height: 4em;
-  max-height: 5em;
-  padding: 1.5em;
-}`;
-
 export const ButtonRounded = css`&{
   border-radius: 3rem;
 }`;
 
 export const ButtonSquared = css`&{
-  height: 2.5em;
-  width: 2.5em;
-  display: inline;
   justify-content: center;
-  padding: 1em !important;
-  position: relative;
+  padding: .75em !important;
+  display: inline-block;
+  margin: 0;
+  
+  ${iconWrapper} {
+    background: ${p => ((p.squared || p.circle) ? "none" : "")};
+    padding: ${p => ((p.squared || p.circle) ? "0" : ".75")};
+    margin: 0;
+  }
 }`;
 
 export const ButtonCircle = css`
@@ -224,23 +186,18 @@ export const ButtonCircle = css`
   ${ButtonSquared};
 `;
 
-export const ButtonIcons = css`&{
-  ${({ iconName, iconPosition }) => iconName && css`
-    align-items: center;
-    display: inline-flex;
-    justify-content: center;
-    order: 1;
-    padding-right: 4em;
-    padding-left: 1.5em;
+export const ButtonIcons = css`
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
+  flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")}
+  padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")};
+  padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")};
 
-    ${iconPosition === "left" && css`
-      padding-left: 4em;
-      padding-right: 1.5em;
-    `};
-
-    ${iconPosition === "right" && css`
-      padding-right: 4em;
-      padding-left: 1.5em;
-    `};
-  `};
-}`;
+  /** changes iconWrapper */
+  ${iconWrapper} {
+    border-radius: ${p => (p.iconPosition === "left" ? ".3rem 0 0 .3rem" : "0 .3rem .3rem 0")};
+    margin: ${p => (p.iconPosition === "left" ? "0 .75em 0 0" : "0 0 0 .75em")};
+  }
+`;

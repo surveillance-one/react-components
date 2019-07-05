@@ -17,7 +17,7 @@ const Flex = styled.div`
 `;
 
 const Container = styled.div`
-	width: 50%;
+	width: 90%;
 `;
 
 storiesOf("Welcome", module).add("to Storybook", () => <Welcome showApp={linkTo("Button")} />);
@@ -30,15 +30,15 @@ storiesOf("Button", module)
 				<h4>Default:</h4>
 				<Flex spacebetween>
 					<Button onClick={action("clicked")}>Hello Button</Button>
+					<Button onClick={action("clicked")} iconName="camera">Hello Button</Button>
+					<Button onClick={action("clicked")} iconName="camera" iconPosition="left">Hello Button</Button>
 					<Button onClick={action("clicked")} rounded>Hello Button</Button>
+					<Button onClick={action("clicked")} circle iconName="camera">Hello Button</Button>
 					<Button onClick={action("clicked")} rounded iconName="camera">Hello Button</Button>
 					<Button onClick={action("clicked")} squared iconName="camera">Hello Button</Button>
-					<Button onClick={action("clicked")} circle iconName="camera">Hello Button</Button>
-					<Button onClick={action("clicked")} largeButton>Hello Button</Button>
-					<Button onClick={action("clicked")} largeButton iconName="camera">Hello Button</Button>
 				</Flex>
 			</div>
-			<div>
+			{/* <div>
 				<h4>Primary:</h4>
 				<Button onClick={action("clicked")} primary>Hello Button
 				</Button>
@@ -47,11 +47,10 @@ storiesOf("Button", module)
 				<h4>Secondary:</h4>
 				<Button onClick={action("clicked")} secondary>Hello Button
 				</Button>
-			</div>
+			</div> */}
 
 		</Container>
 	))
-	.add("with text", () => <Button onClick={action("clicked")}>Hello Button</Button>)
 	.add("with some emoji", () => (
 		<Button onClick={action("clicked")}>
 			<span role="img" aria-label="so cool">
@@ -60,4 +59,5 @@ storiesOf("Button", module)
 		</Button>
 	))
 	.add("with icon", () => <Button onClick={action("clicked")} iconName="camera">Hello Button</Button>)
+
 	.add("with icon", () => <Button onClick={action("clicked")} squared iconName="camera">Hello Button</Button>);

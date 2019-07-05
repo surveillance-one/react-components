@@ -1,7 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import { defaultTheme } from "themes";
+import { defaultTheme } from "ui/themes";
 import Icon from "components/icon";
 
 import * as Styles from "./styles";
@@ -58,7 +58,7 @@ console.log("TEST", defaultTheme.color);
 
 PreButton.propTypes = {
 	iconName: PropTypes.string,
-	iconPosition: PropTypes.string,
+	iconPosition: PropTypes.oneOf(["left", "right"]),
 	rounded: PropTypes.bool,
 	squared: PropTypes.bool,
 	largeButton: PropTypes.bool,
@@ -75,6 +75,9 @@ const Button = styled(PreButton)`
 	/** Main Theme */
 	${Styles.ButtonBase};
 
+	/** Icons */
+	${props => (props.iconName ? Styles.ButtonIcons : "")};
+
 	/** Color Variants */
 	${props => (props.primary && !props.secondary ? Styles.ButtonPrimary : "")};
 	${props => (props.secondary && !props.primary ? Styles.ButtonSecondary : "")};
@@ -83,10 +86,7 @@ const Button = styled(PreButton)`
 	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
 	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
 	${props => (props.circle ? Styles.ButtonCircle : "")};
-	${props => (props.largeButton ? Styles.ButtonLarge : "")};
 
-	/** Icons */
-	${props => (props.iconName ? Styles.ButtonIcons : "")};
 
 	/** Button Animations */
 	${props => (props.animations ? Styles.ButtonAnimations : "")}

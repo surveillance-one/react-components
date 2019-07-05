@@ -1,6 +1,6 @@
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import { defaultTheme } from "themes";
+import { defaultTheme } from "ui/themes";
 import * as Styles from "./styles";
 
 import Tabs from "./Tabs";
