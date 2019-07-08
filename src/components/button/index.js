@@ -1,6 +1,6 @@
 
 import Button from "./Button";
-import * as ButtonGroup from "./ButtonGroup";
+import ButtonGroup from "./ButtonGroup";
 
 
 export {

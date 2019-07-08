@@ -34,14 +34,14 @@ const PreButton = ({
 	onClick,
 	...props
 }) => (
-	<button className={className} onClick={onClick} {...props}>
+	<button className={className} onClick={onClick}>
 		{ (!squared && !circle) && <Styles.btnLabel>
 			{children}
 		</Styles.btnLabel> }
 
 		{ iconName
 		&& <Styles.iconWrapper
-			iconPosition={iconPosition} 
+			iconPosition={iconPosition}
 			squared={squared}
 			circle={circle}
 			rounded={rounded}>
@@ -63,6 +63,8 @@ PreButton.propTypes = {
 	squared: PropTypes.bool,
 	largeButton: PropTypes.bool,
 	children: PropTypes.string,
+	primary: PropTypes.bool,
+	secondary: PropTypes.bool,
 };
 
 /**

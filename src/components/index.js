@@ -6,7 +6,7 @@ import * as CardGroup from "./card/CardGroup";
 
 import * as StyledButton from "./button";
 
-export const { Button } = StyledButton;
+export const { Button, ButtonGroup } = StyledButton;
 export { Icon };
 // export const Tabs = styled(StyledTabs)`
 // 	${globalStyles}

@@ -7,7 +7,7 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Button.
  */
 
- /** TODO: fix lINE HEIGHT ON BUTTONS */
+/** TODO: fix lINE HEIGHT ON BUTTONS */
 
 
 /**
@@ -63,8 +63,8 @@ export const iconWrapper = styled.span`
  * Styled-Component CSS
  * @name ButtonBase
  * @see Button (components/Button)
- * @description <button> base styles
  *
+ * @description <button> base styles
  */
 export const ButtonBase = css`
   &,
@@ -73,6 +73,7 @@ export const ButtonBase = css`
     cursor:pointer;
     position: relative;
     min-height:1em;
+    line-height: 24px;
     height: 2.5em;
     max-height: 3em;
     outline:0;
@@ -81,7 +82,7 @@ export const ButtonBase = css`
     margin:0;
     text-transform:none;
     text-shadow:none;
-    font-weight: 700;
+    font-weight: 500;
     font-style:normal;
     text-align:center;
     text-decoration:none;
@@ -162,22 +163,29 @@ export const ButtonSecondary = css`&{
       }
   `;
 	}}
+  ${iconWrapper} {
+    background-color: rgba(165,165,165,.1);
+  }
 }`;
 
 export const ButtonRounded = css`&{
   border-radius: 3rem;
+  padding: calc(.375em - 1px) 1em;
+  padding-right: ${p => (p.iconName && (p.iconPosition === "left" ? "1em !important" : "0 !important"))};
+  padding-left: ${p => (p.iconName && (p.iconPosition === "left" ? "0 !important" : "1em !important"))};
 }`;
 
 export const ButtonSquared = css`&{
   justify-content: center;
   padding: .75em !important;
-  display: inline-block;
+  display: inline-flex;
   margin: 0;
   
   ${iconWrapper} {
     background: ${p => ((p.squared || p.circle) ? "none" : "")};
     padding: ${p => ((p.squared || p.circle) ? "0" : ".75")};
     margin: 0;
+    display: block;
   }
 }`;
 
@@ -188,7 +196,6 @@ export const ButtonCircle = css`
 
 export const ButtonIcons = css`
   align-items: center;
-  display: inline-flex;
   justify-content: center;
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
   flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")}
