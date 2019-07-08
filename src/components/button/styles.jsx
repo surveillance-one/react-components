@@ -7,9 +7,6 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Button.
  */
 
-/** TODO: fix lINE HEIGHT ON BUTTONS */
-
-
 /**
  * Styled-Component
  * @name globalScoped

@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CardBase = css`
   font-size: ${props => props.theme["default-font-size"] || "1rem"};
@@ -33,6 +33,8 @@ export const CardHeaderContent = css`
   line-height: 2rem;
 }`;
 
+
+// card__image
 export const CardHeaderImg = css`
 .header__img {
   position: absolute;
@@ -62,22 +64,25 @@ export const CardContent = css`
   `};
 }`;
 
-export const CardImage = css` 
-.card__image {
+export const CardImage = styled.img.attrs(p => ({
+	src: p.img
+}))`
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+`;
+export const CardImageWrapper = styled.div` 
   position: relative;
   display: block;
   flex: 0 0 auto;
   padding: 0;
   background: rgba(0,0,0,.05);
-  img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: inherit;
-    border-bottom-right-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-  }
-}`;
+  ${CardImage}
+`;
+
 
 export const CardFooter = css`
 .card__footer{

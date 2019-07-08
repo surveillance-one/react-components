@@ -23,6 +23,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.19",
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@storybook/addon-notes": "^5.1.9",
+    "@storybook/addon-storysource": "^5.1.9",
     "babel-eslint": "^10.0.2",
     "polished": "^3.4.1",
     "prop-types": "^15.7.2",

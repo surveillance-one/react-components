@@ -1,3 +1,9 @@
-// "@babel/plugin-proposal-export-default-from",
 
-export default from "./Card";
+import Card from "./Card";
+import CardGroup from "./CardGroup";
+
+
+export {
+	Card,
+	CardGroup
+};

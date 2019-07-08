@@ -4,9 +4,11 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 
-import { Button, ButtonGroup } from "components/index.js";
+import { Button, ButtonGroup, Card, CardGroup } from "components/index.js";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
+
+import buttonMarkdown from "markdown/button.md";
 
 
 const Flex = styled.div`
@@ -40,7 +42,7 @@ storiesOf("Button", module)
 			<div>
 				<h4>Default:</h4>
 				<Flex sp="flexstart">
-					<Button onClick={action("clicked")}>Hello Button</Button>
+					<Button onClick={linkTo("Button", "Default")}>Hello Button</Button>
 					<Button onClick={action("clicked")} iconName="camera">Hello Button</Button>
 					<Button onClick={action("clicked")} iconName="camera" iconPosition="left">Hello Button</Button>
 					<Button onClick={action("clicked")} rounded>Hello Button</Button>
@@ -92,13 +94,20 @@ storiesOf("Button", module)
 
 		</Container>
 	))
-	.add("with some emoji", () => (
-		<Button onClick={action("clicked")}>
-			<span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-			</span>
-		</Button>
-	))
-	.add("with icon", () => <Button onClick={action("clicked")} iconName="camera">Hello Button</Button>)
+	.add("Default", () => (
+		<Button onClick={action("clicked")}>Hello Button</Button>
+	),
+	{ notes: buttonMarkdown }
+	);
 
-	.add("with icon", () => <Button onClick={action("clicked")} squared iconName="camera">Hello Button</Button>);
+
+storiesOf("Card", module)
+	.add("Types", () => (
+		<Card
+			title="sample title"
+			meta="sample meta"
+			footer="sample footer"
+			img="https://via.placeholder.com/250">
+			Sample content
+		</Card>
+	))

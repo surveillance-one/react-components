@@ -32,9 +32,10 @@ const PreButton = ({
 	iconPosition = "right",
 	className,
 	onClick,
+	theme,
 	...props
 }) => (
-	<button className={className} onClick={onClick}>
+	<button className={className} onClick={onClick} {...props}>
 		{ (!squared && !circle) && <Styles.btnLabel>
 			{children}
 		</Styles.btnLabel> }
@@ -49,8 +50,6 @@ const PreButton = ({
 		</Styles.iconWrapper>}
 	</button>
 );
-
-console.log("TEST", defaultTheme.color);
 
 /**
  * PropTypes
