@@ -7,21 +7,6 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Button.
  */
 
-/**
- * Styled-Component
- * @name globalScoped
- * @see Button
- * @description Applies global styles like font size and line height and anything else you need to apply to the entire component
- *
- * @see globalStyles (ui/styles/global.js)
- */
-export const globalScoped = css`
-  /** Global Styles */
-  ${globalStyles};
-
-  /** Per-componenet parent styles */
-  padding: calc(.375em - 1px) .75em;
-`;
 
 /**
  * Styled-Component
@@ -64,6 +49,11 @@ export const iconWrapper = styled.span`
  * @description <button> base styles
  */
 export const ButtonBase = css`
+  /** Global Styles */
+  ${globalStyles};
+
+  /** Per-componenet parent styles */
+  padding: calc(.375em - 1px) .75em;
   &,
   &:link,
   &:visited {

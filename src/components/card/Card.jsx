@@ -7,18 +7,17 @@ import * as Styles from "./styles";
 const CardBase = ({
 	className, img, title, meta, footer, mini, children, ...props
 }) => (
-	<div className={`${className} basecard`} {...props}>
-		{img ? <Styles.CardImageWrapper/> : ""}
-		{(title || meta) ? <div className="card__header">
-			{title
-				? <div className="header__title">{title}</div> : ""}
-			{meta
-				? <div className="header__content">{meta}</div> : ""}
-			{mini
-				? <img className="header__img" src={mini}/> : ""}
-		</div> : ""}
-		<div className="card__content">{children}</div>
-		{footer ? <div className="card__footer">{footer}</div> : ""}
+	<div className={className} {...props}>
+		{img && <Styles.CardImageWrapper><Styles.CardImage img={img}/></Styles.CardImageWrapper>}
+		{(title || meta)
+				&& <Styles.CardHeader title={title} meta={meta}>
+					{title && <Styles.CardTitle>{title}</Styles.CardTitle>}
+					{meta && <Styles.CardMeta>{meta}</Styles.CardMeta>}
+					{mini && <Styles.CardMini src={mini}/>}
+				</Styles.CardHeader>
+		}
+		<Styles.CardContent>{children}</Styles.CardContent>
+		{footer && <Styles.CardFooter>{footer}</Styles.CardFooter>}
 	</div>
 );
 
@@ -31,20 +30,11 @@ const CardBase = ({
 const Card = styled(CardBase)`
 	/** Base Styles */
   ${Styles.CardBase}
-
-	/** Header */
-	${props => (props.title || props.meta || props.mini) && Styles.CardHeader}
-
-	/** Content */
-  ${Styles.CardContent}
-
-	/** Footer */
-	${props => props.footer && Styles.CardFooter}
 `;
 
 /** Default */
 Card.defaultProps = {
-	width: "29rem",
+	width: "20em",
 	children: []
 };
 

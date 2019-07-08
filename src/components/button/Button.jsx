@@ -72,7 +72,6 @@ PreButton.propTypes = {
  * - Different props
  */
 const Button = styled(PreButton)`
-	${Styles.globalScoped};
 	/** Main Theme */
 	${Styles.ButtonBase};
 

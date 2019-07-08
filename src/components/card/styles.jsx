@@ -1,69 +1,120 @@
 import styled, { css } from "styled-components";
 
+import { globalStyles } from "ui/styles/globals";
+
+/**
+ * Styled components for Card
+ */
+
+ /** TODO: FIX MARGIN IN FLEX BOX */
+
+/**
+ * Styled-Component CSS
+ * @name CardBase
+ * @see Card (components/Card)
+ * @description <Card> base styles
+ *
+ * @param {string} width p => p.width
+ */
 export const CardBase = css`
+  /** Global Styles */
+  ${globalStyles};
   font-size: ${props => props.theme["default-font-size"] || "1rem"};
   line-height: ${props => props.theme["default-line-height"] || "1em"};
   background-color: ${props => props.theme["default-bg-white"] || "whitesmoke"};
-  
+
   color: ${props => props.theme.color || "black"};
   box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
-  border-radius: ${props => props.theme["default-border-radius"] || ".3rem"};
+  border-radius: .3rem;
 
   margin: 1rem 0;
   position: relative;
 
   /** TODO: CHANGE */
-  width: ${props => props.width || "29rem"};
+  width: ${props => props.width || "20em"};
 `;
 
-export const CardHeaderTitle = css`
-.header__title {
-  font-size: 1.8rem;
-  line-height: 2.3rem;
+/**
+ * Styled-Component
+ * @name CardHeader
+ * @see Card (components/Card)
+ * @description child of <Card> wrapper for title
+ *
+ * @param {string} title p => p.title
+ */
+export const CardHeader = styled.div`
+  position: relative;
+  padding: ${props => props.theme["default-padding-card"] || "1rem"};
+  padding-bottom: ${p => (p.title ? "0 !important" : "")};
+`;
+
+/**
+ * Styled-Component
+ * @name CardTitle
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the header title
+ */
+export const CardTitle = styled.h1`
+  font-size: 1.3em;
   font-weight: 700;
   margin: 0;
   color: rgba(0,0,0,.85);
-}`;
+`;
 
-export const CardHeaderContent = css`
-.header__content {
-  font-size: 1.4rem;
+/**
+ * Styled-Component
+ * @name CardMeta
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the header content
+ */
+export const CardMeta = styled.div`
   font-weight: 400;
   color: rgba(0,0,0,.4);
-  line-height: 2rem;
-}`;
+  margin: 0 !important;
+`;
 
-
-// card__image
-export const CardHeaderImg = css`
-.header__img {
+/**
+ * Styled-Component
+ * @name CardMini
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the mini icon-picture
+ *
+ * @param {url} mini p => p.mini
+ */
+export const CardMini = styled.img.attrs(p => ({
+	src: p.mini
+}))`
   position: absolute;
-  width: 4.3rem;
-  top: 1.1rem;
-  right: 1.1rem;
-}`;
+  width: 3.5em;
+  top: 1.1em;
+  right: 1.1em;
+`;
 
-export const CardHeader = css`
-.card__header {
-  position: relative;
-  padding: ${props => props.theme["default-padding-card"] || "1rem"};
-  ${props => props.title && CardHeaderTitle}
-  ${props => props.meta && CardHeaderContent}
-  ${props => props.mini && CardHeaderImg}
-}`;
-
-export const CardContent = css`
-.card__content{
-  padding: ${props => props.theme["default-padding-card"] || "1rem"};
-  font-size: 1.4rem;
+/**
+ * Styled-Component
+ * @name CardContent
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the main content
+ *
+ * @param {string} title p => p.title
+ * @param {string} meta p => p.meta
+ */
+export const CardContent = styled.div`
+  padding: ${p => p.theme["default-padding-card"] || "1rem"};
   font-weight: 400;
   color: rgba(0,0,0,.68);
-  line-height: 2rem;
-  ${props => (props.title || props.meta) && css`
-      padding-top: 0 !important;
-  `};
-}`;
+  padding-top: ${p => ((p.title || p.meta) ? "0 !important" : "inital")}
+`;
 
+/**
+ * Styled-Component
+ * @name CardImage and
+ * @name CardImageWrapper
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the main header img
+ *
+ * @param {url} img p => p.img
+ */
 export const CardImage = styled.img.attrs(p => ({
 	src: p.img
 }))`
@@ -71,8 +122,6 @@ export const CardImage = styled.img.attrs(p => ({
   width: 100%;
   height: auto;
   border-radius: inherit;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
 `;
 export const CardImageWrapper = styled.div` 
   position: relative;
@@ -80,13 +129,26 @@ export const CardImageWrapper = styled.div`
   flex: 0 0 auto;
   padding: 0;
   background: rgba(0,0,0,.05);
-  ${CardImage}
+  border-radius: inherit;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+`;
+
+/**
+ * Styled-Component
+ * @name CardFooter
+ * @see Card (components/Card)
+ * @description child of <Card> that holds the footer
+ */
+export const CardFooter = styled.div`
+  padding: ${props => props.theme["default-padding-card"] || "1rem"};
+  color: rgba(0,0,0,.4);
+  padding-top: 10px;
+    border-top: 1px solid rgba(0,0,0,.1);
+  :before {
+    content: '';
+
+  }
 `;
 
 
-export const CardFooter = css`
-.card__footer{
-  padding: ${props => props.theme["default-padding-card"] || "1rem"};
-  border-top: ${props => props.theme["default-border-top"] || "1px solid black"};
-  color: rgba(0,0,0,.4);
-}`;
