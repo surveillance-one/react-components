@@ -16,11 +16,11 @@ import { globalStyles } from "ui/styles/globals";
  *
  * @param {string} width p => p.width
  */
-export const CardBase = css`
+
+export const CardBase = styled.div`
   /** Global Styles */
   ${globalStyles};
-  font-size: ${props => props.theme["default-font-size"] || "1rem"};
-  line-height: ${props => props.theme["default-line-height"] || "1em"};
+
   background-color: ${props => props.theme["default-bg-white"] || "whitesmoke"};
 
   color: ${props => props.theme.color || "black"};
@@ -31,7 +31,7 @@ export const CardBase = css`
   position: relative;
 
   /** TODO: CHANGE */
-  width: ${props => props.width || "20em"};
+  width: ${p => `${p.width}em` || "20em"};
 `;
 
 /**
@@ -41,10 +41,11 @@ export const CardBase = css`
  * @description child of <Card> wrapper for title
  *
  * @param {string} title p => p.title
+ * @param {string} mini p => p.mini
  */
 export const CardHeader = styled.div`
   position: relative;
-  padding: ${props => props.theme["default-padding-card"] || "1rem"};
+  padding: ${p => ((p.mini && (!p.title || !p.meta)) ? "0 !important" : "1em")};
   padding-bottom: ${p => (p.title ? "0 !important" : "")};
 `;
 
@@ -60,6 +61,7 @@ export const CardTitle = styled.h1`
   margin: 0;
   color: rgba(0,0,0,.85);
 `;
+
 
 /**
  * Styled-Component
@@ -81,13 +83,13 @@ export const CardMeta = styled.div`
  *
  * @param {url} mini p => p.mini
  */
-export const CardMini = styled.img.attrs(p => ({
-	src: p.mini
-}))`
-  position: absolute;
+export const CardMini = styled.img.attrs(p => ({ src: p.mini }))`
   width: 3.5em;
   top: 1.1em;
   right: 1.1em;
+  position: ${p => ((!p.title || !p.meta) ? "static" : "absolute")};
+  float: ${p => ((!p.title || !p.meta) ? "right" : "auto")};
+  margin: ${p => ((!p.title || !p.meta) ? "1em" : "initial")};
 `;
 
 /**
@@ -115,14 +117,13 @@ export const CardContent = styled.div`
  *
  * @param {url} img p => p.img
  */
-export const CardImage = styled.img.attrs(p => ({
-	src: p.img
-}))`
+export const CardImage = styled.img.attrs(p => ({ src: p.img }))`
   display: block;
   width: 100%;
   height: auto;
   border-radius: inherit;
 `;
+
 export const CardImageWrapper = styled.div` 
   position: relative;
   display: block;
@@ -150,5 +151,3 @@ export const CardFooter = styled.div`
 
   }
 `;
-
-

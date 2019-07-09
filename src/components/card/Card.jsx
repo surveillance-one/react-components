@@ -1,44 +1,44 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import * as Styles from "./styles";
 
-const CardBase = ({
+// 	className, img, title, meta, footer, mini, children, ...props
+
+const Card = ({
 	className, img, title, meta, footer, mini, children, ...props
-}) => (
-	<div className={className} {...props}>
-		{img && <Styles.CardImageWrapper><Styles.CardImage img={img}/></Styles.CardImageWrapper>}
-		{(title || meta)
-				&& <Styles.CardHeader title={title} meta={meta}>
-					{title && <Styles.CardTitle>{title}</Styles.CardTitle>}
-					{meta && <Styles.CardMeta>{meta}</Styles.CardMeta>}
-					{mini && <Styles.CardMini src={mini}/>}
-				</Styles.CardHeader>
-		}
-		<Styles.CardContent>{children}</Styles.CardContent>
-		{footer && <Styles.CardFooter>{footer}</Styles.CardFooter>}
-	</div>
-);
-
-/**
- * Simple CSS and React for cards. See <Card.Header>, <Card.Content>, and <Card.Footer>.
- *
- * @visibleName Card
- */
-
-const Card = styled(CardBase)`
-	/** Base Styles */
-  ${Styles.CardBase}
-`;
+}) => {
+	const cardImg = (img ? <Styles.CardImageWrapper><Styles.CardImage img={img}/></Styles.CardImageWrapper> : "");
+	const cardHeader = ((title || meta || mini)
+		? <Styles.CardHeader title={title} meta={meta} mini={mini} >
+			{title && <Styles.CardTitle>{title}</Styles.CardTitle>}
+			{meta && <Styles.CardMeta>{meta}</Styles.CardMeta>}
+			{mini && <Styles.CardMini mini={mini} title={title} meta={meta}/>}
+		</Styles.CardHeader> : ""
+	);
+	const cardFooter = (footer ? <Styles.CardFooter>{footer}</Styles.CardFooter> : "");
+	return (
+		<Styles.CardBase {...props}>
+			{cardImg}
+			{cardHeader}
+			<Styles.CardContent>{children}</Styles.CardContent>
+			{cardFooter}
+		</Styles.CardBase>
+	);
+};
 
 /** Default */
 Card.defaultProps = {
+	img: "",
+	title: "",
+	meta: "",
+	mini: "",
+	footer: "",
 	width: "20em",
 	children: []
 };
 
-/** PROP */
+/** Props */
 Card.propTypes = {
 	img: PropTypes.string,
 	title: PropTypes.string,
@@ -52,4 +52,5 @@ Card.propTypes = {
 	]),
 };
 
+Card.displayName = "Card";
 export default Card;

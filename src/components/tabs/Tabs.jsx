@@ -1,6 +1,7 @@
 import React, {
  Children, cloneElement, useState, useCallback
 } from "react";
+import { defaultTheme } from "ui/themes";
 
 /**
  * @title Tabs component
@@ -42,6 +43,10 @@ const Tabs = ({
 			</div>
 		</div>
 	);
+};
+
+Tabs.defaultProps = {
+	theme: defaultTheme
 };
 
 export default Tabs;
