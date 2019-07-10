@@ -1,40 +1,5 @@
-import * as PropTypes from "prop-types";
-import styled from "styled-components";
-import { defaultTheme } from "ui/themes";
-import * as Styles from "./styles";
+import StyledTabs from "./Tabs";
 
-import Tabs from "./Tabs";
-import Tab from "./Tab";
+const Tabs = StyledTabs;
 
-
-const StyledTabs = styled(Tabs)`
-	/** Main Theme */
-	${Styles.TabsBase};
-	
-	/** Color Variants */
-	${props => (props.primary && !props.secondary ? Styles.TabsPrimary : "")};
-	${props => (props.secondary && !props.primary ? Styles.TabsSecondary : "")};
-`;
-
-const StyledTab = styled(Tab)`
-	/** Main Theme */
-	${Styles.TabBase};
-
-
-	/** Active Tab */
-	${props => (props.currentTab ? Styles.TabCurrent : "")};
-
-	/** Icons */
-	${props => (props.iconName ? Styles.TabIcons : "")}
-
-	/** Icon only on Active/Hover */
-	${props => (props.showIconOnlyOnActive ? Styles.showIconOnlyOnActive : "")}
-`;
-
-StyledTabs.Tab = StyledTab;
-
-StyledTabs.defaultProps = {
-	theme: defaultTheme
-};
-
-export default StyledTabs;
+export default Tabs;

@@ -1,4 +1,4 @@
-import StyledTabs from "./tabs";
+import Tabs from "./tabs";
 import StyledDropdown from "./dropdown";
 import * as Icon from "./icon";
 import * as StyledCard from "./card";
@@ -6,10 +6,12 @@ import * as StyledCard from "./card";
 import * as StyledButton from "./button";
 
 export const { Button, ButtonGroup } = StyledButton;
-export { Icon };
 export const { Card } = StyledCard;
 export const Dropdown = StyledDropdown;
-export const Tabs = StyledTabs;
+export {
+	Tabs,
+	Icon,
+};
 // export const Tabs = styled(StyledTabs)`
 // 	${globalStyles}
 // `;

@@ -176,6 +176,8 @@ storiesOf("Tabs", module)
 				</Tabs.Tab>
 				<Tabs.Tab iconName="camera" label="Camera" showIconOnlyOnActive>2 content</Tabs.Tab>
 				<Tabs.Tab label="Hello">Hello</Tabs.Tab>
+				<Tabs.Tab primary label="Hello">Hello</Tabs.Tab>
+				<Tabs.Tab secondary label="Hello">Hello</Tabs.Tab>
 			</Tabs>
 		</Container>
 	));

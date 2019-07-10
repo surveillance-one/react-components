@@ -7,7 +7,6 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Button.
  */
 
-
 /**
  * Styled-Component
  * @name btnLabel
