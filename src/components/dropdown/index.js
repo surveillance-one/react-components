@@ -5,15 +5,15 @@ import * as Styles from "./styles";
 import Dropdown from "./Dropdown";
 
 
-const StyledDropDown = styled(Dropdown)`
+const StyledDropdown = styled(Dropdown)`
 	/** Main Theme */
 	${Styles.DropdownBase};
 	${Styles.DropdownActive};
 `;
 
-StyledDropDown.defaultProps = {
+StyledDropdown.defaultProps = {
 	theme: defaultTheme
 }
 
 
-export default StyledDropDown;
+export default StyledDropdown;

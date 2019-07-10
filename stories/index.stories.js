@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-knobs";
 
 import {
-	Button, ButtonGroup, Card, CardGroup, Tabs
+	Button, ButtonGroup, Card, CardGroup, Tabs, Dropdown
 } from "components/index.js";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
@@ -177,5 +177,15 @@ storiesOf("Tabs", module)
 				<Tabs.Tab iconName="camera" label="Camera" showIconOnlyOnActive>2 content</Tabs.Tab>
 				<Tabs.Tab label="Hello">Hello</Tabs.Tab>
 			</Tabs>
+		</Container>
+	));
+
+storiesOf("Dropdown", module)
+	.add("Types", () => (
+		<Container>
+			<Dropdown title="hello">
+				<Dropdown.ListItem>Number 1q</Dropdown.ListItem>
+				<Dropdown.ListItem>Number 2</Dropdown.ListItem>
+			</Dropdown>
 		</Container>
 	));

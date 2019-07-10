@@ -3,7 +3,7 @@ import React, {
 } from "react";
 
 import { useOutsideClick } from "hooks";
-import { Icon } from "components";
+import Icon from "components/icon";
 
 const Dropdown = ({
 	valueChange,
@@ -16,6 +16,7 @@ const Dropdown = ({
 	const [listOpen, setListOpen] = useState(false);
 	const [headerTitle, setHeaderTitle] = useState(title);
 	const [selectedID, setSelectedID] = useState("-1");
+	console.log("test")
 
 	useEffect(() => {
 		if (valueChange) valueChange(selectedID);
