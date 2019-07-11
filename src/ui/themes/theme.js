@@ -1,4 +1,4 @@
-export default {
+export const base = {
 	primary: "red",
 	secondary: "blue",
 	default: "#e0e1e2 none",
@@ -36,3 +36,12 @@ export default {
 	"default-h1-font-size": "2rem",
 };
 
+export const COLOR = {
+	primary: "white",
+	secondary: "white"
+};
+
+export const BG_COLOR = {
+	primary: "#1678C2",
+	secondary: "#27292A"
+};

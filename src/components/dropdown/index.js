@@ -1,19 +1,10 @@
-import styled from "styled-components";
-import { defaultTheme } from "ui/themes";
-import * as Styles from "./styles";
+import StyledDropdown from "./Dropdown";
+import StyledListItem from "./List";
 
-import Dropdown from "./Dropdown";
+const Item = StyledListItem;
+const Dropdown = StyledDropdown;
 
-
-const StyledDropdown = styled(Dropdown)`
-	/** Main Theme */
-	${Styles.DropdownBase};
-	${Styles.DropdownActive};
-`;
-
-StyledDropdown.defaultProps = {
-	theme: defaultTheme
-}
-
-
-export default StyledDropdown;
+export {
+	Dropdown,
+	Item
+};

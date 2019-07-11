@@ -1,7 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import { defaultTheme } from "ui/themes";
+import theme from "ui/themes";
 import Icon from "components/icon";
 
 import * as Styles from "./styles";
@@ -79,8 +79,8 @@ const Button = styled(PreButton)`
 	${props => (props.iconName ? Styles.ButtonIcons : "")};
 
 	/** Color Variants */
-	${props => (props.primary && !props.secondary ? Styles.ButtonPrimary : "")};
-	${props => (props.secondary && !props.primary ? Styles.ButtonSecondary : "")};
+	${p => (p.primary && !p.secondary ? Styles.buttonStyle("primary") : "")};
+	${p => (p.secondary && !p.primary ? Styles.buttonStyle("secondary") : "")};
 
 	/** Button Types */
 	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
@@ -93,7 +93,7 @@ const Button = styled(PreButton)`
 `;
 
 Button.defaultProps = {
-	theme: defaultTheme
+	theme: theme.base
 };
 
 export default Button;

@@ -1,9 +1,11 @@
 import React, {
 	useState, useEffect, Children, cloneElement, useCallback, useRef
 } from "react";
-
+import styled from "styled-components";
 import { useOutsideClick } from "hooks";
 import Icon from "components/icon";
+import theme from "ui/themes";
+import * as Styles from "./styles";
 
 const Dropdown = ({
 	valueChange,
@@ -16,7 +18,6 @@ const Dropdown = ({
 	const [listOpen, setListOpen] = useState(false);
 	const [headerTitle, setHeaderTitle] = useState(title);
 	const [selectedID, setSelectedID] = useState("-1");
-	console.log("test")
 
 	useEffect(() => {
 		if (valueChange) valueChange(selectedID);
@@ -34,40 +35,37 @@ const Dropdown = ({
 		setSelectedID(id);
 	}
 
+	const listItems = (
+		<Styles.DropdownList onClick={e => e.stopPropagation()}>
+			{Children.map(children, (child, i) => cloneElement(child, {
+				item: i,
+				currentSelection: (headerTitle == child.props.children),
+				onItemClick: useCallback(() => selectItem(child.props.children, child.props.value || i)),
+				status,
+			}))}
+		</Styles.DropdownList>
+	);
+
 	return (
 		<div ref={node} className={className}>
-			<div className={`dropdown ${listOpen ? "dropdown--active" : ""}`} onClick={e => setListOpen(!listOpen)}>
-				<div className="dropdown__header-title">{headerTitle}</div>
-				<i className="dropdown__icon--arrow">
+			<Styles.DropdownWrapper onClick={e => setListOpen(!listOpen)}active={listOpen}>
+				<Styles.DropdownHeaderTitle>{headerTitle}</Styles.DropdownHeaderTitle>
+				<Styles.IconArrow>
 					<Icon icon={listOpen ? "chevron-up" : "chevron-down"} size="1x"/>
-				</i>
-				{listOpen && <ul className="dropdown__list" onClick={e => e.stopPropagation()}>
-					{Children.map(children, (child, i) => cloneElement(child, {
-						item: i,
-						onItemClick: selectItem,
-						currentSelection: (headerTitle == child.props.children),
-						value: child.props.value,
-						status,
-					}))}
-					{/* {children.map(({ props }, index) => (
-					<li className="dropdown__list-item" key={index} id={props.value} onClick={() => selectItem(props.children, props.value)}>{props.children} {headerTitle == props.children && <Icon icon="check"/>}{status && <span style={{ float: "right" }}>{status}</span>}</li>
-				))} */}
-				</ul> }
-			</div>
+				</Styles.IconArrow>
+				{listOpen && listItems}
+			</Styles.DropdownWrapper>
 		</div>
 	);
 };
 
-Dropdown.ListItem = ({
-	onItemClick, className, currentSelection, item, status, children, value
-}) => {
-  const onItemsClick = useCallback(() => onItemClick(children, value || item));
-	return (
-		<li className={`dropdown__list--item ${className}`} key={item} onClick={onItemsClick}>
-			{children} {currentSelection && <Icon icon="check"/>}
-			{status && <span style={{ float: "right" }}>{status}</span>}
-		</li>
-	);
+const StyledDropdown = styled(Dropdown)`
+	${Styles.DropdownBase}
+	
+`;
+
+StyledDropdown.defaultProps = {
+	theme: theme.base
 };
 
-export default Dropdown;
+export default StyledDropdown;

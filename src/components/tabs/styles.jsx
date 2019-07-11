@@ -2,16 +2,9 @@
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
 import { globalStyles } from "ui/styles/globals";
+import themes from "ui/themes";
 
-const COLOR = {
-	primary: "white",
-	secondary: "white"
-};
-
-const BG_COLOR = {
-	primary: "#1678C2",
-	secondary: "#27292A"
-};
+/* *****************************TabGroup**************************** */
 
 /**
  * Styled-Component CSS
@@ -24,70 +17,6 @@ const BG_COLOR = {
 export const TabsBase = css`
 	/** Global Styles */
 	${globalStyles};
-`;
-
-/**
- * Styled-Component CSS
- * @name TabBase
- * @see Tabs (components/Tabs)
- * @description <Tab> base styles
- *
- * @param {object} globalStyles global styles
- */
-export const TabBase = css`
-	/** Global Styles */
-	${globalStyles};
-	align-self: center;
-	position: relative;
-	vertical-align:baseline;
-
-	height: 2.5em;
-	max-height: 3em;
-	min-height: 1em;
-
-	margin:0;
-	padding: calc(.375em - 1px) .75em;
-
-	border: none;
-	box-shadow: none;
-	border-radius: .3rem;
-	color: rgba(0,0,0,.6);
-
-	font-style:normal;
-	font-weight: 500;
-	line-height: 24px;
-	text-align:center;
-	text-decoration:none;
-	text-shadow:none;
-	text-transform:none;
-
-	cursor:pointer;
-	list-style: none;
-	outline:0;
-	transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease;
-	user-select:none;
-	white-space: nowrap;
-
-	&:first-child {
-		margin-right: .36em;
-	}
-	&:last-child {
-		margin-left: .36em;
-	}
-	&:not(:first-child):not(:last-child) {
-		margin: 0 .36em;
-	}	
-	
-	&:hover {
-		background-color: rgba(224,225,226,1);
-		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
-		color: rgba(0,0,0,.6);
-  }
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
 `;
 
 /**
@@ -125,6 +54,79 @@ export const TabsContent = styled.div`
 
 	background: rgb(255,255,255);
 	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+
+	/** fix for random Margin TODO: find source of margin on <p> tags */
+	* {
+		margin: auto;
+	}
+
+`;
+
+/* ******************************Tab**************************** */
+
+/**
+ * Styled-Component CSS
+ * @name TabBase
+ * @see Tabs (components/Tabs)
+ * @description <Tab> base styles
+ *
+ * @param {object} globalStyles global styles
+ */
+export const TabBase = css`
+	/** Global Styles */
+	${globalStyles};
+	align-self: center;
+	position: relative;
+	display: flex;
+	vertical-align:baseline;
+
+	height: 2.5em;
+	max-height: 3em;
+	min-height: 1em;
+
+	margin:0;
+	padding: calc(.375em - 1px) .75em;
+
+	border: none;
+	box-shadow: none;
+	border-radius: .3rem;
+	color: rgba(0,0,0,.6);
+
+	font-style:normal;
+	font-weight: 500;
+
+	text-align:center;
+	text-decoration:none;
+	text-shadow:none;
+	text-transform:none;
+
+	cursor:pointer;
+	list-style: none;
+	outline:0;
+	transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease;
+	user-select:none;
+	white-space: nowrap;
+
+	&:first-child {
+		margin-right: .36em;
+	}
+	&:last-child {
+		margin-left: .36em;
+	}
+	&:not(:first-child):not(:last-child) {
+		margin: 0 .36em;
+	}	
+	
+	&:hover {
+		background-color: rgba(224,225,226,1);
+		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+		color: rgba(0,0,0,.6);
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
 `;
 
 /**
@@ -134,11 +136,10 @@ export const TabsContent = styled.div`
  * @description <Tabs.Tab> label
  */
 export const TabLabel = styled.span`
-  display: inline-block;
+  display: block;
   position: static;
 	vertical-align: middle;
-
-  line-height: 24px;
+	margin: auto;
 `;
 
 /**
@@ -148,12 +149,12 @@ export const TabLabel = styled.span`
  * @description <Tabs.Tab> icon wrapper
  */
 export const IconWrapper = styled.span`
-  display: inline-flex;
+  display: table-cell;
 
-  padding: .75em;
+  /** padding: .75em; */
 
   text-align: center;
-  line-height: 24px;
+
 
   box-shadow: -1px 0 0 0 transparent inset;
 `;
@@ -170,12 +171,12 @@ export const tabIcons = css`
   justify-content: center;
   flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")}
 	
-  padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")};
-  padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")};
+  /** padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")}; */
+  /** padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")}; */
 
   /** changes IconWrapper */
   ${IconWrapper} {
-    margin: ${p => (p.iconPosition === "left" ? "0 .25em 0 0" : "0 0 0 .25em")};
+    margin: ${p => (p.iconPosition === "left" ? "0 .4em 0 0" : "0 0 0 .4em")};
   }
 `;
 
@@ -192,13 +193,15 @@ export const showIconOnlyOnActive = css`
 		visibility: hidden;
 		opacity: 0;
 
-		margin-right: -40px;
+		margin-right: ${p => (p.iconPosition === "right" ? "-15px" : "initial")}
+		margin-left: ${p => (p.iconPosition === "left" ? "-15px" : "initial")}
 	}
 	&:hover > ${IconWrapper} {
 		visibility: visible;
 		opacity: 1;
-		margin-right: 0;
-		transition: visibility 0.5s, opacity 0.5s, margin-right 0.1s linear;
+		margin-right: ${p => (p.iconPosition === "right" ? "0" : "inherit")}
+		margin-left: ${p => (p.iconPosition === "left" ? "0" : "inherit")}
+		transition: visibility 0.5s, opacity 0.5s, margin-right 0.1s, margin-left 0.1s linear;
 	}
 `;
 
@@ -243,10 +246,10 @@ export const tabCurrent = css`
  * @param {string} type
  */
 export const tabStyle = (type) => {
-	const color = COLOR[type];
-	const bgColor = BG_COLOR[type];
+	const color = themes.COLOR[type];
+	const bgColor = themes.BG_COLOR[type];
 	return css`
-		color: ${p => (p.currentTab ? rgba(color, 0.8) : "")};
+		color: ${p => (p.currentTab ? color : "")};
 		background: ${p => (p.currentTab ? bgColor : "")};;
 		&:hover {
 			color: ${rgba(color, 0.8)};
@@ -259,3 +262,15 @@ export const tabStyle = (type) => {
 		}
 	`;
 };
+
+/**
+ * Styled-Component CSS
+ * @name tabRounded
+ * @see Tab (components/Tabs)
+ * @description <Tab> Styles the tabs
+ *
+ * @param {string} type
+ */
+export const tabRounded = css`
+	border-radius: 3rem;
+`;

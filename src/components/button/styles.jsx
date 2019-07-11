@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { rgba } from "polished";
 
 import { globalStyles } from "ui/styles/globals";
+import themes from "ui/themes";
 
 /**
  * Styled components for Button.
@@ -16,7 +17,7 @@ import { globalStyles } from "ui/styles/globals";
  * @param {boolean} squared p => p.squared
  */
 export const btnLabel = styled.span`
-  line-height: 24px;
+  
   display: block;
   position: static;
 `;
@@ -37,7 +38,7 @@ export const iconWrapper = styled.span`
   background-color: rgba(0,0,0,.1);
   box-shadow: -1px 0 0 0 transparent inset;
   padding: .75em;
-  line-height: 24px;
+  
 `;
 
 /**
@@ -59,7 +60,7 @@ export const ButtonBase = css`
     cursor:pointer;
     position: relative;
     min-height:1em;
-    line-height: 24px;
+    
     height: 2.5em;
     max-height: 3em;
     outline:0;
@@ -125,34 +126,28 @@ export const ButtonAnimations = css`
   }
 `;
 
-export const ButtonPrimary = css`&{
-  ${({ theme }) => {
-		const color = theme["primary-btn-color"];
-		return css`
-      background: ${theme["primary-btn-bg"]};
-      color: ${color};
-      &:hover {
-        color: ${rgba(color, 0.8)}};
-      }
-  `;
-	}}
-}`;
-
-export const ButtonSecondary = css`&{
-  ${({ theme }) => {
-		const color = theme["secondary-btn-color"];
-		return css`
-      background: ${theme["secondary-btn-bg"]};
-      color: ${color};
-      &:hover {
-        color: ${rgba(color, 0.8)}};
-      }
-  `;
-	}}
-  ${iconWrapper} {
-    background-color: rgba(165,165,165,.1);
-  }
-}`;
+/**
+ * Styled-Component CSS
+ * @name buttonStyle
+ * @see Button (components/Button)
+ * @description <Button> Styles the Button
+ *
+ * @param {string} type
+ */
+export const buttonStyle = (type) => {
+	const color = themes.COLOR[type];
+	const bgColor = themes.BG_COLOR[type];
+	return css`&{
+		background: ${bgColor};
+		color: ${color};
+		&:hover {
+			color: ${rgba(color, 0.8)};
+		}
+    ${iconWrapper} {
+      background-color: ${type === "secondary" ? "rgba(165,165,165,.1)" : ""};
+    }
+	}`;
+};
 
 export const ButtonRounded = css`&{
   border-radius: 3rem;

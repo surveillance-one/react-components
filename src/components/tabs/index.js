@@ -1,5 +1,10 @@
-import StyledTabs from "./Tabs";
+import StyledTabGroup from "./TabGroup";
+import StyledTab from "./Tab";
 
-const Tabs = StyledTabs;
+const TabGroup = StyledTabGroup;
+const Tab = StyledTab;
 
-export default Tabs;
+export {
+	TabGroup,
+	Tab
+};

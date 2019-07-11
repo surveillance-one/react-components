@@ -4,11 +4,11 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import {
-	withKnobs, text, select, boolean, number, radio, radios
+	withKnobs, text, boolean, number, optionsKnob
 } from "@storybook/addon-knobs";
 
 import {
-	Button, ButtonGroup, Card, CardGroup, Tabs, Dropdown
+	Button, ButtonGroup, Card, CardGroup, TabGroup, Tab, Dropdown, Item
 } from "components/index.js";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
@@ -165,29 +165,113 @@ storiesOf("Card", module)
 		</Card>
 	));
 
+const valArr = ["Label Only", "Label w icon", "Label w icon showOnly", "Label w icon left", "Label w icon left showOnly", "Rounded", "Primary", "Secondary"];
+
 storiesOf("Tabs", module)
 	.addDecorator(withKnobs)
 	.add("Types", () => (
 		<Container>
-			<Tabs>
-				<Tabs.Tab iconName="check" iconPosition="left" label="Super long label">
-					<p>Hello</p>
-					<p>hi</p>
-				</Tabs.Tab>
-				<Tabs.Tab iconName="camera" label="Camera" showIconOnlyOnActive>2 content</Tabs.Tab>
-				<Tabs.Tab label="Hello">Hello</Tabs.Tab>
-				<Tabs.Tab primary label="Hello">Hello</Tabs.Tab>
-				<Tabs.Tab secondary label="Hello">Hello</Tabs.Tab>
-			</Tabs>
+			{ valArr.map((x, i) => <div>
+				<h4>{x}:</h4>
+				<TabGroup active={i}>
+					<Tab label="Label Only">
+						<p>Hello</p>
+						<p>hi</p>
+					</Tab>
+					<Tab label="Label w icon" iconName="camera">2 content</Tab>
+					<Tab label="Label w icon showOnly" iconName="camera" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label w icon left" iconName="camera" iconPosition="left">2 content</Tab>
+					<Tab label="Label w icon left showOnly" iconName="camera" iconPosition="left" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label rounded" rounded>2 content</Tab>
+					<Tab label="Label primary" primary>2 content</Tab>
+					<Tab label="Label secondary" secondary>2 content</Tab>
+				</TabGroup>
+			</div>)}
+		</Container>
+	))
+	.add("TabGroup", () => (
+		<Container>
+			<div>
+				<h4>Primary</h4>
+				<TabGroup primary>
+					<Tab label="Label Only">
+						<p>Hello</p>
+						<p>hi</p>
+					</Tab>
+					<Tab label="Label w icon" iconName="camera">2 content</Tab>
+					<Tab label="Label w icon showOnly" iconName="camera" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label w icon left" iconName="camera" iconPosition="left">2 content</Tab>
+					<Tab label="Label w icon left showOnly" iconName="camera" iconPosition="left" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label primary" primary>2 content</Tab>
+					<Tab label="Label secondary" secondary>2 content</Tab>
+				</TabGroup>
+			</div>
+			<div>
+				<h4>Secondary</h4>
+				<TabGroup secondary>
+					<Tab label="Label Only">
+						<p>Hello</p>
+						<p>hi</p>
+					</Tab>
+					<Tab label="Label w icon" iconName="camera">2 content</Tab>
+					<Tab label="Label w icon showOnly" iconName="camera" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label w icon left" iconName="camera" iconPosition="left">2 content</Tab>
+					<Tab label="Label w icon left showOnly" iconName="camera" iconPosition="left" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label primary" primary>2 content</Tab>
+					<Tab label="Label secondary" secondary>2 content</Tab>
+				</TabGroup>
+			</div>
+			<div>
+				<h4>Rounded</h4>
+				<TabGroup rounded>
+					<Tab label="Label Only">
+						<p>Hello</p>
+						<p>hi</p>
+					</Tab>
+					<Tab label="Label w icon" iconName="camera">2 content</Tab>
+					<Tab label="Label w icon showOnly" iconName="camera" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label w icon left" iconName="camera" iconPosition="left">2 content</Tab>
+					<Tab label="Label w icon left showOnly" iconName="camera" iconPosition="left" showIconOnlyOnActive>2 content</Tab>
+					<Tab label="Label primary" primary>2 content</Tab>
+					<Tab label="Label secondary" secondary>2 content</Tab>
+				</TabGroup>
+			</div>
+		</Container>
+	))
+	.add("Default", () => (
+		<Container>
+			<div>
+				<h4>Default:</h4>
+				<TabGroup
+					rounded={boolean("Tab Group: Rounded")}
+					primary={boolean("Tab Group: Primary")}
+					secondary={boolean("Tab Group: Secondary")}
+				>
+					<Tab
+						label={text("Label", "Test Label")}
+						iconName={text("Icon", "check")}
+						iconPosition={optionsKnob("Icon Position", { Left: "left", Right: "right" }, "right", { display: "inline-radio" })}
+						showIconOnlyOnActive={boolean("Show icon only when Active")}
+						rounded={boolean("Rounded Corners")}
+						primary={boolean("Primary")}
+						secondary={boolean("Secondary")}
+					>
+						<p>Hello</p>
+						<p>hi</p>
+					</Tab>
+					<Tab label="test 2">test</Tab>
+				</TabGroup>
+			</div>
 		</Container>
 	));
 
 storiesOf("Dropdown", module)
+	.addDecorator(withKnobs)
 	.add("Types", () => (
 		<Container>
 			<Dropdown title="hello">
-				<Dropdown.ListItem>Number 1q</Dropdown.ListItem>
-				<Dropdown.ListItem>Number 2</Dropdown.ListItem>
+				<Item>Number 1q</Item>
+				<Item>Number 2</Item>
 			</Dropdown>
 		</Container>
 	));
