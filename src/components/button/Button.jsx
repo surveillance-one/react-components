@@ -4,7 +4,7 @@ import styled from "styled-components";
 import theme from "ui/themes";
 import Icon from "components/icon";
 
-import * as Styles from "./styles";
+import * as sc from "./styles";
 
 /**
  * @title Button component
@@ -16,13 +16,12 @@ import * as Styles from "./styles";
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
-console.log(Icon);
 /**
 	* Component Declaration
 	* - Default Props
 	* - theme
  */
-const PreButton = ({
+const ButtonComponent = ({
 	children = "",
 	iconName = "",
 	squared = false,
@@ -31,31 +30,62 @@ const PreButton = ({
 	largeButton = false,
 	iconPosition = "right",
 	className,
+	disabled,
 	onClick,
 	theme,
 	...props
 }) => (
-	<button className={className} onClick={onClick} {...props}>
-		{ (!squared && !circle) && <Styles.btnLabel>
+	<button className={className} onClick={onClick} disabled={disabled}>
+		{ (!squared && !circle) && <sc.BtnLabel>
 			{children}
-		</Styles.btnLabel> }
+		</sc.BtnLabel> }
 
 		{ iconName
-		&& <Styles.iconWrapper
+		&& <sc.IconWrapper
 			iconPosition={iconPosition}
 			squared={squared}
 			circle={circle}
 			rounded={rounded}>
 			<Icon icon={iconName}/>
-		</Styles.iconWrapper>}
+		</sc.IconWrapper>}
 	</button>
 );
+
+/**
+ * Component Styles and Props
+ * - Global styles
+ * - Different props
+ */
+const Button = styled(ButtonComponent)`
+	/** Main Theme */
+	${sc.css_buttonbase};
+
+	/** Icons */
+	${p => (p.iconName ? sc.css_buttonicons : "")};
+
+	/** Color Variants */
+	${p => (p.primary && !p.secondary ? sc.buttonStyle("primary") : "")};
+	${p => (p.secondary && !p.primary ? sc.buttonStyle("secondary") : "")};
+
+	/** Button Types */
+	${p => ((p.rounded && !p.squared) ? sc.css_buttonrounded : "")};
+	${p => ((p.squared && !p.rounded) ? sc.css_buttonsquared : "")};
+	${p => (p.circle ? sc.css_buttoncircle : "")};
+
+
+	/** Button Animations */
+	${p => (p.animations ? sc.css_buttonanimations : "")}
+`;
+
+Button.defaultProps = {
+	theme: theme.base
+};
 
 /**
  * PropTypes
  */
 
-PreButton.propTypes = {
+Button.propTypes = {
 	iconName: PropTypes.string,
 	iconPosition: PropTypes.oneOf(["left", "right"]),
 	rounded: PropTypes.bool,
@@ -64,36 +94,6 @@ PreButton.propTypes = {
 	children: PropTypes.string,
 	primary: PropTypes.bool,
 	secondary: PropTypes.bool,
-};
-
-/**
- * Component Styles and Props
- * - Global styles
- * - Different props
- */
-const Button = styled(PreButton)`
-	/** Main Theme */
-	${Styles.ButtonBase};
-
-	/** Icons */
-	${props => (props.iconName ? Styles.ButtonIcons : "")};
-
-	/** Color Variants */
-	${p => (p.primary && !p.secondary ? Styles.buttonStyle("primary") : "")};
-	${p => (p.secondary && !p.primary ? Styles.buttonStyle("secondary") : "")};
-
-	/** Button Types */
-	${props => ((props.rounded && !props.squared) ? Styles.ButtonRounded : "")};
-	${props => ((props.squared && !props.rounded) ? Styles.ButtonSquared : "")};
-	${props => (props.circle ? Styles.ButtonCircle : "")};
-
-
-	/** Button Animations */
-	${props => (props.animations ? Styles.ButtonAnimations : "")}
-`;
-
-Button.defaultProps = {
-	theme: theme.base
 };
 
 export default Button;

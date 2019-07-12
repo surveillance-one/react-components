@@ -1,11 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const DropdownWrapper = styled.div`
-
-`;
-
-export const DropdownBase = css`
-${p => console.log("Test", p)}
+export const css_dropdownbase = css`
   cursor: pointer;
   display: block;
   word-wrap: break-word;
@@ -17,7 +12,7 @@ ${p => console.log("Test", p)}
 
   /** Theme Styles */
   
-  background: ${props => props.theme["default-bg-white"] || "white"};
+  background: whitwamokw;
   padding: ${props => props.theme["default-padding"] || ".75em 1em .75em 1em"};
   color: ${props => props.theme.color || "black"};
   box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
@@ -31,21 +26,17 @@ ${p => console.log("Test", p)}
     background-color: ${props => props.theme["default-bg-lightgray"] || "lightgray"};
   }
 
-  &:active {
-    background-color:  ${props => props.theme["default-bg-lightgray"] || "lightgray"};
+  &:active,
+  &:focus {
+    outline: none;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    border: ${props => props.theme["default-border"] || "black"};
+    background-color: ${props => props.theme["default-bg-lightgray"] || "lightgray"};
   }
 
 `;
-
-export const DropdownActive = css`&{
-  /** Active class for this component instead of using styled component props */
-  outline: none;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-
-  border: ${props => props.theme["default-border"] || "black"};
-  background-color: ${props => props.theme["default-bg-lightgray"] || "lightgray"};
-}`;
 
 export const DropdownHeaderTitle = styled.div`
   font-weight: 700;
@@ -77,6 +68,7 @@ export const DropdownList = styled.ul`
   border-top-width: 0 !important;
   backface-visibility: hidden;
   outline: 0;
+
   text-shadow: none;
   text-align: left;
   z-index: 11;
@@ -87,10 +79,11 @@ export const DropdownList = styled.ul`
   box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
 `;
 
-export const DropdownListBase = css`
+export const css_dropdownlistbase = css`
   padding: ${props => props.theme["default-padding"] || ".75em 1em .75em 1em"};
   line-height: 14px;
   z-index: 12;
+  list-style: none;
 
   &:hover {
     background-color: ${props => props.theme["default-bg-lightgray-a5"] || "lightgray"};

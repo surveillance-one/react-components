@@ -6,7 +6,6 @@ import { globalStyles } from "ui/styles/globals";
  * Styled components for Card
  */
 
- /** TODO: FIX MARGIN IN FLEX BOX */
 
 /**
  * Styled-Component CSS
@@ -17,11 +16,11 @@ import { globalStyles } from "ui/styles/globals";
  * @param {string} width p => p.width
  */
 
-export const CardBase = styled.div`
+export const css_cardbase = css`
   /** Global Styles */
   ${globalStyles};
 
-  background-color: ${props => props.theme["default-bg-white"] || "whitesmoke"};
+  background-color: ${props => "whitesmoke"};
 
   color: ${props => props.theme.color || "black"};
   box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
@@ -45,7 +44,7 @@ export const CardBase = styled.div`
  */
 export const CardHeader = styled.div`
   position: relative;
-  padding: ${p => ((p.mini && (!p.title || !p.meta)) ? "0 !important" : "1em")};
+  padding: ${p => ((p.mini && (!p.title || !p.meta)) ? "0 !important" : ".75em")};
   padding-bottom: ${p => (p.title ? "0 !important" : "")};
 `;
 
@@ -85,8 +84,8 @@ export const CardMeta = styled.div`
  */
 export const CardMini = styled.img.attrs(p => ({ src: p.mini }))`
   width: 3.5em;
-  top: 1.1em;
-  right: 1.1em;
+  top: .75em;
+  right: .75em;
   position: ${p => ((!p.title || !p.meta) ? "static" : "absolute")};
   float: ${p => ((!p.title || !p.meta) ? "right" : "auto")};
   margin: ${p => ((!p.title || !p.meta) ? "1em" : "initial")};
@@ -102,7 +101,7 @@ export const CardMini = styled.img.attrs(p => ({ src: p.mini }))`
  * @param {string} meta p => p.meta
  */
 export const CardContent = styled.div`
-  padding: ${p => p.theme["default-padding-card"] || "1rem"};
+  padding:.75em;
   font-weight: 400;
   color: rgba(0,0,0,.68);
   padding-top: ${p => ((p.title || p.meta) ? "0 !important" : "inital")}
@@ -142,9 +141,8 @@ export const CardImageWrapper = styled.div`
  * @description child of <Card> that holds the footer
  */
 export const CardFooter = styled.div`
-  padding: ${props => props.theme["default-padding-card"] || "1rem"};
+  padding: .75em;
   color: rgba(0,0,0,.4);
-  padding-top: 10px;
     border-top: 1px solid rgba(0,0,0,.1);
   :before {
     content: '';

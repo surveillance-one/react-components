@@ -171,14 +171,14 @@ storiesOf("Tabs", module)
 	.addDecorator(withKnobs)
 	.add("Types", () => (
 		<Container>
-			{ valArr.map((x, i) => <div>
+			{ valArr.map((x, i) => <div key={i}>
 				<h4>{x}:</h4>
 				<TabGroup active={i}>
 					<Tab label="Label Only">
 						<p>Hello</p>
 						<p>hi</p>
 					</Tab>
-					<Tab label="Label w icon" iconName="camera">2 content</Tab>
+					<Tab label="Label w icon" underline iconName="camera">2 content</Tab>
 					<Tab label="Label w icon showOnly" iconName="camera" showIconOnlyOnActive>2 content</Tab>
 					<Tab label="Label w icon left" iconName="camera" iconPosition="left">2 content</Tab>
 					<Tab label="Label w icon left showOnly" iconName="camera" iconPosition="left" showIconOnlyOnActive>2 content</Tab>
@@ -187,6 +187,13 @@ storiesOf("Tabs", module)
 					<Tab label="Label secondary" secondary>2 content</Tab>
 				</TabGroup>
 			</div>)}
+			<TabGroup underline>
+				<Tab label="Label primary" secondary primary>2 content</Tab>
+				<Tab label="Label primary" secondary primary>2 content</Tab>
+				<Tab label="Label primary" secondary primary>2 content</Tab>
+				<Tab label="Label primary" secondary primary>2 content</Tab>
+				<Tab label="Label primary" secondary primary>2 content</Tab>
+			</TabGroup>
 		</Container>
 	))
 	.add("TabGroup", () => (

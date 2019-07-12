@@ -3,7 +3,8 @@ import React, {
 } from "react";
 import theme from "ui/themes";
 import styled from "styled-components";
-import * as Styles from "./styles";
+import PropTypes from "prop-types";
+import * as sc from "./styles";
 
 /**
  * @title Tabs component
@@ -15,46 +16,62 @@ import * as Styles from "./styles";
  * @author [Markus Hudobnik](https://github.com/rnarkus)
  */
 
-const TabGroup = ({
+const TabGroupComponent = ({
 	children = "",
 	className = "",
-	pilled = false,
 	active = 0,
-	primary = false,
-	secondary = false,
-	rounded = false,
+	primary,
+	secondary,
+	rounded,
+	underline,
 	...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
 
 	return (
 		<div className={className} {...props}>
-			<Styles.TabsList>
+			<sc.TabsList>
 				{Children.map(children, (child, i) => cloneElement(child, {
 					item: i,
 					onTabClick: useCallback(() => setActiveTab(i), [i]),
 					currentTab: (activeTab === i),
-					primary,
-					secondary,
-					rounded
+					primaryAll: primary,
+					secondaryAll: secondary,
+					roundedAll: rounded,
+					underlineAll: underline,
 				}))}
-			</Styles.TabsList>
-			<Styles.TabsContent>
+			</sc.TabsList>
+			<sc.TabsContent>
 				{Children.map(children, (child, i) => {
 					if (i !== activeTab) return undefined;
 					return child.props.children;
 				})}
-			</Styles.TabsContent>
+			</sc.TabsContent>
 		</div>
 	);
 };
 
-const StyledTabGroup = styled(TabGroup)`
-	${Styles.TabsBase}
+const TabGroup = styled(TabGroupComponent)`
+	${sc.css_tabsbase}
 `;
 
-StyledTabGroup.defaultProps = {
+/** Default Props */
+TabGroup.defaultProps = {
 	theme: theme.base
 };
 
-export default StyledTabGroup;
+
+/** Prop Types */
+TabGroup.propTypes = {
+	secondary: PropTypes.bool,
+	primary: PropTypes.bool,
+	rounded: PropTypes.bool,
+	underline: PropTypes.bool,
+	children: PropTypes.oneOfType([
+		PropTypes.arrayOf(PropTypes.node),
+		PropTypes.node
+	]),
+};
+
+
+export default TabGroup;

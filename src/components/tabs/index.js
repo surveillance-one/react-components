@@ -1,8 +1,5 @@
-import StyledTabGroup from "./TabGroup";
-import StyledTab from "./Tab";
-
-const TabGroup = StyledTabGroup;
-const Tab = StyledTab;
+import TabGroup from "./TabGroup";
+import Tab from "./Tab";
 
 export {
 	TabGroup,

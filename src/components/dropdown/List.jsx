@@ -1,27 +1,31 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Icon from "components/icon";
 import theme from "ui/themes";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import * as Styles from "./styles";
+import * as sc from "./styles";
 
-const ListItem = ({
+const ListItemComponent = ({
 	onItemClick, className, currentSelection, item, status, children, value
-}) => {
-	return (
-		<li className={className} key={item} onClick={onItemClick}>
-			{children} {currentSelection && <Icon icon="check"/>}
-			{status && <span style={{ float: "right" }}>{status}</span>}
-		</li>
-	);
-};
+}) => (
+	<li className={className} key={item} onClick={onItemClick}>
+		{children} {currentSelection && <Icon icon="check"/>}
+		{status && <span style={{ float: "right" }}>{status}</span>}
+	</li>
+);
 
-const StyledListItem = styled(ListItem)`
-	${Styles.DropdownListBase}
+const ListItem = styled(ListItemComponent)`
+	${sc.css_dropdownlistbase}
 `;
 
-StyledListItem.defaultProps = {
+/** Default Props */
+ListItem.defaultProps = {
 	theme: theme.base
+};
+
+/** Prop Types */
+ListItem.propTypes = {
+	children: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default ListItem;

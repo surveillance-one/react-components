@@ -4,10 +4,11 @@ import React, {
 import styled from "styled-components";
 import { useOutsideClick } from "hooks";
 import Icon from "components/icon";
+import PropTypes from "prop-types";
 import theme from "ui/themes";
-import * as Styles from "./styles";
+import * as sc from "./styles";
 
-const Dropdown = ({
+const DropdownComponent = ({
 	valueChange,
 	title,
 	children,
@@ -36,36 +37,39 @@ const Dropdown = ({
 	}
 
 	const listItems = (
-		<Styles.DropdownList onClick={e => e.stopPropagation()}>
+		<sc.DropdownList onClick={e => e.stopPropagation()}>
 			{Children.map(children, (child, i) => cloneElement(child, {
 				item: i,
 				currentSelection: (headerTitle == child.props.children),
 				onItemClick: useCallback(() => selectItem(child.props.children, child.props.value || i)),
 				status,
 			}))}
-		</Styles.DropdownList>
+		</sc.DropdownList>
 	);
 
+	const iconStyle = listOpen ? "chevron-up" : "chevron-down";
+
 	return (
-		<div ref={node} className={className}>
-			<Styles.DropdownWrapper onClick={e => setListOpen(!listOpen)}active={listOpen}>
-				<Styles.DropdownHeaderTitle>{headerTitle}</Styles.DropdownHeaderTitle>
-				<Styles.IconArrow>
-					<Icon icon={listOpen ? "chevron-up" : "chevron-down"} size="1x"/>
-				</Styles.IconArrow>
-				{listOpen && listItems}
-			</Styles.DropdownWrapper>
+		<div className={className} tabIndex="1" ref={node} onClick={e => setListOpen(!listOpen)}>
+			<sc.DropdownHeaderTitle>{headerTitle}</sc.DropdownHeaderTitle>
+			<sc.IconArrow><Icon icon={iconStyle}/></sc.IconArrow>
+			{listOpen && listItems}
 		</div>
 	);
 };
 
-const StyledDropdown = styled(Dropdown)`
-	${Styles.DropdownBase}
-	
+const Dropdown = styled(DropdownComponent)`
+	${sc.css_dropdownbase}
 `;
 
-StyledDropdown.defaultProps = {
+/** Default */
+Dropdown.defaultProps = {
 	theme: theme.base
 };
 
-export default StyledDropdown;
+/** Props */
+Dropdown.propTypes = {
+
+};
+
+export default Dropdown;

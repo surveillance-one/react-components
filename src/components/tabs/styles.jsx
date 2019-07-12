@@ -14,7 +14,7 @@ import themes from "ui/themes";
  *
  * @param {object} globalStyles global styles
  */
-export const TabsBase = css`
+export const css_tabsbase = css`
 	/** Global Styles */
 	${globalStyles};
 `;
@@ -72,7 +72,7 @@ export const TabsContent = styled.div`
  *
  * @param {object} globalStyles global styles
  */
-export const TabBase = css`
+export const css_tabbase = css`
 	/** Global Styles */
 	${globalStyles};
 	align-self: center;
@@ -165,7 +165,7 @@ export const IconWrapper = styled.span`
  * @see Tab (components/Tab)
  * @description <Tabs.Tab> Icon
  */
-export const tabIcons = css`
+export const css_tabicons = css`
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
   align-items: center;
   justify-content: center;
@@ -188,7 +188,7 @@ export const tabIcons = css`
  *
  * @param {object} IconWrapper CSS-in-JS
  */
-export const showIconOnlyOnActive = css`
+export const css_showicononlyonactive = css`
 	&:not(:hover) > ${IconWrapper} {
 		visibility: hidden;
 		opacity: 0;
@@ -211,7 +211,7 @@ export const showIconOnlyOnActive = css`
  * @see Tab (components/Tabs)
  * @description <Tab> shows the Active tab
  */
-export const tabCurrent = css`
+export const css_tabcurrent = css`
 	background: rgba(224,225,226,1);
 	color: rgba(0,0,0,.6);
 	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
@@ -248,7 +248,7 @@ export const tabCurrent = css`
 export const tabStyle = (type) => {
 	const color = themes.COLOR[type];
 	const bgColor = themes.BG_COLOR[type];
-	return css`
+	return css`&{
 		color: ${p => (p.currentTab ? color : "")};
 		background: ${p => (p.currentTab ? bgColor : "")};;
 		&:hover {
@@ -260,7 +260,7 @@ export const tabStyle = (type) => {
 			border-bottom-color: ${bgColor};
 			border-right-color: ${bgColor};
 		}
-	`;
+	}`;
 };
 
 /**
@@ -271,6 +271,21 @@ export const tabStyle = (type) => {
  *
  * @param {string} type
  */
-export const tabRounded = css`
+export const css_tabrounded = css`
 	border-radius: 3rem;
+`;
+
+/**
+ * Styled-Component CSS
+ * @name tabRounded
+ * @see Tab (components/Tabs)
+ * @description <Tab> Styles the tabs
+ *
+ * @param {string} type
+ */
+export const css_tabcurrentunderline = css`
+	color: black;
+	font-weight: 700;
+	border-bottom: 1px solid black;
+	border-radius: 0;
 `;

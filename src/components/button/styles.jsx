@@ -16,7 +16,7 @@ import themes from "ui/themes";
  *
  * @param {boolean} squared p => p.squared
  */
-export const btnLabel = styled.span`
+export const BtnLabel = styled.span`
   
   display: block;
   position: static;
@@ -32,7 +32,7 @@ export const btnLabel = styled.span`
  * @param {boolean} squared p => p.squared
  * @param {boolean} circle p => p.circle
  */
-export const iconWrapper = styled.span`
+export const IconWrapper = styled.span`
   display: inline-flex;
   text-align: center;
   background-color: rgba(0,0,0,.1);
@@ -48,7 +48,7 @@ export const iconWrapper = styled.span`
  *
  * @description <button> base styles
  */
-export const ButtonBase = css`
+export const css_buttonbase = css`
   /** Global Styles */
   ${globalStyles};
 
@@ -113,6 +113,7 @@ export const ButtonBase = css`
     cursor: not-allowed;
     transition: initial;
     transform: initial;
+
   }
 
   &:active{
@@ -120,7 +121,7 @@ export const ButtonBase = css`
   }
 `;
 
-export const ButtonAnimations = css`
+export const css_buttonanimations = css`
   &:active{
     transform: translateY(2px);
   }
@@ -143,26 +144,26 @@ export const buttonStyle = (type) => {
 		&:hover {
 			color: ${rgba(color, 0.8)};
 		}
-    ${iconWrapper} {
+    ${IconWrapper} {
       background-color: ${type === "secondary" ? "rgba(165,165,165,.1)" : ""};
     }
 	}`;
 };
 
-export const ButtonRounded = css`&{
+export const css_buttonrounded = css`&{
   border-radius: 3rem;
   padding: calc(.375em - 1px) 1em;
   padding-right: ${p => (p.iconName && (p.iconPosition === "left" ? "1em !important" : "0 !important"))};
   padding-left: ${p => (p.iconName && (p.iconPosition === "left" ? "0 !important" : "1em !important"))};
 }`;
 
-export const ButtonSquared = css`&{
+export const css_buttonsquared = css`&{
   justify-content: center;
   padding: .75em !important;
   display: inline-flex;
   margin: 0;
   
-  ${iconWrapper} {
+  ${IconWrapper} {
     background: ${p => ((p.squared || p.circle) ? "none" : "")};
     padding: ${p => ((p.squared || p.circle) ? "0" : ".75")};
     margin: 0;
@@ -170,12 +171,12 @@ export const ButtonSquared = css`&{
   }
 }`;
 
-export const ButtonCircle = css`
-  ${ButtonRounded};
-  ${ButtonSquared};
+export const css_buttoncircle = css`
+  ${css_buttonrounded};
+  ${css_buttonsquared};
 `;
 
-export const ButtonIcons = css`
+export const css_buttonicons = css`
   align-items: center;
   justify-content: center;
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
@@ -184,7 +185,7 @@ export const ButtonIcons = css`
   padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")};
 
   /** changes iconWrapper */
-  ${iconWrapper} {
+  ${IconWrapper} {
     border-radius: ${p => (p.iconPosition === "left" ? ".3rem 0 0 .3rem" : "0 .3rem .3rem 0")};
     margin: ${p => (p.iconPosition === "left" ? "0 .75em 0 0" : "0 0 0 .75em")};
   }
