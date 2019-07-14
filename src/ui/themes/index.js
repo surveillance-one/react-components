@@ -1,3 +1,3 @@
-import * as themes from "./theme";
+import * as defaultTheme from "./default.theme.js";
 
-export default themes;
+export { defaultTheme };

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import themes from "ui/themes";
+import { defaultTheme } from "ui/themes";
 import * as sc from "./styles";
 
 // 	className, img, title, meta, footer, mini, children, ...props
@@ -41,7 +41,7 @@ Card.defaultProps = {
 	mini: "",
 	footer: "",
 	width: "20em",
-	theme: themes.base,
+	theme: defaultTheme.base,
 	children: []
 };
 

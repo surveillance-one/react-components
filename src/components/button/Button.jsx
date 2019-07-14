@@ -1,7 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import themes from "ui/themes";
+import { defaultTheme } from "ui/themes";
 import { Icon } from "components";
 
 import * as sc from "./styles";
@@ -32,7 +32,7 @@ const ButtonComponent = ({
 	className,
 	disabled,
 	onClick,
-	themes,
+	theme,
 	...props
 }) => (
 	<button className={className} onClick={onClick} disabled={disabled}>
@@ -78,7 +78,7 @@ const Button = styled(ButtonComponent)`
 `;
 
 Button.defaultProps = {
-	theme: themes.base
+	theme: defaultTheme.base
 };
 
 /**

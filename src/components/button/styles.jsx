@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import { rgba } from "polished";
 
 import globalStyles from "ui/styles/globals";
-import themes from "ui/themes";
+import { defaultTheme } from "ui/themes";
 
 /**
  * Styled components for Button.
@@ -17,7 +17,6 @@ import themes from "ui/themes";
  * @param {boolean} squared p => p.squared
  */
 export const BtnLabel = styled.span`
-  
   display: block;
   position: static;
 `;
@@ -136,8 +135,8 @@ export const css_buttonanimations = css`
  * @param {string} type
  */
 export const buttonStyle = (type) => {
-	const color = themes.COLOR[type];
-	const bgColor = themes.BG_COLOR[type];
+	const color = defaultTheme.COLOR[type];
+	const bgColor = defaultTheme.BG_COLOR[type];
 	return css`&{
 		background: ${bgColor};
 		color: ${color};

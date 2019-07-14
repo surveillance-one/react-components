@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useOutsideClick } from "hooks";
 import { Icon } from "components";
 import PropTypes from "prop-types";
-import themes from "ui/themes";
+import { defaultTheme } from "ui/themes";
 import * as sc from "./styles";
 
 const DropdownComponent = ({
@@ -64,7 +64,7 @@ const Dropdown = styled(DropdownComponent)`
 
 /** Default */
 Dropdown.defaultProps = {
-	theme: themes.base
+	theme: defaultTheme.base
 };
 
 /** Props */

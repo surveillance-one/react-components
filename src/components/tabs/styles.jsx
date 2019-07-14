@@ -2,7 +2,7 @@
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
 import globalStyles from "ui/styles/globals";
-import themes from "ui/themes";
+import { defaultTheme } from "ui/themes";
 
 /* *****************************TabGroup**************************** */
 
@@ -246,8 +246,8 @@ export const css_tabcurrent = css`
  * @param {string} type
  */
 export const tabStyle = (type) => {
-	const color = themes.COLOR[type];
-	const bgColor = themes.BG_COLOR[type];
+	const color = defaultTheme.COLOR[type];
+	const bgColor = defaultTheme.BG_COLOR[type];
 	return css`&{
 		color: ${p => (p.currentTab ? color : "")};
 		background: ${p => (p.currentTab ? bgColor : "")};;
