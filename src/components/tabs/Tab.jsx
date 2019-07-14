@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import Icon from "components/icon";
+import { Icon } from "components";
 import PropTypes from "prop-types";
 import * as sc from "./styles";
 

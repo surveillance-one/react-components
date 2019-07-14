@@ -1,8 +1,8 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import theme from "ui/themes";
-import Icon from "components/icon";
+import themes from "ui/themes";
+import { Icon } from "components";
 
 import * as sc from "./styles";
 
@@ -19,7 +19,7 @@ import * as sc from "./styles";
 /**
 	* Component Declaration
 	* - Default Props
-	* - theme
+	* - themes
  */
 const ButtonComponent = ({
 	children = "",
@@ -32,7 +32,7 @@ const ButtonComponent = ({
 	className,
 	disabled,
 	onClick,
-	theme,
+	themes,
 	...props
 }) => (
 	<button className={className} onClick={onClick} disabled={disabled}>
@@ -78,7 +78,7 @@ const Button = styled(ButtonComponent)`
 `;
 
 Button.defaultProps = {
-	theme: theme.base
+	theme: themes.base
 };
 
 /**

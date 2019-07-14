@@ -1,7 +1,7 @@
 import React, {
 	Children, cloneElement, useState, useCallback
 } from "react";
-import theme from "ui/themes";
+import themes from "ui/themes";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import * as sc from "./styles";
@@ -57,7 +57,7 @@ const TabGroup = styled(TabGroupComponent)`
 
 /** Default Props */
 TabGroup.defaultProps = {
-	theme: theme.base
+	theme: themes.base
 };
 
 

@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "components/icon";
-import theme from "ui/themes";
+import { Icon } from "components";
+import themes from "ui/themes";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import * as sc from "./styles";
@@ -20,7 +20,7 @@ const ListItem = styled(ListItemComponent)`
 
 /** Default Props */
 ListItem.defaultProps = {
-	theme: theme.base
+	theme: themes.base
 };
 
 /** Prop Types */
