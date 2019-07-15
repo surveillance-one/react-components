@@ -22,11 +22,11 @@ const DropdownComponent = ({
 
 	useEffect(() => {
 		if (valueChange) valueChange(selectedID);
-	}, [selectedID]);
+	}, [selectedID, valueChange]);
 
 	const cb = useCallback(() => {
 		setListOpen(false);
-	});
+	}, []);
 
 	useOutsideClick(cb, node);
 
@@ -40,8 +40,8 @@ const DropdownComponent = ({
 		<sc.DropdownList onClick={e => e.stopPropagation()}>
 			{Children.map(children, (child, i) => cloneElement(child, {
 				item: i,
-				currentSelection: (headerTitle == child.props.children),
-				onItemClick: useCallback(() => selectItem(child.props.children, child.props.value || i)),
+				currentSelection: (headerTitle === child.props.children),
+				onItemClick: selectItem,
 				status,
 			}))}
 		</sc.DropdownList>
@@ -69,7 +69,9 @@ Dropdown.defaultProps = {
 
 /** Props */
 Dropdown.propTypes = {
-
+	children: PropTypes.oneOf([
+		PropTypes.node
+	])
 };
 
 export default Dropdown;

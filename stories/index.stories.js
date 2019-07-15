@@ -9,7 +9,7 @@ import {
 
 import {
 	Button, ButtonGroup, Card, CardGroup, TabGroup, Tab, Dropdown, Item
-} from "../index.js";
+} from "components";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
 

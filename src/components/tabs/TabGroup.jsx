@@ -1,5 +1,5 @@
 import React, {
-	Children, cloneElement, useState, useCallback
+	Children, cloneElement, useState
 } from "react";
 import { defaultTheme } from "ui/themes";
 import styled from "styled-components";
@@ -33,7 +33,7 @@ const TabGroupComponent = ({
 			<sc.TabsList>
 				{Children.map(children, (child, i) => cloneElement(child, {
 					item: i,
-					onTabClick: useCallback(() => setActiveTab(i), [i]),
+					onTabClick: setActiveTab,
 					currentTab: (activeTab === i),
 					primaryAll: primary,
 					secondaryAll: secondary,

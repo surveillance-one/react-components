@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
 import { Icon } from "components";
 import PropTypes from "prop-types";
@@ -7,7 +7,7 @@ import * as sc from "./styles";
 const TabComponent = ({
 	label, className, onTabClick, item, ...props
 }) => (
-	<li className={className} onClick={onTabClick} key={item}>
+	<li className={className} onClick={useCallback(() => onTabClick(item), [onTabClick, item])} key={item}>
 		<sc.TabLabel>{label}</sc.TabLabel>
 		{props.iconName && <sc.IconWrapper><Icon icon={props.iconName}/></sc.IconWrapper>}
 	</li>
