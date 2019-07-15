@@ -169,7 +169,7 @@ export const css_tabicons = css`
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
   align-items: center;
   justify-content: center;
-  flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")}
+  flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")};
 	
   /** padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")}; */
   /** padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")}; */
@@ -250,7 +250,7 @@ export const tabStyle = (type) => {
 	const bgColor = defaultTheme.BG_COLOR[type];
 	return css`&{
 		color: ${p => (p.currentTab ? color : "")};
-		background: ${p => (p.currentTab ? bgColor : "")};;
+		background: ${p => (p.currentTab ? bgColor : "")};
 		&:hover {
 			color: ${rgba(color, 0.8)};
 			background: ${bgColor};

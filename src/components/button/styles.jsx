@@ -179,7 +179,7 @@ export const css_buttonicons = css`
   align-items: center;
   justify-content: center;
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
-  flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")}
+  flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")};
   padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")};
   padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")};
 
