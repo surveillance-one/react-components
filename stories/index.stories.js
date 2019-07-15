@@ -9,12 +9,9 @@ import {
 
 import {
 	Button, ButtonGroup, Card, CardGroup, TabGroup, Tab, Dropdown, Item
-} from "components/index.js";
+} from "../index.js";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
-
-import buttonMarkdown from "markdown/button.md";
-
 
 const Flex = styled.div`
 	display: flex;
