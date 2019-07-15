@@ -1,5 +1,5 @@
-import TabGroup from "./TabGroup";
-import Tab from "./Tab";
+import TabGroup from "TabGroup";
+import Tab from "Tab";
 
 export {
 	TabGroup,

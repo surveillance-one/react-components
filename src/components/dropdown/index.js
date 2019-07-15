@@ -1,5 +1,5 @@
-import StyledDropdown from "./Dropdown";
-import StyledListItem from "./List";
+import StyledDropdown from "Dropdown";
+import StyledListItem from "List";
 
 const Item = StyledListItem;
 const Dropdown = StyledDropdown;

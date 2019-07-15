@@ -22,5 +22,6 @@ export default {
 		resolve(),
 		commonjs()
 	],
-	external: id => /^react|react-components/.test(id)
+	external: ["styled-components"],
+	globals: { "styled-components": "styled" },
 };
