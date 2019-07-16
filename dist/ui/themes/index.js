@@ -1,0 +1,3 @@
+import * as defaultTheme from "./default.theme.js";
+export { defaultTheme };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NyYy9saWIvdWkvdGhlbWVzL2luZGV4LmpzIl0sIm5hbWVzIjpbImRlZmF1bHRUaGVtZSJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxLQUFLQSxZQUFaLE1BQThCLG9CQUE5QjtBQUVBLFNBQVNBLFlBQVQiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBkZWZhdWx0VGhlbWUgZnJvbSBcIi4vZGVmYXVsdC50aGVtZS5qc1wiO1xuXG5leHBvcnQgeyBkZWZhdWx0VGhlbWUgfTtcbiJdfQ==

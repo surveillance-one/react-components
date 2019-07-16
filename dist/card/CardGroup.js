@@ -1,0 +1,16 @@
+import React from "react";
+import styled from "styled-components";
+var CardGroupStyled = styled.div.withConfig({
+  displayName: "CardGroup__CardGroupStyled",
+  componentId: "ru0ilf-0"
+})(["display:flex;justify-content:", ";"], function (props) {
+  return props.flex || "space-between";
+});
+
+var CardGroup = function CardGroup(_ref) {
+  var children = _ref.children;
+  return React.createElement(CardGroupStyled, null, children);
+};
+
+export default CardGroup;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9saWIvY2FyZC9DYXJkR3JvdXAuanN4Il0sIm5hbWVzIjpbIlJlYWN0Iiwic3R5bGVkIiwiQ2FyZEdyb3VwU3R5bGVkIiwiZGl2IiwicHJvcHMiLCJmbGV4IiwiQ2FyZEdyb3VwIiwiY2hpbGRyZW4iXSwibWFwcGluZ3MiOiJBQUFBLE9BQU9BLEtBQVAsTUFBa0IsT0FBbEI7QUFDQSxPQUFPQyxNQUFQLE1BQW1CLG1CQUFuQjtBQUVBLElBQU1DLGVBQWUsR0FBR0QsTUFBTSxDQUFDRSxHQUFWO0FBQUE7QUFBQTtBQUFBLDJDQUVBLFVBQUFDLEtBQUs7QUFBQSxTQUFJQSxLQUFLLENBQUNDLElBQU4sSUFBYyxlQUFsQjtBQUFBLENBRkwsQ0FBckI7O0FBS0EsSUFBTUMsU0FBUyxHQUFHLFNBQVpBLFNBQVk7QUFBQSxNQUFHQyxRQUFILFFBQUdBLFFBQUg7QUFBQSxTQUNoQixvQkFBQyxlQUFELFFBQWtCQSxRQUFsQixDQURnQjtBQUFBLENBQWxCOztBQUdBLGVBQWVELFNBQWYiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSBcInJlYWN0XCI7XG5pbXBvcnQgc3R5bGVkIGZyb20gXCJzdHlsZWQtY29tcG9uZW50c1wiO1xuXG5jb25zdCBDYXJkR3JvdXBTdHlsZWQgPSBzdHlsZWQuZGl2YFxuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6ICR7cHJvcHMgPT4gcHJvcHMuZmxleCB8fCBcInNwYWNlLWJldHdlZW5cIn07XG5gO1xuXG5jb25zdCBDYXJkR3JvdXAgPSAoeyBjaGlsZHJlbiB9KSA9PiAoXG4gIDxDYXJkR3JvdXBTdHlsZWQ+e2NoaWxkcmVufTwvQ2FyZEdyb3VwU3R5bGVkPlxuKTtcbmV4cG9ydCBkZWZhdWx0IENhcmRHcm91cDtcbiJdfQ==

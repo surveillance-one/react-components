@@ -1,7 +1,7 @@
 import React from "react";
 import * as PropTypes from "prop-types";
 import styled from "styled-components";
-import { defaultTheme } from "../../ui/themes";
+import { defaultTheme } from "../ui/themes";
 import { Icon } from "../icon";
 
 import * as sc from "./styles";
