@@ -1,47 +1,67 @@
 import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
-import { Icon } from "components";
 import PropTypes from "prop-types";
-import * as sc from "./styles";
+import { Icon } from "../icon";
+
+import {
+	TabLabel,
+	IconWrapper,
+	css_tabbase,
+	css_tabcurrentunderline,
+	css_tabcurrent,
+	css_tabicons,
+	css_showicononlyonactive,
+	css_tabrounded,
+	tabStyle
+} from "./styles";
 
 const TabComponent = ({
 	label, className, onTabClick, item, ...props
 }) => (
-	<li className={className} onClick={useCallback(() => onTabClick(item), [onTabClick, item])} key={item}>
-		<sc.TabLabel>{label}</sc.TabLabel>
-		{props.iconName && <sc.IconWrapper><Icon icon={props.iconName}/></sc.IconWrapper>}
+	<li
+		className={className}
+		onClick={useCallback(() => onTabClick(item), [onTabClick, item])}
+		key={item}>
+		<TabLabel>{label}</TabLabel>
+		{props.iconName && <IconWrapper><Icon icon={props.iconName}/></IconWrapper>}
 	</li>
 );
 
 const Tab = styled(TabComponent)`
-	${sc.css_tabbase}
+	${css_tabbase}
 
 	/** Current Tab */
-	${p => ((p.currentTab && (p.underlineAll || p.underline)) ? sc.css_tabcurrentunderline : "")};
-	${p => ((p.currentTab && (!p.underlineAll && !p.underline)) ? sc.css_tabcurrent : "")};
+	${p => (p.currentTab && (p.underlineAll || p.underline)) && css_tabcurrentunderline};
+	${p => (p.currentTab && (!p.underlineAll && !p.underline)) && css_tabcurrent};
 
 	/** Tab Icons */
-	${p => (p.iconName ? sc.css_tabicons : "")};
+	${p => p.iconName && css_tabicons};
 
 	/** showIconOnlyOnActive */
-	${p => (p.showIconOnlyOnActive && !p.currentTab ? sc.css_showicononlyonactive : "")}
+	${p => p.showIconOnlyOnActive && !p.currentTab && css_showicononlyonactive}
 
 	/** Color Variants 
 	* order matters, bottom overrides above for the themes
 	*/
 	${p => (!p.underlineAll && !p.underline) && css`
-		${p => ((p.secondaryAll || p.secondary) ? sc.tabStyle("secondary") : "")}
-		${p => ((p.primaryAll || p.primary) ? sc.tabStyle("primary") : "")}
+		${p => (p.secondaryAll || p.secondary) && tabStyle("secondary")}
+		${p => (p.primaryAll || p.primary) && tabStyle("primary")}
 	`}
 
 	/** Styles */
-	${p => ((p.roundedAll || p.rounded) ? sc.css_tabrounded : "")}
+	${p => (p.roundedAll || p.rounded) && css_tabrounded}
 `;
 
 /** Default Props */
 Tab.defaultProps = {
+	label: "Tab",
+	iconName: "",
 	iconPosition: "right",
-	label: "Tab"
+	secondary: false,
+	primary: false,
+	rounded: false,
+	underline: false,
+	showIconOnlyOnActive: false,
 };
 
 /** Prop Types */

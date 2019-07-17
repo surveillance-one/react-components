@@ -1,10 +1,21 @@
 import React from "react";
-import * as PropTypes from "prop-types";
 import styled from "styled-components";
+import PropTypes from "prop-types";
+
+import {
+	BtnLabel,
+	IconWrapper,
+	css_buttonbase,
+	css_buttoncircle,
+	css_buttonicons,
+	css_buttonrounded,
+	css_buttonsquared,
+	css_buttonanimations,
+	buttonStyle
+} from "./styles";
+
 import { defaultTheme } from "../ui/themes";
 import { Icon } from "../icon";
-
-import * as sc from "./styles";
 
 /**
  * @title Button component
@@ -22,32 +33,21 @@ import * as sc from "./styles";
 	* - themes
  */
 const ButtonComponent = ({
-	children = "",
-	iconName = "",
-	squared = false,
-	rounded = false,
-	circle = false,
-	largeButton = false,
-	iconPosition = "right",
-	className,
-	disabled,
-	onClick,
-	theme,
-	...props
+	className, children, onClick, disabled, iconName, squared, rounded, circle, iconPosition,
 }) => (
 	<button className={className} onClick={onClick} disabled={disabled}>
-		{ (!squared && !circle) && <sc.BtnLabel>
+		{ (!squared && !circle) && <BtnLabel>
 			{children}
-		</sc.BtnLabel> }
+		</BtnLabel> }
 
 		{ iconName
-		&& <sc.IconWrapper
+		&& <IconWrapper
 			iconPosition={iconPosition}
 			squared={squared}
 			circle={circle}
 			rounded={rounded}>
 			<Icon icon={iconName}/>
-		</sc.IconWrapper>}
+		</IconWrapper>}
 	</button>
 );
 
@@ -58,27 +58,35 @@ const ButtonComponent = ({
  */
 const Button = styled(ButtonComponent)`
 	/** Main Theme */
-	${sc.css_buttonbase};
+	${css_buttonbase};
 
 	/** Icons */
-	${p => (p.iconName ? sc.css_buttonicons : "")};
+	${p => p.iconName && css_buttonicons};
 
 	/** Color Variants */
-	${p => (p.primary && !p.secondary ? sc.buttonStyle("primary") : "")};
-	${p => (p.secondary && !p.primary ? sc.buttonStyle("secondary") : "")};
+	${p => p.primary && !p.secondary && buttonStyle("primary")};
+	${p => p.secondary && !p.primary && buttonStyle("secondary")};
 
 	/** Button Types */
-	${p => ((p.rounded && !p.squared) ? sc.css_buttonrounded : "")};
-	${p => ((p.squared && !p.rounded) ? sc.css_buttonsquared : "")};
-	${p => (p.circle ? sc.css_buttoncircle : "")};
+	${p => (p.rounded && !p.squared) && css_buttonrounded};
+	${p => (p.squared && !p.rounded) && css_buttonsquared};
+	${p => p.circle && css_buttoncircle};
 
 
 	/** Button Animations */
-	${p => (p.animations ? sc.css_buttonanimations : "")}
+	${p => p.animations && css_buttonanimations}
 `;
 
 Button.defaultProps = {
-	theme: defaultTheme.base
+	children: "",
+	iconName: "",
+	iconPosition: "right",
+	theme: defaultTheme.base,
+	onClick: (() => console.log("button pressed")),
+	rounded: false,
+	squared: false,
+	primary: false,
+	secondary: false,
 };
 
 /**
@@ -86,12 +94,13 @@ Button.defaultProps = {
  */
 
 Button.propTypes = {
+	children: PropTypes.string,
 	iconName: PropTypes.string,
 	iconPosition: PropTypes.oneOf(["left", "right"]),
+	theme: PropTypes.object,
+	onClick: PropTypes.func,
 	rounded: PropTypes.bool,
 	squared: PropTypes.bool,
-	largeButton: PropTypes.bool,
-	children: PropTypes.string,
 	primary: PropTypes.bool,
 	secondary: PropTypes.bool,
 };

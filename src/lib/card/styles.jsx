@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import globalStyles from "ui/styles/globals";
+import globalStyles from "../ui/styles/globals";
 
 /**
  * Styled components for Card

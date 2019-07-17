@@ -1,36 +1,66 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { defaultTheme } from "../ui/themes";
 
-import { defaultTheme } from "ui/themes";
-import * as sc from "./styles";
-
-// 	className, img, title, meta, footer, mini, children, ...props
+import {
+	CardImageWrapper,
+	CardImage,
+	CardHeader,
+	CardContent,
+	CardFooter,
+	CardMeta,
+	CardMini,
+	CardTitle,
+	css_cardbase
+} from "./styles";
 
 const CardComponent = ({
 	className, img, title, meta, footer, mini, children, ...props
-}) => {
-	const cardImg = (img ? <sc.CardImageWrapper><sc.CardImage img={img}/></sc.CardImageWrapper> : "");
-	const cardHeader = ((title || meta || mini)
-		? <sc.CardHeader title={title} meta={meta} mini={mini} >
-			{title && <sc.CardTitle>{title}</sc.CardTitle>}
-			{meta && <sc.CardMeta>{meta}</sc.CardMeta>}
-			{mini && <sc.CardMini mini={mini} title={title} meta={meta}/>}
-		</sc.CardHeader> : ""
-	);
-	const cardFooter = (footer ? <sc.CardFooter>{footer}</sc.CardFooter> : "");
+}) => { 
+	const header = title || meta || mini;
+	const headerObj = { title, meta, mini };
 	return (
 		<div className={className} {...props}>
-			{cardImg}
-			{cardHeader}
-			<sc.CardContent>{children}</sc.CardContent>
-			{cardFooter}
+			{img &&
+				<CardImageWrapper>
+					<CardImage img={img}/>
+				</CardImageWrapper>
+			}
+
+			{header &&
+				<CardHeader {...headerObj}>
+					{title &&
+						<CardTitle>
+							{title}
+						</CardTitle>
+					}
+					{meta &&
+						<CardMeta>
+							{meta}
+						</CardMeta>}
+					{mini &&
+						<CardMini {...headerObj}/>
+					}
+				</CardHeader>
+			}
+
+			<CardContent>
+				{children}
+			</CardContent>
+
+			{footer &&
+				<CardFooter>
+					{footer}
+				</CardFooter>
+			}
 		</div>
 	);
 };
 
+
 const Card = styled(CardComponent)`
-	${sc.css_cardbase}
+	${css_cardbase}
 `;
 
 /** Default */

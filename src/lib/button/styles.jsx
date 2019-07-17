@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
 
-import globalStyles from "ui/styles/globals";
-import { defaultTheme } from "ui/themes";
+import globalStyles from "../ui/styles/globals";
+import { defaultTheme } from "../ui/themes";
 
 /**
  * Styled components for Button.

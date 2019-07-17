@@ -1,10 +1,13 @@
-import React, {
-	Children, cloneElement, useState
-} from "react";
-import { defaultTheme } from "ui/themes";
+import React, { Children, cloneElement, useState } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import * as sc from "./styles";
+
+import { defaultTheme } from "../ui/themes";
+import {
+	TabsList,
+	TabsContent,
+	css_tabsbase
+} from "./styles";
 
 /**
  * @title Tabs component
@@ -17,20 +20,13 @@ import * as sc from "./styles";
  */
 
 const TabGroupComponent = ({
-	children = "",
-	className = "",
-	active = 0,
-	primary,
-	secondary,
-	rounded,
-	underline,
-	...props
+	children, className, active, primary, secondary, rounded, underline, ...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
 
 	return (
 		<div className={className} {...props}>
-			<sc.TabsList>
+			<TabsList>
 				{Children.map(children, (child, i) => cloneElement(child, {
 					item: i,
 					onTabClick: setActiveTab,
@@ -40,37 +36,45 @@ const TabGroupComponent = ({
 					roundedAll: rounded,
 					underlineAll: underline,
 				}))}
-			</sc.TabsList>
-			<sc.TabsContent>
+			</TabsList>
+			<TabsContent>
 				{Children.map(children, (child, i) => {
 					if (i !== activeTab) return undefined;
 					return child.props.children;
 				})}
-			</sc.TabsContent>
+			</TabsContent>
 		</div>
 	);
 };
 
 const TabGroup = styled(TabGroupComponent)`
-	${sc.css_tabsbase}
+	${css_tabsbase}
 `;
 
 /** Default Props */
 TabGroup.defaultProps = {
-	theme: defaultTheme.base
+	children: "",
+	theme: defaultTheme.base,
+	active: 0,
+	underline: false,
+	primary: false,
+	secondary: false,
+	rounded: false,
 };
 
 
 /** Prop Types */
 TabGroup.propTypes = {
-	secondary: PropTypes.bool,
-	primary: PropTypes.bool,
-	rounded: PropTypes.bool,
-	underline: PropTypes.bool,
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node
 	]),
+	theme: PropTypes.object,
+	active: PropTypes.number,
+	underline: PropTypes.bool,
+	primary: PropTypes.bool,
+	secondary: PropTypes.bool,
+	rounded: PropTypes.bool,
 };
 
 
