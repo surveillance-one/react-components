@@ -1,10 +1,12 @@
 {
   "name": "react-components",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "a react component library for surveillance one",
   "main": "index.js",
   "module": "index.js",
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
