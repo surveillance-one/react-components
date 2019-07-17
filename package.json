@@ -1,6 +1,6 @@
 {
   "name": "react-components",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "description": "a react component library for surveillance one",
   "main": "index.js",
   "scripts": {
