@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 
 /**
@@ -9,22 +9,30 @@ import PropTypes from "prop-types";
  * @see StyledComponents
  * @see Button (components/button)
  *
- * @version 1.0.0
+ * @version 1.0.1
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
 const ButtonGroupStyled = styled.div`
-  button:not(:first-child):not(:last-child) {
-    border-radius: 0;
-    margin: 0;
-    border-right: solid white 1px;
-  }
-  button:first-child {
-    border-radius: .3rem 0 0 .3rem;
-    border-right: solid white 1px;
-  }
-  button:last-child {
-    border-radius: 0 .3rem .3rem 0;
+  /** Styles the Container */
+  display: flex;
+
+  /** Styles the buttons */
+  button {
+    margin: ${p => (p.inline ? "5px 0" : "5px")};
+    ${p => p.inline && css`
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+      margin-right: 1px;
+    }
+    &:first-child {
+      border-radius: .3rem 0 0 .3rem;
+      margin-right: 1px;
+    }
+    &:last-child {
+      border-radius: 0 .3rem .3rem 0;
+    }
+  `}
   }
 `;
 
@@ -35,16 +43,25 @@ const ButtonGroupStyled = styled.div`
  * @description groups buttons together
  */
 const ButtonGroup = ({ children, ...props }) => (
-	<ButtonGroupStyled>
+	<ButtonGroupStyled {...props}>
 		{React.Children.map(children, (child, i) => React.cloneElement(child, props))}
 	</ButtonGroupStyled>
 );
 
+ButtonGroup.defaultProps = {
+	children: [],
+	secondary: false,
+	primary: false,
+	inline: false,
+};
 ButtonGroup.propTypes = {
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
 		PropTypes.node
 	]).isRequired,
+	secondary: PropTypes.bool,
+	primary: PropTypes.bool,
+	inline: PropTypes.bool,
 };
 
 export default ButtonGroup;

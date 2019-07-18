@@ -49,7 +49,7 @@ export const TabsContent = styled.div`
 
 	margin: 1rem 0;
 	padding: 1.1rem;
-	border: solid 1px #f0f0f0;
+	border: solid 1px rgba(0,0,0,0.1);
 	border-radius: .3rem;
 
 	background: rgb(255,255,255);
@@ -90,6 +90,7 @@ export const css_tabbase = css`
 	border: none;
 	box-shadow: none;
 	border-radius: .3rem;
+	
 	color: rgba(0,0,0,.6);
 
 	font-style:normal;
@@ -118,9 +119,12 @@ export const css_tabbase = css`
 	}	
 	
 	&:hover {
+		${p => (!p.underline && !p.underlineAll) && css`
 		background-color: rgba(224,225,226,1);
 		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
-		color: rgba(0,0,0,.6);
+		border: solid 1px rgba(0,0,0,0.1);
+		`}
+		color: rgba(0,0,0,.8);
   }
 
   &:active,
@@ -213,8 +217,9 @@ export const css_showicononlyonactive = css`
  */
 export const css_tabcurrent = css`
 	background: rgba(224,225,226,1);
-	color: rgba(0,0,0,.6);
+	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
 	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+	border: solid 1px rgba(0,0,0,0.1);
 
 	&::after {
 		content: "";
@@ -288,4 +293,11 @@ export const css_tabcurrentunderline = css`
 	font-weight: 700;
 	border-bottom: 1px solid black;
 	border-radius: 0;
+
+	&:hover {
+		background: none;
+		box-shadow: none;
+		color: rgba(0,0,0,.6);
+		border: none;
+  }
 `;

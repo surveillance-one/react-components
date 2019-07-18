@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { rgba } from "polished";
+import { rgba, darken } from "polished";
 
 import globalStyles from "../ui/styles/globals";
 import { defaultTheme } from "../ui/themes";
@@ -59,11 +59,11 @@ export const css_buttonbase = css`
     cursor:pointer;
     position: relative;
     min-height:1em;
-    
     height: 2.5em;
     max-height: 3em;
     outline:0;
     border:none;
+    border: solid rgba(0,0,0,.1) 1px;
     vertical-align:baseline;
     margin:0;
     text-transform:none;
@@ -87,7 +87,8 @@ export const css_buttonbase = css`
   * HOVER - ACTIVE - FOCUS - AFTER - DISABLED
   */ 
   &:hover {
-    color:  ${p => p.theme["hover-color"] || "lightgray"};
+    color: ${p => p.theme["hover-color"] || "lightgray"};
+    border-color: ${darken("0.2", "#dbdbdb")}
   }
 
   &:active,
@@ -114,15 +115,11 @@ export const css_buttonbase = css`
     transform: initial;
 
   }
-
-  &:active{
-    transform: translateY(2px);
-  }
 `;
 
 export const css_buttonanimations = css`
   &:active{
-    transform: translateY(2px);
+    transform: translateY(1px);
   }
 `;
 
@@ -139,9 +136,11 @@ export const buttonStyle = (type) => {
 	const bgColor = defaultTheme.BG_COLOR[type];
 	return css`&{
 		background: ${bgColor};
-		color: ${color};
+		color: ${rgba(color, 0.9)};
+    border: solid ${darken("0.05", bgColor)} 1px;
 		&:hover {
-			color: ${rgba(color, 0.8)};
+			color: ${color};
+      border-color: ${darken("0.1", bgColor)}
 		}
     ${IconWrapper} {
       background-color: ${type === "secondary" ? "rgba(165,165,165,.1)" : ""};

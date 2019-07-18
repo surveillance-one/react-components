@@ -25,12 +25,17 @@ export const css_cardbase = css`
   color: ${props => props.theme.color || "black"};
   box-shadow: ${props => props.theme["default-box-shadow"] || "black"};
   border-radius: .3rem;
+  border: solid rgba(0,0,0,.1) 1px;
 
   margin: 1rem 0;
   position: relative;
 
   /** TODO: CHANGE */
   width: ${p => `${p.width}em` || "20em"};
+
+  &:hover{
+    transform: translateY(1px);
+  }
 `;
 
 /**
@@ -143,7 +148,7 @@ export const CardImageWrapper = styled.div`
 export const CardFooter = styled.div`
   padding: .75em;
   color: rgba(0,0,0,.4);
-    border-top: 1px solid rgba(0,0,0,.1);
+  border-top: 1px solid rgba(0,0,0,.1);
   :before {
     content: '';
 

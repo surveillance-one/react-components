@@ -15,6 +15,7 @@ import styled from "styled-components";
 
 const Flex = styled.div`
 	display: flex;
+	flex-wrap: ${p => (p.wrap ? "wrap" : "")};
 	align-items: flex-start; /** prevents equal heights */
 	justify-content: ${(p) => {
 		switch (p.sp) {
@@ -81,7 +82,7 @@ storiesOf("Button", module)
 			</div>
 			<div>
 				<h4>Group:</h4>
-				<Flex sp="flexstart">
+				<Flex sp="flexstart" wrap>
 					<ButtonGroup>
 						<Button onClick={action("clicked")} secondary>Hello Button</Button>
 						<Button onClick={action("clicked")} secondary>Hello Button</Button>
@@ -89,6 +90,18 @@ storiesOf("Button", module)
 					</ButtonGroup>
 					<ButtonGroup primary>
 						<Button onClick={action("clicked")}>Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+					</ButtonGroup>
+					<ButtonGroup secondary>
+						<Button onClick={action("clicked")} iconName="check">Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+						<Button onClick={action("clicked")}>Hello Button</Button>
+					</ButtonGroup>
+					<ButtonGroup secondary inline>
+						<Button onClick={action("clicked")} iconName="check">Hello Button</Button>
 						<Button onClick={action("clicked")}>Hello Button</Button>
 						<Button onClick={action("clicked")}>Hello Button</Button>
 						<Button onClick={action("clicked")}>Hello Button</Button>
