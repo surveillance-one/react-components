@@ -9,16 +9,17 @@ import PropTypes from "prop-types";
  * @see StyledComponents
  * @see Button (components/button)
  *
- * @version 1.0.1
+ * @version 1.0.2
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
 const ButtonGroupStyled = styled.div`
   /** Styles the Container */
   display: flex;
-
+  
   /** Styles the buttons */
   button {
+    width: 100%;
     margin: ${p => (p.inline ? "5px 0" : "5px")};
     ${p => p.inline && css`
     &:not(:first-child):not(:last-child) {
