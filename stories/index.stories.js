@@ -255,6 +255,19 @@ storiesOf("Tabs", module)
 			</div>
 		</Container>
 	))
+	.add("TabSlider", () => (
+		<Container>
+			<div>
+				<TabGroup slider>
+					<Tab>Test content</Tab>
+					<Tab label="Hello"></Tab>
+					<Tab></Tab>
+					<Tab></Tab>
+					<Tab></Tab>
+				</TabGroup>
+			</div>
+		</Container>
+	))
 	.add("Default", () => (
 		<Container>
 			<div>

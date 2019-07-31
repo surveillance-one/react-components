@@ -20,6 +20,7 @@ const ButtonGroupStyled = styled.div`
   /** Styles the buttons */
   button {
     width: 100%;
+    overflow: visible;
     margin: ${p => (p.inline ? "5px 0" : "5px")};
     ${p => p.inline && css`
     &:not(:first-child):not(:last-child) {

@@ -1,7 +1,10 @@
-import React, { useCallback } from "react";
+/* eslint-disable one-var-declaration-per-line */
+import React, { useCallback, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { Icon } from "../icon";
+
+// version 1.1
 
 import {
 	TabLabel,
@@ -12,20 +15,45 @@ import {
 	css_tabicons,
 	css_showicononlyonactive,
 	css_tabrounded,
+	css_slider,
 	tabStyle
 } from "./styles";
 
 const TabComponent = ({
-	label, className, onTabClick, item, ...props
-}) => (
-	<li
-		className={className}
-		onClick={useCallback(() => onTabClick(item), [onTabClick, item])}
-		key={item}>
-		<TabLabel>{label}</TabLabel>
-		{props.iconName && <IconWrapper><Icon icon={props.iconName}/></IconWrapper>}
-	</li>
-);
+	label, className, onTabClick, onSendWidth, onSendLeft, item, ...props
+}) => {
+	const ref = useRef(null);
+	let currWidth, leftPos;
+	useEffect(() => {
+		console.log(ref.current);
+		// gets current width
+		currWidth = ref.current.getBoundingClientRect().width;
+		leftPos = ref.current.offsetLeft;
+		if (item == 0) {
+			onSendWidth(currWidth);
+			onSendLeft(leftPos);
+		}
+	}, [ref.current]);
+
+	return (
+		<li
+			className={className}
+			onClick={
+				useCallback(() => {
+					onTabClick(item);
+					onSendWidth(currWidth);
+					onSendLeft(leftPos);
+				}, [onTabClick, item, onSendLeft, onSendWidth])
+			}
+			key={item}
+			current={props.currentTab.toString()}
+			tabIndex={item}
+			ref={ref}>
+			<TabLabel>{label}</TabLabel>
+			{props.iconName && <IconWrapper><Icon icon={props.iconName}/></IconWrapper>}
+		</li>
+	);
+};
 
 const Tab = styled(TabComponent)`
 	${css_tabbase}
@@ -50,6 +78,8 @@ const Tab = styled(TabComponent)`
 
 	/** Styles */
 	${p => (p.roundedAll || p.rounded) && css_tabrounded}
+
+	${p => p.slider && css_slider};
 `;
 
 /** Default Props */

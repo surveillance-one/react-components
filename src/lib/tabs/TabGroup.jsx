@@ -6,7 +6,9 @@ import { defaultTheme } from "../ui/themes";
 import {
 	TabsList,
 	TabsContent,
-	css_tabsbase
+	Selector,
+	css_tabsbase,
+	css_tabsslider
 } from "./styles";
 
 /**
@@ -15,29 +17,35 @@ import {
  * @summary Components/Tab is a simple Tab component using Styled Components and made for reusability
  * @see StyledComponents
  *
- * @version 1.0.0
+ * @version 1.1.0
  * @author [Markus Hudobnik](https://github.com/rnarkus)
  */
 
 const TabGroupComponent = ({
-	children, className, active, primary, secondary, rounded, underline, ...props
+	children, className, active, primary, secondary, rounded, underline, slider, ...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
+	const [activeWidth, setActiveWidth] = useState();
+	const [activeLeft, setActiveLeft] = useState();
 
 	return (
 		<div className={className} {...props}>
-			<TabsList>
+			<TabsList slider={slider}>
+				{slider && <Selector width={activeWidth} left={activeLeft}></Selector>}
 				{Children.map(children, (child, i) => cloneElement(child, {
 					item: i,
 					onTabClick: setActiveTab,
+					onSendWidth: setActiveWidth,
+					onSendLeft: setActiveLeft,
 					currentTab: (activeTab === i),
 					primaryAll: primary,
 					secondaryAll: secondary,
 					roundedAll: rounded,
 					underlineAll: underline,
+					slider
 				}))}
 			</TabsList>
-			<TabsContent>
+			<TabsContent slider={slider}>
 				{Children.map(children, (child, i) => {
 					if (i !== activeTab) return undefined;
 					return child.props.children;
@@ -49,6 +57,10 @@ const TabGroupComponent = ({
 
 const TabGroup = styled(TabGroupComponent)`
 	${css_tabsbase}
+
+	${TabsList} {
+		${p => p.slider && css_tabsslider}
+	}
 `;
 
 /** Default Props */

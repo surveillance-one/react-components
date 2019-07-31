@@ -19,6 +19,12 @@ export const css_tabsbase = css`
 	${globalStyles};
 `;
 
+export const css_tabsslider = css`
+	background-color: white;
+	border-radius: 5px;
+	display: inline-flex;
+`;
+
 /**
  * Styled-Component
  * @name TabsList
@@ -26,7 +32,7 @@ export const css_tabsbase = css`
  * @description <Tabs> child ordered list
  */
 export const TabsList = styled.ol`
-	display: flex;
+	display: inline-flex;
 	position: relative;
 	padding-left: 0;
 
@@ -36,6 +42,36 @@ export const TabsList = styled.ol`
 	font-weight: 400;
 
 	background: none;
+
+	${p => p.slider && css`
+		display: inline-block;
+
+		div, li {
+			text-decoration:none;
+			display:inline-block;
+			position:relative;
+			z-index:1;
+			transition-duration:0.6s;
+		}
+	`}
+`;
+
+export const Selector = styled.div`
+	position: absolute !important;
+	background-color: white;
+	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
+	border: solid 1px rgba(0,0,0,0.2);
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
+	left: 0;
+	bottom: 2px;
+	top: 2px;
+	z-index: 1;
+	transition-duration:0.6s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	width: ${p => p.width - 2}px;
+	left: ${p => p.left}px;
 `;
 
 /**
@@ -45,21 +81,24 @@ export const TabsList = styled.ol`
  * @description <Tabs> child, displays content
  */
 export const TabsContent = styled.div`
-	position: relative;
 
-	margin: 1rem 0;
-	padding: 1.1rem;
-	border: solid 1px rgba(0,0,0,0.1);
-	border-radius: .3rem;
+	${p => !p.slider && css`
+		position: relative;
 
-	background: rgb(255,255,255);
-	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+		margin: 1rem 0;
+		padding: 1.1rem;
+		border: solid 1px rgba(0,0,0,0.1);
+		border-radius: .3rem;
 
-	/** fix for random Margin TODO: find source of margin on <p> tags */
-	* {
-		margin: auto;
-	}
+		background: rgb(255,255,255);
+		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 
+		/** fix for random Margin TODO: find source of margin on <p> tags */
+		* {
+			margin: auto;
+		}
+
+	`};
 `;
 
 /* ******************************Tab**************************** */
@@ -108,18 +147,13 @@ export const css_tabbase = css`
 	user-select:none;
 	white-space: nowrap;
 
-	&:first-child {
-		margin-right: .36em;
-	}
-	&:last-child {
-		margin-left: .36em;
-	}
-	&:not(:first-child):not(:last-child) {
+
+	&:not(:first-of-type):not(:last-of-tpye) {
 		margin: 0 .36em;
 	}	
 	
 	&:hover {
-		${p => (!p.underline && !p.underlineAll) && css`
+		${p => (!p.underline && !p.underlineAll && !p.slider) && css`
 		background-color: rgba(224,225,226,1);
 		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 		border: solid 1px rgba(0,0,0,0.1);
@@ -133,6 +167,33 @@ export const css_tabbase = css`
   }
 `;
 
+/**
+ * Styled-Component
+ * @name TabLabel
+ * @see Tab (components/Tabs)
+ * @description <Tabs.Tab> label
+ */
+export const css_slider = css`
+	height: 1.5em;
+	margin: 2px;
+	padding: 1px 10px;
+	
+	&:not(:first-of-type):before{
+		content: " | ";
+		position: absolute; 
+		color: rgba(0,0,0,.1);
+		top: 0px;
+		left: -4px;
+	}
+	
+	&[current=true]:before {
+		content: '';
+	}
+	
+	&[current=true] + &:before {
+		content: '';
+	}
+`;
 /**
  * Styled-Component
  * @name TabLabel
@@ -216,30 +277,33 @@ export const css_showicononlyonactive = css`
  * @description <Tab> shows the Active tab
  */
 export const css_tabcurrent = css`
-	background: rgba(224,225,226,1);
-	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
-	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
-	border: solid 1px rgba(0,0,0,0.1);
 
-	&::after {
-		content: "";
-		position: absolute;
-		top: 99%;
-		left: 50%;
-		transform: translateX(-50%) translateY(-50%) rotate(45deg);
-		
-		box-sizing: border-box;
-		width: .6em;
-		height: .6em;
 
-		margin: .5px 0 0;
-		border-bottom: solid 1px rgba(224,225,226,1);
-		border-right: solid 1px rgba(224,225,226,1);
-
+	${p => !p.slider && css`
 		background: rgba(224,225,226,1);
-		
-		z-index: 1;
-	}
+		color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
+		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+		border: solid 1px rgba(0,0,0,0.1);
+		&::after {
+			content: "";
+			position: absolute;
+			top: 99%;
+			left: 50%;
+			transform: translateX(-50%) translateY(-50%) rotate(45deg);
+			
+			box-sizing: border-box;
+			width: .6em;
+			height: .6em;
+
+			margin: .5px 0 0;
+			border-bottom: solid 1px rgba(224,225,226,1);
+			border-right: solid 1px rgba(224,225,226,1);
+
+			background: rgba(224,225,226,1);
+			
+			z-index: 1;
+		}
+	`};
 `;
 
 /**
