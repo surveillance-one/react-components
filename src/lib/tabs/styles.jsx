@@ -20,9 +20,17 @@ export const css_tabsbase = css`
 `;
 
 export const css_tabsslider = css`
-	background-color: white;
+	background-color: #EEEEEE;
 	border-radius: 5px;
 	display: inline-flex;
+
+		div, li {
+			text-decoration:none;
+			/** display:inline-block; */
+			position:relative;
+			z-index:1;
+			transition-duration:0.6s;
+		}
 `;
 
 /**
@@ -42,26 +50,13 @@ export const TabsList = styled.ol`
 	font-weight: 400;
 
 	background: none;
-
-	${p => p.slider && css`
-		display: inline-block;
-
-		div, li {
-			text-decoration:none;
-			display:inline-block;
-			position:relative;
-			z-index:1;
-			transition-duration:0.6s;
-		}
-	`}
 `;
 
 export const Selector = styled.div`
 	position: absolute !important;
-	background-color: white;
+	background-color: #FFFFFF;
 	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
-	border: solid 1px rgba(0,0,0,0.2);
-	background-color: white;
+	border: solid 1px rgba(0,0,0,0.1);
 	border-radius: 5px;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
 	left: 0;
@@ -124,7 +119,7 @@ export const css_tabbase = css`
 	min-height: 1em;
 
 	margin:0;
-	padding: calc(.375em - 1px) .75em;
+	padding: calc(.375em - 1px) 2em;
 
 	border: none;
 	box-shadow: none;
@@ -174,15 +169,21 @@ export const css_tabbase = css`
  * @description <Tabs.Tab> label
  */
 export const css_slider = css`
-	height: 1.5em;
+	height: 1.75em;
 	margin: 2px;
-	padding: 1px 10px;
+	padding: 0 20px;
+	font-weight: 400;
+	&:active,
+	&:focus {
+		transition: all .6s linear;
+		color: black;
+	}
 	
 	&:not(:first-of-type):before{
 		content: " | ";
 		position: absolute; 
 		color: rgba(0,0,0,.1);
-		top: 0px;
+		top: 1px;
 		left: -4px;
 	}
 	
@@ -219,8 +220,6 @@ export const IconWrapper = styled.span`
   /** padding: .75em; */
 
   text-align: center;
-
-
   box-shadow: -1px 0 0 0 transparent inset;
 `;
 

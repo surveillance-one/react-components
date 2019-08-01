@@ -1,5 +1,5 @@
 /* eslint-disable one-var-declaration-per-line */
-import React, { useCallback, useRef, useEffect } from "react";
+import React, { useCallback, useRef, useLayoutEffect } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { Icon } from "../icon";
@@ -23,17 +23,12 @@ const TabComponent = ({
 	label, className, onTabClick, onSendWidth, onSendLeft, item, ...props
 }) => {
 	const ref = useRef(null);
-	let currWidth, leftPos;
-	useEffect(() => {
-		console.log(ref.current);
-		// gets current width
-		currWidth = ref.current.getBoundingClientRect().width;
-		leftPos = ref.current.offsetLeft;
-		if (item == 0) {
-			onSendWidth(currWidth);
-			onSendLeft(leftPos);
+	useLayoutEffect(() => {
+		if (item === 0) {
+			onSendWidth(ref.current.getBoundingClientRect().width);
+			onSendLeft(ref.current.offsetLeft);
 		}
-	}, [ref.current]);
+	}, [item, onSendWidth, onSendLeft]);
 
 	return (
 		<li
@@ -41,8 +36,8 @@ const TabComponent = ({
 			onClick={
 				useCallback(() => {
 					onTabClick(item);
-					onSendWidth(currWidth);
-					onSendLeft(leftPos);
+					onSendWidth(ref.current.getBoundingClientRect().width);
+					onSendLeft(ref.current.offsetLeft);
 				}, [onTabClick, item, onSendLeft, onSendWidth])
 			}
 			key={item}

@@ -261,7 +261,7 @@ storiesOf("Tabs", module)
 				<TabGroup slider>
 					<Tab>Test content</Tab>
 					<Tab label="Hello"></Tab>
-					<Tab></Tab>
+					<Tab label="test" iconName="camera"></Tab>
 					<Tab></Tab>
 					<Tab></Tab>
 				</TabGroup>

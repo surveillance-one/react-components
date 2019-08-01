@@ -45,12 +45,12 @@ const TabGroupComponent = ({
 					slider
 				}))}
 			</TabsList>
-			<TabsContent slider={slider}>
+			{!slider && <TabsContent slider={slider}>
 				{Children.map(children, (child, i) => {
 					if (i !== activeTab) return undefined;
 					return child.props.children;
 				})}
-			</TabsContent>
+			</TabsContent>}
 		</div>
 	);
 };
