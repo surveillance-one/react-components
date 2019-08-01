@@ -20,7 +20,7 @@ import {
 } from "./styles";
 
 const TabComponent = ({
-	label, className, onTabClick, onSendWidth, onSendLeft, item, ...props
+	label, className, onTabClick, onSendWidth, onSendLeft, item, onClick, ...props
 }) => {
 	const ref = useRef(null);
 	useLayoutEffect(() => {
@@ -34,10 +34,11 @@ const TabComponent = ({
 		<li
 			className={className}
 			onClick={
-				useCallback(() => {
+				useCallback((event) => {
 					onTabClick(item);
 					onSendWidth(ref.current.getBoundingClientRect().width);
 					onSendLeft(ref.current.offsetLeft);
+					if (onClick) onClick(event);
 				}, [onTabClick, item, onSendLeft, onSendWidth])
 			}
 			key={item}

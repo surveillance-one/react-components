@@ -259,7 +259,7 @@ storiesOf("Tabs", module)
 		<Container>
 			<div>
 				<TabGroup slider>
-					<Tab>Test content</Tab>
+					<Tab click={() => console.log("testsdsg t")}>Test content</Tab>
 					<Tab label="Hello"></Tab>
 					<Tab label="test" iconName="camera"></Tab>
 					<Tab></Tab>
