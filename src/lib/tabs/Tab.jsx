@@ -55,7 +55,7 @@ const Tab = styled(TabComponent)`
 
 	/** Current Tab */
 	${p => (p.currentTab && (p.underlineAll || p.underline)) && css_tabcurrentunderline};
-	${p => (p.currentTab && (!p.underlineAll && !p.underline)) && css_tabcurrent};
+	${p => (p.currentTab && (!p.underlineAll && !p.underline) && !p.slider) && css_tabcurrent};
 
 	/** Tab Icons */
 	${p => p.iconName && css_tabicons};

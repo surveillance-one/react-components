@@ -21,16 +21,16 @@ export const css_tabsbase = css`
 
 export const css_tabsslider = css`
 	background-color: #EEEEEE;
-	border-radius: 5px;
+	border-radius: 8px;
 	display: inline-flex;
 
-		div, li {
-			text-decoration:none;
-			/** display:inline-block; */
-			position:relative;
-			z-index:1;
-			transition-duration:0.6s;
-		}
+	div, li {
+		text-decoration:none;
+		/** display:inline-block; */
+		position:relative;
+		z-index:1;
+		transition-duration:0.6s;
+	}
 `;
 
 /**
@@ -57,7 +57,7 @@ export const Selector = styled.div`
 	background-color: #FFFFFF;
 	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
 	border: solid 1px rgba(0,0,0,0.1);
-	border-radius: 5px;
+	border-radius: 8px;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
 	left: 0;
 	bottom: 2px;
@@ -65,7 +65,7 @@ export const Selector = styled.div`
 	z-index: 1;
 	transition-duration:0.6s;
 	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	width: ${p => p.width - 2}px;
+	width: ${p => p.width}px;
 	left: ${p => p.left}px;
 `;
 
@@ -76,24 +76,20 @@ export const Selector = styled.div`
  * @description <Tabs> child, displays content
  */
 export const TabsContent = styled.div`
+	position: relative;
 
-	${p => !p.slider && css`
-		position: relative;
+	margin: 1rem 0;
+	padding: 1.1rem;
+	border: solid 1px rgba(0,0,0,0.1);
+	border-radius: .3rem;
 
-		margin: 1rem 0;
-		padding: 1.1rem;
-		border: solid 1px rgba(0,0,0,0.1);
-		border-radius: .3rem;
+	background: rgb(255,255,255);
+	box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
 
-		background: rgb(255,255,255);
-		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
-
-		/** fix for random Margin TODO: find source of margin on <p> tags */
-		* {
-			margin: auto;
-		}
-
-	`};
+	/** fix for random Margin TODO: find source of margin on <p> tags */
+	* {
+		margin: auto;
+	}
 `;
 
 /* ******************************Tab**************************** */
@@ -234,9 +230,6 @@ export const css_tabicons = css`
   align-items: center;
   justify-content: center;
   flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")};
-	
-  /** padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")}; */
-  /** padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")}; */
 
   /** changes IconWrapper */
   ${IconWrapper} {
@@ -276,9 +269,6 @@ export const css_showicononlyonactive = css`
  * @description <Tab> shows the Active tab
  */
 export const css_tabcurrent = css`
-
-
-	${p => !p.slider && css`
 		background: rgba(224,225,226,1);
 		color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
 		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
@@ -302,7 +292,6 @@ export const css_tabcurrent = css`
 			
 			z-index: 1;
 		}
-	`};
 `;
 
 /**
