@@ -1,6 +1,6 @@
 {
   "name": "react-components",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "a react component library for surveillance one",
   "main": "index.js",
   "module": "index.js",
