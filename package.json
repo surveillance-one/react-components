@@ -12,7 +12,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "eject": "react-scripts eject",
-    "build": "cross-env NODE_ENV=production babel src/lib --out-dir dist --source-maps inline --copy-files"
+    "build": "rm -rf dist/* && cross-env NODE_ENV=production babel src/lib --out-dir dist --source-maps inline --copy-files"
   },
   "repository": {
     "type": "git",
