@@ -29,7 +29,7 @@ const TabComponent = ({
 	useRefWidth(item, onSendRef, ref, slider);
 
 	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
-
+	console.log(ref.current)
 	return (
 		<li
 			className={className}
