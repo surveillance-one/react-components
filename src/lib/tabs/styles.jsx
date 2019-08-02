@@ -4,6 +4,7 @@ import { rgba } from "polished";
 import globalStyles from "../ui/styles/globals";
 import { defaultTheme } from "../ui/themes";
 
+
 /* *****************************TabGroup**************************** */
 
 /**
@@ -52,6 +53,12 @@ export const TabsList = styled.ol`
 	background: none;
 `;
 
+/**
+ * Styled-Component
+ * @name Selector
+ * @see Tabs (components/Tabs)
+ * @description <Tabs> slider Selector
+ */
 export const Selector = styled.div`
 	position: absolute !important;
 	background-color: #FFFFFF;
@@ -65,7 +72,7 @@ export const Selector = styled.div`
 	z-index: 1;
 	transition-duration:0.6s;
 	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	width: ${p => p.width}px;
+	width: ${p => p.width - 2}px;
 	left: ${p => p.left}px;
 `;
 
@@ -138,16 +145,23 @@ export const css_tabbase = css`
 	user-select:none;
 	white-space: nowrap;
 
+	&:first-of-type {
+		margin-right: .36em;
+	}	
 
-	&:not(:first-of-type):not(:last-of-tpye) {
+	&:last-of-type {
+		margin-left: .36em;
+	}	
+
+	&:not(:first-of-type):not(:last-of-type) {
 		margin: 0 .36em;
 	}	
 	
 	&:hover {
 		${p => (!p.underline && !p.underlineAll && !p.slider) && css`
-		background-color: rgba(224,225,226,1);
-		box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
-		border: solid 1px rgba(0,0,0,0.1);
+			background-color: rgba(224,225,226,1);
+			box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+			border: solid 1px rgba(0,0,0,0.1);
 		`}
 		color: rgba(0,0,0,.8);
   }
@@ -166,9 +180,10 @@ export const css_tabbase = css`
  */
 export const css_slider = css`
 	height: 1.75em;
-	margin: 2px;
+	margin: 2px !important;
 	padding: 0 20px;
 	font-weight: 400;
+
 	&:active,
 	&:focus {
 		transition: all .6s linear;
@@ -181,15 +196,16 @@ export const css_slider = css`
 		color: rgba(0,0,0,.1);
 		top: 1px;
 		left: -4px;
+		opacity: 1;
+		transition: all .6s linear;
 	}
 	
+	&[current=true] + &:before,
 	&[current=true]:before {
-		content: '';
+		opacity: 0;
 	}
-	
-	&[current=true] + &:before {
-		content: '';
-	}
+
+
 `;
 /**
  * Styled-Component
@@ -212,9 +228,6 @@ export const TabLabel = styled.span`
  */
 export const IconWrapper = styled.span`
   display: table-cell;
-
-  /** padding: .75em; */
-
   text-align: center;
   box-shadow: -1px 0 0 0 transparent inset;
 `;

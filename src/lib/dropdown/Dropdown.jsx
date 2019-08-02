@@ -3,7 +3,7 @@ import React, {
 } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useOutsideClick } from "../hooks";
+import useOutClick from "../hooks/useOutClick";
 import { defaultTheme } from "../ui/themes";
 import { Icon } from "../icon";
 
@@ -39,7 +39,7 @@ const DropdownComponent = ({
 		setListOpen(false);
 	}, []);
 
-	useOutsideClick(cb, node);
+	useOutClick(cb, node);
 
 	function selectItem(title, id) {
 		setHeaderTitle(title);

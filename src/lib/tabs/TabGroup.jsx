@@ -26,18 +26,19 @@ const TabGroupComponent = ({
 	children, className, active, primary, secondary, rounded, underline, slider, ...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
-	const [activeWidth, setActiveWidth] = useState();
-	const [activeLeft, setActiveLeft] = useState();
+	const [activeRef, setActiveRef] = useState({
+		width: "",
+		left: ""
+	});
 
 	return (
 		<div className={className} {...props}>
 			<TabsList slider={slider}>
-				{slider && <Selector width={activeWidth} left={activeLeft}></Selector>}
+				{slider && <Selector width={activeRef.width} left={activeRef.left}></Selector>}
 				{Children.map(children, (child, i) => cloneElement(child, {
 					item: i,
 					onTabClick: setActiveTab,
-					onSendWidth: setActiveWidth,
-					onSendLeft: setActiveLeft,
+					onSendRef: setActiveRef,
 					currentTab: (activeTab === i),
 					primaryAll: primary,
 					secondaryAll: secondary,

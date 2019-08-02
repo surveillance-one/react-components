@@ -1,8 +1,11 @@
 /* eslint-disable one-var-declaration-per-line */
-import React, { useCallback, useRef, useLayoutEffect } from "react";
+import React, { useRef } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { Icon } from "../icon";
+
+import useRefWidth from "../hooks/useRefWidth";
+import useCallbackTab from "../hooks/useCallbackTab";
 
 // version 1.1
 
@@ -20,27 +23,17 @@ import {
 } from "./styles";
 
 const TabComponent = ({
-	label, className, onTabClick, onSendWidth, onSendLeft, item, onClick, ...props
+	label, className, onTabClick, onSendRef, item, slider, onClick, ...props
 }) => {
 	const ref = useRef(null);
-	useLayoutEffect(() => {
-		if (item === 0) {
-			onSendWidth(ref.current.getBoundingClientRect().width);
-			onSendLeft(ref.current.offsetLeft);
-		}
-	}, [item, onSendWidth, onSendLeft]);
+	useRefWidth(item, onSendRef, ref, slider);
+
+	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
 
 	return (
 		<li
 			className={className}
-			onClick={
-				useCallback((event) => {
-					onTabClick(item);
-					onSendWidth(ref.current.getBoundingClientRect().width);
-					onSendLeft(ref.current.offsetLeft);
-					if (onClick) onClick(event);
-				}, [onTabClick, item, onSendLeft, onSendWidth])
-			}
+			onClick={cb}
 			key={item}
 			current={props.currentTab.toString()}
 			tabIndex={item}
@@ -68,8 +61,8 @@ const Tab = styled(TabComponent)`
 	* order matters, bottom overrides above for the themes
 	*/
 	${p => (!p.underlineAll && !p.underline) && css`
-		${p => (p.secondaryAll || p.secondary) && tabStyle("secondary")}
-		${p => (p.primaryAll || p.primary) && tabStyle("primary")}
+		${(p.secondaryAll || p.secondary) && tabStyle("secondary")}
+		${(p.primaryAll || p.primary) && tabStyle("primary")}
 	`}
 
 	/** Styles */
@@ -88,6 +81,10 @@ Tab.defaultProps = {
 	rounded: false,
 	underline: false,
 	showIconOnlyOnActive: false,
+	slider: false,
+	onSendRef: () => {},
+	onClick: () => {},
+	onTabClick: () => {}
 };
 
 /** Prop Types */
@@ -100,6 +97,10 @@ Tab.propTypes = {
 	rounded: PropTypes.bool,
 	underline: PropTypes.bool,
 	showIconOnlyOnActive: PropTypes.bool,
+	slider: PropTypes.bool,
+	onSendRef: PropTypes.func,
+	onClick: PropTypes.func,
+	onTabClick: PropTypes.func,
 };
 
 export default Tab;
