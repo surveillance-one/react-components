@@ -5,8 +5,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 library.add(fas);
 
-const Icon = ({ icon }) => (
-	<FontAwesomeIcon icon={icon}/>
+const Icon = ({ icon, onClick }) => (
+	<FontAwesomeIcon icon={icon} onClick={onClick}/>
 );
 
 export default Icon;
