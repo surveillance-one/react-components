@@ -1,5 +1,5 @@
 {
-  "name": "react-components",
+  "name": "@survone/react-components",
   "version": "0.9.9",
   "description": "a react component library for surveillance one",
   "main": "index.js",
@@ -16,9 +16,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/surveillance-one/react-components.git"
+    "url": "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/react-components"
   },
-  "author": "",
+  "author": {
+    "name": "Surveillance One"
+  },
+  "contributors": [
+    {
+      "name": "Markus Hudobnik",
+      "email": "markus_hudobnik@hotmail.com"
+    },
+    {
+      "name": "Micaiah Wallace",
+      "email": "micaiah@snoapps.com"
+    }
+  ],
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/surveillance-one/react-components/issues"
