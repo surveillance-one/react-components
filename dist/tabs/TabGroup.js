@@ -68,7 +68,7 @@ var TabGroupComponent = function TabGroupComponent(_ref) {
 
 var TabGroup = styled(TabGroupComponent).withConfig({
   displayName: "TabGroup",
-  componentId: "sc-1a6ofq9-0"
+  componentId: "sc-1brek3u-0"
 })(["", " ", "{", "}"], css_tabsbase, TabsList, function (p) {
   return p.slider && css_tabsslider;
 });

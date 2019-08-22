@@ -24,7 +24,7 @@ export var css_tabsslider = css(["background-color:#EEEEEE;border-radius:8px;dis
 
 export var TabsList = styled.ol.withConfig({
   displayName: "styles__TabsList",
-  componentId: "sc-1y5cqme-0"
+  componentId: "o7g3x3-0"
 })(["display:inline-flex;position:relative;padding-left:0;margin:1rem 0;border-radius:.3rem;font-weight:400;background:none;"]);
 /**
  * Styled-Component
@@ -35,7 +35,7 @@ export var TabsList = styled.ol.withConfig({
 
 export var Selector = styled.div.withConfig({
   displayName: "styles__Selector",
-  componentId: "sc-1y5cqme-1"
+  componentId: "o7g3x3-1"
 })(["position:absolute !important;background-color:#FFFFFF;color:", ";border:solid 1px rgba(0,0,0,0.1);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.2) !important;left:0;bottom:2px;top:2px;z-index:1;transition-duration:0.6s;transition-timing-function:cubic-bezier(0.68,-0.55,0.265,1.55);width:", "px;left:", "px;"], function (p) {
   return p.primary || p.secondary ? "white" : "rgba(0,0,0,.6)";
 }, function (p) {
@@ -52,7 +52,7 @@ export var Selector = styled.div.withConfig({
 
 export var TabsContent = styled.div.withConfig({
   displayName: "styles__TabsContent",
-  componentId: "sc-1y5cqme-2"
+  componentId: "o7g3x3-2"
 })(["position:relative;margin:1rem 0;padding:1.1rem;border:solid 1px rgba(0,0,0,0.1);border-radius:.3rem;background:rgb(255,255,255);box-shadow:0 1px 2px 0 rgba(34,36,38,.15);*{margin:auto;}"]);
 /* ******************************Tab**************************** */
 
@@ -85,7 +85,7 @@ export var css_slider = css(["height:1.75em;margin:2px !important;padding:0 20px
 
 export var TabLabel = styled.span.withConfig({
   displayName: "styles__TabLabel",
-  componentId: "sc-1y5cqme-3"
+  componentId: "o7g3x3-3"
 })(["display:block;position:static;vertical-align:middle;margin:auto;"]);
 /**
  * Styled-Component
@@ -96,7 +96,7 @@ export var TabLabel = styled.span.withConfig({
 
 export var IconWrapper = styled.span.withConfig({
   displayName: "styles__IconWrapper",
-  componentId: "sc-1y5cqme-4"
+  componentId: "o7g3x3-4"
 })(["display:table-cell;text-align:center;box-shadow:-1px 0 0 0 transparent inset;"]);
 /**
  * Styled-Component

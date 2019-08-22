@@ -14,7 +14,7 @@ import styled, { css } from "styled-components";
  */
 var ButtonGroupStyled = styled.div.withConfig({
   displayName: "ButtonGroup__ButtonGroupStyled",
-  componentId: "sc-19p0mxe-0"
+  componentId: "sc-1jjzcjw-0"
 })(["display:flex;button{width:100%;overflow:visible;margin:", ";", "}"], function (p) {
   return p.inline ? "5px 0" : "5px";
 }, function (p) {

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 var CardGroupStyled = styled.div.withConfig({
   displayName: "CardGroup__CardGroupStyled",
-  componentId: "ru0ilf-0"
+  componentId: "m2gz5v-0"
 })(["display:flex;justify-content:", ";"], function (props) {
   return props.flex || "space-between";
 });

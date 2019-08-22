@@ -30,7 +30,7 @@ var CardComponent = function CardComponent(_ref) {
 
 var Card = styled(CardComponent).withConfig({
   displayName: "Card",
-  componentId: "sc-1j3jpvg-0"
+  componentId: "oknzq0-0"
 })(["", ""], css_cardbase);
 /** Default */
 

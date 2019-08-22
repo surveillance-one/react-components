@@ -52,7 +52,7 @@ var ButtonComponent = function ButtonComponent(_ref) {
 
 var Button = styled(ButtonComponent).withConfig({
   displayName: "Button",
-  componentId: "sc-1sp3d36-0"
+  componentId: "f702ih-0"
 })(["", ";", ";", ";", ";", ";", ";", ";", ""], css_buttonbase, function (p) {
   return p.iconName && css_buttonicons;
 }, function (p) {

@@ -17,7 +17,7 @@ import { defaultTheme } from "../ui/themes";
 
 export var BtnLabel = styled.span.withConfig({
   displayName: "styles__BtnLabel",
-  componentId: "ht1bzm-0"
+  componentId: "sc-8oanmn-0"
 })(["display:block;position:static;"]);
 /**
  * Styled-Component
@@ -32,7 +32,7 @@ export var BtnLabel = styled.span.withConfig({
 
 export var IconWrapper = styled.span.withConfig({
   displayName: "styles__IconWrapper",
-  componentId: "ht1bzm-1"
+  componentId: "sc-8oanmn-1"
 })(["display:inline-flex;text-align:center;background-color:rgba(0,0,0,.1);box-shadow:-1px 0 0 0 transparent inset;padding:.75em;"]);
 /**
  * Styled-Component CSS
