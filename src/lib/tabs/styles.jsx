@@ -45,7 +45,7 @@ export const TabsList = styled.ol`
 	position: relative;
 	padding-left: 0;
 
-	margin: 1rem 0;
+	${({ slider }) => (slider ? "margin: auto" : "margin: 1rem 0")};
 	border-radius: .3rem;
 
 	font-weight: 400;
@@ -85,7 +85,7 @@ export const Selector = styled.div`
 export const TabsContent = styled.div`
 	position: relative;
 
-	margin: 1rem 0;
+	margin: auto;
 	padding: 1.1rem;
 	border: solid 1px rgba(0,0,0,0.1);
 	border-radius: .3rem;

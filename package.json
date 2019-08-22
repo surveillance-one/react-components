@@ -12,7 +12,10 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .out",
     "eject": "react-scripts eject",
-    "build": "rm -rf dist/* && cross-env NODE_ENV=production babel src/lib --out-dir dist --source-maps inline --copy-files"
+    "build": "rm -rf dist/* && cross-env NODE_ENV=production babel src/lib --out-dir dist --source-maps inline --copy-files",
+    "push-tags-patch": "npm version patch && git push && git push --tags",
+    "push-tags-minor": "npm version minor && git push && git push --tags",
+    "push-tags-major": "npm version major && git push && git push --tags"
   },
   "repository": {
     "type": "git",
