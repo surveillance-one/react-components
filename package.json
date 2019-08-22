@@ -1,6 +1,6 @@
 {
   "name": "@survone/react-components",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "description": "a react component library for surveillance one",
   "main": "index.js",
   "module": "index.js",
