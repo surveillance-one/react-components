@@ -6,7 +6,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 
 const Icon = ({ icon, onClick }) => (
-	<FontAwesomeIcon icon={icon} onClick={() => onClick()}/>
+	<FontAwesomeIcon icon={icon} onClick={onClick ? () => onClick() : false}/>
 );
 
 export default Icon;
