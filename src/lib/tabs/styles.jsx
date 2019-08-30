@@ -127,7 +127,10 @@ export const css_tabbase = css`
 	border: none;
 	box-shadow: none;
 	border-radius: .3rem;
-	
+	-moz-transform: none;
+	-webkit-transform: none;
+	transform: none;
+
 	color: rgba(0,0,0,.6);
 
 	font-style:normal;

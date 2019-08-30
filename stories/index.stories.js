@@ -257,7 +257,9 @@ storiesOf("Tabs", module)
 	))
 	.add("TabSlider", () => (
 		<Container>
-			<div>
+			<div style={{
+ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%);" 
+}}>
 				<TabGroup slider>
 					<Tab click={() => console.log("testsdsg t")}>Test content</Tab>
 					<Tab iconName="camera" label="Hello"></Tab>

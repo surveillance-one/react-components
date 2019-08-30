@@ -1,20 +1,12 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import {
 	BtnLabel,
 	IconWrapper,
-	css_buttonbase,
-	css_buttoncircle,
-	css_buttonicons,
-	css_buttonrounded,
-	css_buttonsquared,
-	css_buttonanimations,
-	buttonStyle
+	ButtonContainer
 } from "./styles";
 
-import { defaultTheme } from "../ui/themes";
 import { Icon } from "../icon";
 
 /**
@@ -23,7 +15,7 @@ import { Icon } from "../icon";
  * @summary Components/Button is a simple button component using Styled Components and made for reusability
  * @see StyledComponents
  *
- * @version 1.0.0
+ * @version 2.0.0
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
@@ -32,68 +24,39 @@ import { Icon } from "../icon";
 	* - Default Props
 	* - themes
  */
-const ButtonComponent = ({
-	className, children, onClick, disabled, iconName, squared, rounded, circle, iconPosition,
+const Button = ({
+	children, onClick, disabled, iconName, squared, rounded, circle, iconPosition, primary, secondary
 }) => (
-	<button className={className} onClick={onClick} disabled={disabled}>
-		{ (!squared && !circle) && <BtnLabel>
-			{children}
-		</BtnLabel> }
+	<ButtonContainer
+		onClick={onClick}
+		disabled={disabled}
+		iconName={iconName}
+		primary={primary}
+		secondary={secondary}
+		rounded={rounded}
+		squared={squared}
+		circle={circle}>
+		{(!squared && !circle) &&
+			<BtnLabel>
+				{children}
+			</BtnLabel>
+		}
 
-		{ iconName
-		&& <IconWrapper
-			iconPosition={iconPosition}
-			squared={squared}
-			circle={circle}
-			rounded={rounded}>
-			<Icon icon={iconName}/>
-		</IconWrapper>}
-	</button>
+		{iconName &&
+			<IconWrapper
+				iconPosition={iconPosition}
+				squared={squared}
+				circle={circle}
+				rounded={rounded}>
+				<Icon icon={iconName}/>
+			</IconWrapper>
+		}
+	</ButtonContainer>
 );
-
-/**
- * Component Styles and Props
- * - Global styles
- * - Different props
- */
-const Button = styled(ButtonComponent)`
-	/** Main Theme */
-	${css_buttonbase};
-
-	/** Icons */
-	${p => p.iconName && css_buttonicons};
-
-	/** Color Variants */
-	${p => p.primary && !p.secondary && buttonStyle("primary")};
-	${p => p.secondary && !p.primary && buttonStyle("secondary")};
-
-	/** Button Types */
-	${p => (p.rounded && !p.squared) && css_buttonrounded};
-	${p => (p.squared && !p.rounded) && css_buttonsquared};
-	${p => p.circle && css_buttoncircle};
-
-
-	/** Button Animations */
-	${p => p.animations && css_buttonanimations}
-`;
-
-Button.defaultProps = {
-	children: "",
-	iconName: "",
-	iconPosition: "right",
-	animations: false,
-	theme: defaultTheme.base,
-	onClick: (() => console.log("button pressed")),
-	rounded: false,
-	squared: false,
-	primary: false,
-	secondary: false,
-};
 
 /**
  * PropTypes
  */
-
 Button.propTypes = {
 	children: PropTypes.string,
 	iconName: PropTypes.string,

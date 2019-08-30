@@ -1,26 +1,20 @@
 import React, { useCallback } from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { defaultTheme } from "../ui/themes";
-import { Icon } from "../icon";
-import { css_dropdownlistbase } from "./styles";
+import { ListItemStyle } from "./styles";
 
-const ListItemComponent = ({
-	onItemClick, className, currentSelection, item, status, children, value
+const ListItem = ({
+	onItemClick, item, status, children, value, ...props
 }) => (
-	<li
-		className={className} 
+	<ListItemStyle
+		{...props}
 		onClick={useCallback(() => onItemClick(children, value || item), [onItemClick, children, value, item])}
 		key={item}>
-		{children} {currentSelection && <Icon icon="check"/>}
+		{children}
 		{status && <span style={{ float: "right" }}>{status}</span>}
-	</li>
+	</ListItemStyle>
 );
-
-const ListItem = styled(ListItemComponent)`
-	${css_dropdownlistbase}
-`;
 
 /** Default Props */
 ListItem.defaultProps = {

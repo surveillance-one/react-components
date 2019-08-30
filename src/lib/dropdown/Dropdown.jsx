@@ -1,81 +1,45 @@
-import React, {
-	useState, useEffect, Children, cloneElement, useCallback, useRef
-} from "react";
-import styled from "styled-components";
+/* eslint-disable object-curly-newline */
+import React, { useState, Children, cloneElement, useRef } from "react";
+
 import PropTypes from "prop-types";
 import useOutClick from "../hooks/useOutClick";
-import { defaultTheme } from "../ui/themes";
-import { Icon } from "../icon";
+import useValueChange from "../hooks/useValueChange";
+import { Button } from "../button";
 
-import {
-	DropdownList,
-	DropdownHeaderTitle,
-	IconArrow,
-	css_dropdownbase
-} from "./styles";
+import { DropdownContainer, DropdownListMenu, DropdownListContent } from "./styles";
 
-/** Once dropdown styling is done:
- * TODO: update defaultProps and PropTypes
- */
-
-
-const DropdownComponent = ({
-	valueChange,
-	title,
-	children,
-	status,
-	className,
-}) => {
+const Dropdown = ({ valueChange, title, children, status }) => {
 	const node = useRef();
 	const [listOpen, setListOpen] = useState(false);
 	const [headerTitle, setHeaderTitle] = useState(title);
 	const [selectedID, setSelectedID] = useState("-1");
 
-	useEffect(() => {
-		if (valueChange) valueChange(selectedID);
-	}, [selectedID, valueChange]);
+	useValueChange(valueChange, selectedID);
+	useOutClick(setListOpen, node);
 
-	const cb = useCallback(() => {
-		setListOpen(false);
-	}, []);
-
-	useOutClick(cb, node);
-
-	function selectItem(title, id) {
+	const selectItem = (title, id) => {
 		setHeaderTitle(title);
 		setListOpen(false);
 		setSelectedID(id);
-	}
-
-	const listItems = (
-		<DropdownList onClick={e => e.stopPropagation()}>
-			{Children.map(children, (child, i) => cloneElement(child, {
-				item: i,
-				currentSelection: (headerTitle === child.props.children),
-				onItemClick: selectItem,
-				status,
-			}))}
-		</DropdownList>
-	);
-
-	const iconStyle = listOpen ? "chevron-up" : "chevron-down";
+	};
 
 	return (
-		<div className={className} tabIndex="1" ref={node} onClick={e => setListOpen(!listOpen)}>
-			<DropdownHeaderTitle>{headerTitle}</DropdownHeaderTitle>
-			<IconArrow><Icon icon={iconStyle}/></IconArrow>
-			{listOpen && listItems}
-		</div>
+		<DropdownContainer tabIndex="1" ref={node} onClick={e => setListOpen(!listOpen)}>
+			<Button iconName="angle-down">{headerTitle}</Button>
+			{listOpen &&
+				<DropdownListMenu onClick={e => e.stopPropagation()}>
+					<DropdownListContent>
+						{Children.map(children, (child, i) => cloneElement(child, {
+							item: i,
+							currentSelection: (headerTitle === child.props.children),
+							onItemClick: selectItem,
+							status,
+						}))}
+					</DropdownListContent>
+				</DropdownListMenu>
+			}
+		</DropdownContainer>
 	);
-};
-
-const Dropdown = styled(DropdownComponent)`
-	${css_dropdownbase}
-`;
-
-/** Default */
-Dropdown.defaultProps = {
-	theme: defaultTheme.base
 };
 
 /** Props */
