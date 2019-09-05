@@ -1,5 +1,5 @@
 /* eslint-disable one-var-declaration-per-line */
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 import { Icon } from "../icon";
@@ -27,7 +27,11 @@ const TabComponent = ({
 }) => {
 	const ref = useRef(null);
 	useRefWidth(item, onSendRef, ref, slider, props.currentTab);
-	console.log(props.currentTab);
+
+	/* Fires Event if there is a onClick attached to the tab */
+	useEffect((event) => {
+		if (props.currentTab) onClick(event);
+	}, [onClick, props.currentTab]);
 
 	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
 	return (

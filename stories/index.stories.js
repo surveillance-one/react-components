@@ -258,10 +258,10 @@ storiesOf("Tabs", module)
 	.add("TabSlider", () => (
 		<Container>
 			<div>
-				<TabGroup slider active={1}>
-					<Tab click={() => console.log("testsdsg t")}>Test content</Tab>
-					<Tab iconName="camera" label="Hello"></Tab>
-					<Tab label="test"></Tab>
+				<TabGroup slider active={2}>
+					<Tab onClick={() => console.log("testsdsg t")}>Test content</Tab>
+					<Tab iconName="camera" label="Hello" onClick={() => console.log("2")}></Tab>
+					<Tab label="test" onClick={() => console.log("3")}></Tab>
 				</TabGroup>
 			</div>
 		</Container>
