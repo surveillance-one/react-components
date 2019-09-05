@@ -26,7 +26,8 @@ const TabComponent = ({
 	label, className, onTabClick, onSendRef, item, slider, onClick, ...props
 }) => {
 	const ref = useRef(null);
-	useRefWidth(item, onSendRef, ref, slider);
+	useRefWidth(item, onSendRef, ref, slider, props.currentTab);
+	console.log(props.currentTab);
 
 	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
 	return (
