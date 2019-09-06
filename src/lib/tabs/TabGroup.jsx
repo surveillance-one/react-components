@@ -32,7 +32,9 @@ const TabGroupComponent = ({
 		left: ""
 	});
 
-	setInitialRender(false);
+	if (initialRender) {
+		setInitialRender(false);
+	}
 
 	return (
 		<div className={className} {...props}>
