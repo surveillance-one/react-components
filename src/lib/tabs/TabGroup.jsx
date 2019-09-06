@@ -26,10 +26,13 @@ const TabGroupComponent = ({
 	children, className, active, primary, secondary, rounded, underline, slider, ...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
+	const [initialRender, setInitialRender] = useState(true);
 	const [activeRef, setActiveRef] = useState({
 		width: "",
 		left: ""
 	});
+
+	setInitialRender(false);
 
 	return (
 		<div className={className} {...props}>
@@ -44,7 +47,8 @@ const TabGroupComponent = ({
 					secondaryAll: secondary,
 					roundedAll: rounded,
 					underlineAll: underline,
-					slider
+					slider,
+					initialRender
 				}))}
 			</TabsList>
 			{!slider && <TabsContent slider={slider}>
