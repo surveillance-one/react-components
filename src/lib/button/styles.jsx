@@ -9,13 +9,15 @@ export const BtnLabel = styled.span`
   position: static;
 `;
 
-export const IconWrapper = styled.span`
+export const IconWrapper = styled.span.attrs(p => ({
+	bgColor: p.bg ? "rgba(0,0,0,.1)" : "",
+}))`
   display: inline-flex;
   text-align: center;
-  background-color: rgba(0,0,0,.1);
+  background-color: ${p => p.bgColor}
   box-shadow: -1px 0 0 0 transparent inset;
   padding: .75em;
-  
+  ${p => (p.bg ? "" : "margin: 0 !important")}
 `;
 
 export const buttonStyle = (type) => {
@@ -24,7 +26,7 @@ export const buttonStyle = (type) => {
 	return css`&{
     background: ${bgColor};
     color: ${rgba(color, 0.9)};
-    border: solid ${darken("0.05", bgColor)} 1px;
+    /* border: solid ${darken("0.05", bgColor)} 1px; */
     &:hover {
       color: ${color};
       border-color: ${darken("0.1", bgColor)}
@@ -51,7 +53,8 @@ export const ButtonContainer = styled.button`
     max-height: 3em;
     outline:0;
     border:none;
-    border: solid rgba(0,0,0,.1) 1px;
+    /* border: solid rgba(224,225,226,1) 1px; */
+    border: 1px solid transparent;
     vertical-align:baseline;
     margin:0;
     text-transform:none;
@@ -66,7 +69,7 @@ export const ButtonContainer = styled.button`
     overflow: hidden;
 
     color: rgba(0,0,0,.6);
-    box-shadow: 0 1px 2px 0 rgba(34,36,38,.15);
+    box-shadow: 0 1px 2px 0 rgba(34,36,38,.2);
     border-radius: .3rem;
     background-color: rgba(224,225,226,1),
   }
@@ -83,8 +86,8 @@ export const ButtonContainer = styled.button`
     ${IconWrapper} {
       border-radius: ${p => (p.iconPosition === "left" ? ".3rem 0 0 .3rem" : "0 .3rem .3rem 0")};
       margin: ${p => (p.iconPosition === "left" ? "0 .75em 0 0" : "0 0 0 .75em")};
-    }`
-}
+    }
+  `}
 
   ${p => p.primary && !p.secondary && buttonStyle("primary")};
 	${p => p.secondary && !p.primary && buttonStyle("secondary")};
@@ -94,8 +97,7 @@ export const ButtonContainer = styled.button`
     padding: calc(.375em - 1px) 1em;
     padding-right: ${p => (p.iconName && (p.iconPosition === "left" ? "1em !important" : "0 !important"))};
     padding-left: ${p => (p.iconName && (p.iconPosition === "left" ? "0 !important" : "1em !important"))};
-  }`
-}
+  }`}
 
   ${p => ((p.squared && !p.rounded) || p.circle) && css`&{
     justify-content: center;
@@ -109,8 +111,7 @@ export const ButtonContainer = styled.button`
       margin: 0;
       display: block;
     }
-  }`
-}
+  }`}
 
 
   /**
@@ -119,7 +120,7 @@ export const ButtonContainer = styled.button`
   */ 
   &:hover {
     color: rgba(0,0,0,.8);
-    border-color: ${darken("0.2", "#dbdbdb")}
+    border: solid ${darken("0.2", "#dbdbdb")} 1px;
   }
 
   &:active,

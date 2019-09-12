@@ -29,9 +29,8 @@ const TabComponent = ({
 	useRefWidth(item, onSendRef, ref, slider, props.currentTab);
 
 	/* Fires Event if there is a onClick attached to the tab */
-	useEffect((event) => {
-		console.log("HERE");
-		if (props.currentTab && props.initialRender) onClick(event);
+	useEffect(() => {
+		if (props.currentTab) onClick();
 	}, []);
 
 	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);

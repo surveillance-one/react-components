@@ -22,7 +22,7 @@ export const css_tabsbase = css`
 
 export const css_tabsslider = css`
 	background-color: #EEEEEE;
-	border-radius: 8px;
+	border-radius: 7px;
 	display: inline-flex;
 
 	div, li {
@@ -63,10 +63,10 @@ export const Selector = styled.div`
 	position: absolute !important;
 	background-color: #FFFFFF;
 	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
-	border: solid 1px rgba(0,0,0,0.1);
+	/* border: solid 1px rgba(0,0,0,0.1); */
 	border-radius: 8px;
 	box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
-	left: 0;
+	left: 2px;
 	bottom: 2px;
 	top: 2px;
 	z-index: 1;

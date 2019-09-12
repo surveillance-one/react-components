@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import { defaultTheme } from "../ui/themes";
@@ -6,10 +6,13 @@ import { ListItemStyle } from "./styles";
 import useDropdownClick from "../hooks/useDropdownClick";
 
 const ListItem = ({
-	onItemClick, item, status, children, value, onClick, ...props
+	onItemClick, item, status, children, value, onClick, setSelectedID, active = false, ...props
 }) => {
-
 	const cb = useDropdownClick(onItemClick, children, value, item, onClick);
+
+	if (props.currentSelection) {
+		onClick(cb);
+	}
 
 	return (
 		<ListItemStyle

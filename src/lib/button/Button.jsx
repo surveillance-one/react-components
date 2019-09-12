@@ -25,7 +25,7 @@ import { Icon } from "../icon";
 	* - themes
  */
 const Button = ({
-	children, onClick, disabled, iconName, squared, rounded, circle, iconPosition, primary, secondary
+	children, onClick, disabled, iconName, squared, rounded, circle, iconPosition, primary, secondary, iconBg = true
 }) => (
 	<ButtonContainer
 		onClick={onClick}
@@ -44,6 +44,7 @@ const Button = ({
 
 		{iconName &&
 			<IconWrapper
+				bg={iconBg}
 				iconPosition={iconPosition}
 				squared={squared}
 				circle={circle}
@@ -60,6 +61,7 @@ const Button = ({
 Button.propTypes = {
 	children: PropTypes.string,
 	iconName: PropTypes.string,
+	iconBg: PropTypes.bool,
 	iconPosition: PropTypes.oneOf(["left", "right"]),
 	animations: PropTypes.bool,
 	theme: PropTypes.object,
