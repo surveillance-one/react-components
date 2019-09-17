@@ -8,7 +8,7 @@ import {
 } from "@storybook/addon-knobs";
 
 import {
-	Button, ButtonGroup, Card, CardGroup, TabGroup, Tab, Dropdown, Item
+	Button, ButtonGroup, Card, CardGroup, TabGroup, Tab, Dropdown, Item, Input
 } from "lib";
 import { Welcome } from "@storybook/react/demo";
 import styled from "styled-components";
@@ -301,5 +301,13 @@ storiesOf("Dropdown", module)
 				<Item>Number 1q</Item>
 				<Item>Number 2</Item>
 			</Dropdown>
+		</Container>
+	));
+
+storiesOf("Input", module)
+	.addDecorator(withKnobs)
+	.add("Types", () => (
+		<Container>
+			<Input type="text" placeholder="hello"/>
 		</Container>
 	));

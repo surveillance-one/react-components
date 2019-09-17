@@ -9,7 +9,9 @@
   ],
   "watch": {
     "build": {
-      "patterns": ["src/lib"],
+      "patterns": [
+        "src/lib"
+      ],
       "extensions": "jsx,js"
     }
   },

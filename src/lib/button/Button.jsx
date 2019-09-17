@@ -1,12 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import {
-	BtnLabel,
-	IconWrapper,
-	ButtonContainer
-} from "./styles";
-
+import { BtnLabel, ButtonContainer } from "./styles";
+import { IconWrapper } from "../ui/styles/globals";
 import { Icon } from "../icon";
 
 /**
@@ -19,13 +14,18 @@ import { Icon } from "../icon";
  * @author [SurveillanceOne][Markus Hudobnik](https://github.com/SurveillanceOne)
  */
 
-/**
-	* Component Declaration
-	* - Default Props
-	* - themes
- */
 const Button = ({
-	children, onClick, disabled, iconName, squared, rounded, circle, iconPosition, primary, secondary, iconBg = true
+	children,
+	onClick,
+	disabled,
+	iconName,
+	squared,
+	rounded,
+	circle,
+	iconPosition,
+	primary,
+	secondary,
+	iconBg = true
 }) => (
 	<ButtonContainer
 		onClick={onClick}
@@ -36,28 +36,28 @@ const Button = ({
 		rounded={rounded}
 		squared={squared}
 		circle={circle}>
-		{(!squared && !circle) &&
-			<BtnLabel>
-				{children}
-			</BtnLabel>
+
+		{(!squared && !circle)
+		&&
+		<BtnLabel>
+			{children}
+		</BtnLabel>
 		}
 
-		{iconName &&
-			<IconWrapper
-				bg={iconBg}
-				iconPosition={iconPosition}
-				squared={squared}
-				circle={circle}
-				rounded={rounded}>
-				<Icon icon={iconName}/>
-			</IconWrapper>
+		{iconName
+		&&
+		<IconWrapper
+			bg={iconBg}
+			iconPosition={iconPosition}
+			squared={squared}
+			circle={circle}
+			rounded={rounded}>
+			<Icon icon={iconName}/>
+		</IconWrapper>
 		}
 	</ButtonContainer>
 );
 
-/**
- * PropTypes
- */
 Button.propTypes = {
 	children: PropTypes.string,
 	iconName: PropTypes.string,

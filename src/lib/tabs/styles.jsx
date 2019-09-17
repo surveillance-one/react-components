@@ -1,7 +1,7 @@
 
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
-import globalStyles from "../ui/styles/globals";
+import { globalStyles } from "../ui/styles/globals";
 import { defaultTheme } from "../ui/themes";
 
 
@@ -22,7 +22,7 @@ export const css_tabsbase = css`
 
 export const css_tabsslider = css`
 	background-color: #EEEEEE;
-	border-radius: 7px;
+	border-radius: 8px;
 	display: inline-flex;
 
 	div, li {
@@ -64,8 +64,8 @@ export const Selector = styled.div`
 	background-color: #FFFFFF;
 	color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
 	/* border: solid 1px rgba(0,0,0,0.1); */
-	border-radius: 8px;
-	box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
+	border-radius: 7px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.1) !important;
 	left: 2px;
 	bottom: 2px;
 	top: 2px;
