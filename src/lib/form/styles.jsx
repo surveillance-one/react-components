@@ -6,7 +6,6 @@ import { IconWrapper, base } from "../ui/styles/globals";
 
 export const InputWrapper = styled.div`
 	${base}
-  ${p => p.fullWidth && "width: 100%"}
 	${p => p.iconName && css`
     align-items: center;
     justify-content: center;
@@ -21,6 +20,7 @@ export const InputWrapper = styled.div`
       margin: ${p => (p.iconPosition === "left" ? "0 .75em 0 0" : "0 0 0 .75em")};
     }
   `}
+  ${p => p.fullWidth && "width: 100%"}
 `;
 
 export const InputContainer = styled.input.attrs(p => ({
