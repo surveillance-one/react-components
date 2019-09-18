@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 
 import { IconWrapper } from "../ui/styles/globals";
 
@@ -13,7 +15,8 @@ const Input = ({
 	type, placeholder, iconName, iconBg, iconPosition, fullWidth
 }) => (
 	<InputWrapper type={type} placeholder={placeholder} iconName={iconName} iconPosition={iconPosition} fullWidth={fullWidth}>
-		<InputContainer />
+		<InputContainer placeholder={placeholder}/>
+		<DayPickerInput/>
 		{iconName &&
 		<IconWrapper
 			bg={iconBg}

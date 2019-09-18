@@ -1,7 +1,7 @@
 
 import styled, { css } from "styled-components";
 import { rgba } from "polished";
-import { globalStyles } from "../ui/styles/globals";
+import { globalStyles, base } from "../ui/styles/globals";
 import { defaultTheme } from "../ui/themes";
 
 

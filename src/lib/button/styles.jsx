@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import { rgba, darken } from "polished";
 
-import { globalStyles, IconWrapper, base } from "../ui/styles/globals";
-import { defaultTheme } from "../ui/themes";
+import {
+	globalStyles, IconWrapper, IconStyle, base, buttonStyle
+} from "../ui/styles/globals";
 
 export const ButtonGroupStyled = styled.div`
   /** Styles the Container */
@@ -35,47 +35,14 @@ export const BtnLabel = styled.span`
   position: static;
 `;
 
-export const buttonStyle = (type) => {
-	const color = defaultTheme.COLOR[type];
-	const bgColor = defaultTheme.BG_COLOR[type];
-	return css`&{
-    background: ${bgColor};
-    color: ${rgba(color, 0.9)};
-    /* border: solid ${darken("0.05", bgColor)} 1px; */
-    &:hover {
-      color: ${color};
-      border-color: ${darken("0.1", bgColor)}
-    }
-    ${IconWrapper} {
-      background-color: ${type === "secondary" ? "rgba(165,165,165,.1)" : ""};
-    }
-  }`;
-};
-
 export const ButtonContainer = styled.button`
   /** Global Styles */
   ${globalStyles};
 
 
   /** Per-componenet parent styles */
-  padding: calc(.375em - 1px) .75em;
   ${base}
-
-  ${p => p.iconName && css`
-    align-items: center;
-    justify-content: center;
-    display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
-    flex-flow: ${p => (p.iconPosition === "left" ? "row-reverse" : "auto")};
-    padding-right: ${p => (p.iconPosition === "left" ? ".75em" : "0")};
-    padding-left: ${p => (p.iconPosition === "left" ? "0" : ".75em")};
-
-    /** changes iconWrapper */
-    ${IconWrapper} {
-      border-radius: ${p => (p.iconPosition === "left" ? ".3rem 0 0 .3rem" : "0 .3rem .3rem 0")};
-      margin: ${p => (p.iconPosition === "left" ? "0 .75em 0 0" : "0 0 0 .75em")};
-    }
-  `}
-
+  ${p => IconStyle(p)};
   ${p => p.primary && !p.secondary && buttonStyle("primary")};
 	${p => p.secondary && !p.primary && buttonStyle("secondary")};
 

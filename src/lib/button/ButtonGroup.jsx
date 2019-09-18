@@ -1,5 +1,4 @@
 import React from "react";
-import styled, { css } from "styled-components";
 import PropTypes from "prop-types";
 
 import { ButtonGroupStyled } from "./styles";

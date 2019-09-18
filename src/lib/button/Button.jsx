@@ -22,7 +22,7 @@ const Button = ({
 	squared,
 	rounded,
 	circle,
-	iconPosition,
+	iconPosition = "left",
 	primary,
 	secondary,
 	iconBg = true
@@ -35,7 +35,9 @@ const Button = ({
 		secondary={secondary}
 		rounded={rounded}
 		squared={squared}
-		circle={circle}>
+		circle={circle}
+		iconPosition={iconPosition}
+		iconName={iconName}>
 
 		{(!squared && !circle)
 		&&
