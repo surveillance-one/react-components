@@ -8,7 +8,14 @@ import { Button } from "../button";
 
 import { DropdownContainer, DropdownListMenu, DropdownListContent } from "./styles";
 
-const Dropdown = ({ valueChange, title, children, status, iconBg = true }) => {
+const Dropdown = ({
+	valueChange,
+	title,
+	children,
+	status,
+	iconBg = true,
+	iconPosition = "right"
+}) => {
 	const node = useRef();
 	const [listOpen, setListOpen] = useState(false);
 	const [headerTitle, setHeaderTitle] = useState(title);
@@ -25,7 +32,7 @@ const Dropdown = ({ valueChange, title, children, status, iconBg = true }) => {
 
 	return (
 		<DropdownContainer tabIndex="1" ref={node} onClick={e => setListOpen(!listOpen)}>
-			<Button iconBg={iconBg} iconName="angle-down">{headerTitle}</Button>
+			<Button iconBg={iconBg} iconPosition={iconPosition} iconName="angle-down">{headerTitle}</Button>
 			{listOpen &&
 				<DropdownListMenu onClick={e => e.stopPropagation()}>
 					<DropdownListContent>
