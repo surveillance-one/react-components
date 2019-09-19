@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
 
 import { IconWrapper } from "../ui/styles/globals";
@@ -12,19 +11,40 @@ import {
 } from "./styles";
 
 const Input = ({
-	type, placeholder, iconName, iconBg, iconPosition, fullWidth
-}) => (
-	<InputWrapper type={type} placeholder={placeholder} iconName={iconName} iconPosition={iconPosition} fullWidth={fullWidth}>
-		<InputContainer placeholder={placeholder}/>
-		<DayPickerInput/>
-		{iconName &&
+	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, val
+}) =>
+// const [val, setVal] = useState(valStart);
+
+// useEffect(() => {
+// 	if (valueFn) valueFn(val);
+// }, [val]);
+
+// const handleChange = (e) => {
+// 	setVal(e.target.value);
+// };
+
+// TODO: MAKE SEPARATE TAB FOR SINGLE EVENT DATA
+
+	 (
+		<InputWrapper
+			match={true}
+			type={type}
+			placeholder={placeholder}
+			iconName={iconName}
+			iconPosition={iconPosition}
+			fullWidth={fullWidth}>
+			<InputContainer
+				placeholder={placeholder}
+				value={val}
+				onChange={handleChange}/>
+			{iconName &&
 		<IconWrapper
 			bg={iconBg}
 			iconPosition={iconPosition}>
 			<Icon icon={iconName}/>
 		</IconWrapper>}
-	</InputWrapper>
-);
+		</InputWrapper>
+	);
 
 Input.propTypes = {
 	type: PropTypes.string,

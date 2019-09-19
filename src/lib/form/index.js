@@ -1,6 +1,8 @@
 
+import InputDate from "./InputDate";
 import Input from "./Input";
 
 export {
-	Input,
+	InputDate,
+	Input
 };

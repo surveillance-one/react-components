@@ -18,8 +18,19 @@ export const InputContainer = styled.input.attrs(p => ({
 
 export const InputWrapper = styled.div`
 	${base}
+  position: relative !important;
+  overflow: initial !important;
   display: flex;
+  ${p => !p.match && "border: 1px solid red !important;"}
 	${p => IconStyle(p)};
   ${p => p.iconName && `${InputContainer} { padding: 0 !important }`};
   ${p => p.fullWidth && "width: 100%"}
+`;
+
+export const DayPickerWrapper = styled.div`
+  position: absolute;
+  top: 100%;
+  margin-top: ${remy(10)};
+  border: 1px solid lightgray;
+  border-radius: .3rem;
 `;

@@ -1,0 +1,19 @@
+import React from "react"; // TODO: make a HOC component that captures all inputs and submits them when a button is clicked.
+
+var Form = function Form(_ref) {
+  var children = _ref.children;
+
+  // TODO:
+  // TODO: pass function down to capture the childrens input value
+  // NOTE: maybe use refs so easily get the information
+  // 1. Make list of how many elements to grab data from
+  // 2. parse the data and figure out what type (figure out just Date first)
+  // 3. On Button click, fire function and grab current data and submit
+  var grabChilddata = function grabChilddata(data) {}; // Pass this function to the button inside a form element
+
+
+  var submitData = function submitData() {};
+
+  return children;
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9saWIvZm9ybS9Gb3JtLmpzeCJdLCJuYW1lcyI6WyJSZWFjdCIsIkZvcm0iLCJjaGlsZHJlbiIsImdyYWJDaGlsZGRhdGEiLCJkYXRhIiwic3VibWl0RGF0YSJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsS0FBUCxNQUFrQixPQUFsQixDLENBRUE7O0FBRUEsSUFBTUMsSUFBSSxHQUFHLFNBQVBBLElBQU8sT0FBa0I7QUFBQSxNQUFmQyxRQUFlLFFBQWZBLFFBQWU7O0FBRTlCO0FBRUE7QUFDQTtBQUVBO0FBQ0E7QUFDQTtBQUVBLE1BQU1DLGFBQWEsR0FBRyxTQUFoQkEsYUFBZ0IsQ0FBQ0MsSUFBRCxFQUFVLENBRS9CLENBRkQsQ0FYOEIsQ0FnQjlCOzs7QUFDQSxNQUFNQyxVQUFVLEdBQUcsU0FBYkEsVUFBYSxHQUFNLENBRXhCLENBRkQ7O0FBSUEsU0FDQ0gsUUFERDtBQUdBLENBeEJEIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuXG4vLyBUT0RPOiBtYWtlIGEgSE9DIGNvbXBvbmVudCB0aGF0IGNhcHR1cmVzIGFsbCBpbnB1dHMgYW5kIHN1Ym1pdHMgdGhlbSB3aGVuIGEgYnV0dG9uIGlzIGNsaWNrZWQuXG5cbmNvbnN0IEZvcm0gPSAoeyBjaGlsZHJlbiB9KSA9PiB7XG5cblx0Ly8gVE9ETzpcblxuXHQvLyBUT0RPOiBwYXNzIGZ1bmN0aW9uIGRvd24gdG8gY2FwdHVyZSB0aGUgY2hpbGRyZW5zIGlucHV0IHZhbHVlXG5cdC8vIE5PVEU6IG1heWJlIHVzZSByZWZzIHNvIGVhc2lseSBnZXQgdGhlIGluZm9ybWF0aW9uXG5cblx0Ly8gMS4gTWFrZSBsaXN0IG9mIGhvdyBtYW55IGVsZW1lbnRzIHRvIGdyYWIgZGF0YSBmcm9tXG5cdC8vIDIuIHBhcnNlIHRoZSBkYXRhIGFuZCBmaWd1cmUgb3V0IHdoYXQgdHlwZSAoZmlndXJlIG91dCBqdXN0IERhdGUgZmlyc3QpXG5cdC8vIDMuIE9uIEJ1dHRvbiBjbGljaywgZmlyZSBmdW5jdGlvbiBhbmQgZ3JhYiBjdXJyZW50IGRhdGEgYW5kIHN1Ym1pdFxuXG5cdGNvbnN0IGdyYWJDaGlsZGRhdGEgPSAoZGF0YSkgPT4ge1xuXG5cdH07XG5cblxuXHQvLyBQYXNzIHRoaXMgZnVuY3Rpb24gdG8gdGhlIGJ1dHRvbiBpbnNpZGUgYSBmb3JtIGVsZW1lbnRcblx0Y29uc3Qgc3VibWl0RGF0YSA9ICgpID0+IHtcblxuXHR9O1xuXG5cdHJldHVybiAoXG5cdFx0Y2hpbGRyZW5cblx0KTtcbn07XG4iXX0=
