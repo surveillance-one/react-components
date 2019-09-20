@@ -15,28 +15,38 @@ import {
 } from "./styles";
 
 const InputDate = ({
-	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, valueFn, valStart
+	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, valStart, setVal
 }) => {
 	const node = useRef();
-	const [val, setVal] = useState(new Date(valStart).toLocaleDateString());
-	const [valDate, setValDate] = useState(false);
+	const dateNode = useRef();
+	// const [val, setVal] = useState(new Date(valStart).toLocaleDateString());
+	const [valDate, setValDate] = useState(true);
 	const [dayShow, setDayShow] = useState(false);
+	const [rectRight, setRectRight] = useState(false);
+	const [rectLeft, setRectLeft] = useState(false);
+
+	console.log(new Date(valStart).toLocaleDateString());
+	console.log(valStart);
 
 
-	// TODO: DECOUPLE STATE IN THE APP AND LET THAT BE ON WHERE EVER ITS IMPLEMENTED
-	console.log("shouuld change", val);
+	useEffect(() => {
+		if (dateNode.current) {
+			const rect = dateNode.current.getBoundingClientRect();
+			if (rect.right > document.documentElement.offsetWidth) setRectRight(true);
+			if (rect.left < 0) setRectLeft(true);
+		}
+	}, []);
+
+	// useEffect(() => {
+
+	// }, [onDayClick])
 
 	useOutClick(setDayShow, node);
 
-	// setVal(new Date(valStart).toLocaleDateString());
-
-	useEffect(() => {
-		if (valueFn) valueFn(val);
-	}, [val]);
-
 	const onDayClick = (day) => {
 		const newDay = day.toLocaleDateString();
-		setVal(newDay);
+		setVal({ date: newDay });
+		// setVal(newDay);
 		setValDate(true);
 		setDayShow(false);
 	};
@@ -55,9 +65,10 @@ const InputDate = ({
 		else setValDate(false);
 	};
 
-	const handleChange = (e) => {
+	const handleChange1 = (e) => {
+		handleChange("date", e);
 		validateDate(e);
-		setVal(e.target.value);
+		// setVal(e.target.value);
 	};
 
 	return (
@@ -72,8 +83,8 @@ const InputDate = ({
 			<InputContainer
 				onClick={onInputClick}
 				placeholder={placeholder}
-				value={val}
-				onChange={handleChange}/>
+				value={valStart}
+				onChange={handleChange1}/>
 			{iconName &&
 		<IconWrapper
 			bg={iconBg}
@@ -81,7 +92,7 @@ const InputDate = ({
 			<Icon icon={iconName}/>
 		</IconWrapper>}
 			{dayShow &&
-			<DayPickerWrapper>
+			<DayPickerWrapper ref={dateNode} rectRight={rectRight} rectLeft={rectLeft}>
 				<DayPicker onDayClick={onDayClick}/>
 			</DayPickerWrapper>
 			}

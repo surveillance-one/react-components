@@ -5,7 +5,8 @@ import { base, IconStyle } from "../ui/styles/globals";
 
 export const InputContainer = styled.input.attrs(p => ({
 	type: p.type || "text",
-	placeholder: p.placeholder || "input"
+	placeholder: p.placeholder || "input",
+	size: 5,
 }))`
   background-color: transparent;
   border: none;
@@ -32,5 +33,8 @@ export const DayPickerWrapper = styled.div`
   top: 100%;
   margin-top: ${remy(10)};
   border: 1px solid lightgray;
+  background-color: white;
   border-radius: .3rem;
+  z-index: 999;
+  ${p => p.rectRight && "right: 0"}
 `;
