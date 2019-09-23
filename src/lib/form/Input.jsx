@@ -7,23 +7,28 @@ import { IconWrapper } from "../ui/styles/globals";
 import { Icon } from "../icon";
 
 import {
-	InputContainer, InputWrapper
+	InputContainer, InputWrapper, InputCheckbox, HiddenInputCheckbox, CheckboxContainer
 } from "./styles";
 
 const Input = ({
-	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, val
+	type = "text", placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, val, checked
 }) => (
 	<InputWrapper
 		match={true}
-		type={type}
 		placeholder={placeholder}
 		iconName={iconName}
 		iconPosition={iconPosition}
 		fullWidth={fullWidth}>
-		<InputContainer
+		{type != "checkbox" && <InputContainer
 			placeholder={placeholder}
 			value={val}
-			onChange={handleChange}/>
+			onChange={handleChange}/>}
+		{type == "checkbox" &&
+		<CheckboxContainer>
+			<HiddenInputCheckbox checked={checked} onChange={handleChange}/>
+			<InputCheckbox checked={checked}/>
+		</CheckboxContainer>
+		}
 		{iconName &&
 		<IconWrapper
 			bg={iconBg}

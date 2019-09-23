@@ -15,7 +15,7 @@ import {
 } from "./styles";
 
 const InputDate = ({
-	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, valStart, setVal
+	type, placeholder, iconName, iconBg, iconPosition = "left", fullWidth, handleChange, val, setVal, time = "date"
 }) => {
 	const node = useRef();
 	const dateNode = useRef();
@@ -25,34 +25,26 @@ const InputDate = ({
 	const [rectRight, setRectRight] = useState(false);
 	const [rectLeft, setRectLeft] = useState(false);
 
-	console.log(new Date(valStart).toLocaleDateString());
-	console.log(valStart);
-
-
 	useEffect(() => {
 		if (dateNode.current) {
+			console.log("fired");
 			const rect = dateNode.current.getBoundingClientRect();
 			if (rect.right > document.documentElement.offsetWidth) setRectRight(true);
 			if (rect.left < 0) setRectLeft(true);
 		}
-	}, []);
-
-	// useEffect(() => {
-
-	// }, [onDayClick])
+	}, [dayShow]);
 
 	useOutClick(setDayShow, node);
 
 	const onDayClick = (day) => {
 		const newDay = day.toLocaleDateString();
-		setVal({ date: newDay });
-		// setVal(newDay);
+		handleChange(time, newDay);
 		setValDate(true);
 		setDayShow(false);
 	};
 
 	const onInputClick = useCallback(() => {
-		setDayShow(!dayShow);
+		if (time == "date") setDayShow(!dayShow);
 	}, [dayShow]);
 
 
@@ -65,10 +57,20 @@ const InputDate = ({
 		else setValDate(false);
 	};
 
+	const validateHour = (e) => {
+		const curVal = e.target.value;
+		console.log(curVal);
+		const regExHour = /((1[0-2]|0?[1-9])?([AaPp][Mm]))/;
+
+		const match = !!curVal.match(regExHour);
+		if (match) setValDate(true);
+		else setValDate(false);
+	};
+
 	const handleChange1 = (e) => {
-		handleChange("date", e);
-		validateDate(e);
-		// setVal(e.target.value);
+		handleChange(time, e);
+		if (time == "date") validateDate(e);
+		if (time == "hour") validateHour(e);
 	};
 
 	return (
@@ -83,7 +85,7 @@ const InputDate = ({
 			<InputContainer
 				onClick={onInputClick}
 				placeholder={placeholder}
-				value={valStart}
+				value={val}
 				onChange={handleChange1}/>
 			{iconName &&
 		<IconWrapper

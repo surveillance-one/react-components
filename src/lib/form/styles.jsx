@@ -3,8 +3,38 @@ import styled from "styled-components";
 import remy from "utils/remy";
 import { base, IconStyle } from "../ui/styles/globals";
 
+export const HiddenInputCheckbox = styled.input.attrs(p => ({
+	type: "checkbox"
+}))`
+  border: 0;
+  clip: rect(0 0 0 0);
+  clippath: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 100px;
+`;
+
+export const InputCheckbox = styled.div`
+    display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: ${p => (p.checked ? "salmon" : "papayawhip")};
+  border-radius: 3px;
+  transition: all 150ms;
+`;
+
+export const CheckboxContainer = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
+
 export const InputContainer = styled.input.attrs(p => ({
-	type: p.type || "text",
+	type: p.type,
 	placeholder: p.placeholder || "input",
 	size: 5,
 }))`
