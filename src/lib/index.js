@@ -5,7 +5,7 @@ import { TabGroup, Tab } from "./tabs";
 import { Dropdown, Item } from "./dropdown";
 import { Card, CardGroup } from "./card";
 import { Button, ButtonGroup } from "./button";
-import { Input, InputDate } from "./form";
+import { Input, InputDate, TextArea } from "./form";
 
 
 export {
@@ -21,5 +21,6 @@ export {
 	Button,
 	ButtonGroup,
 	Input,
-	InputDate
+	InputDate,
+	TextArea
 };

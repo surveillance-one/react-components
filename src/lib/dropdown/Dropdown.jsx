@@ -22,6 +22,7 @@ const Dropdown = ({
 	const [selectedID, setSelectedID] = useState("-1");
 
 	useValueChange(valueChange, selectedID);
+	console.log("fired");
 	useOutClick(setListOpen, node);
 
 	const selectItem = (title, id) => {

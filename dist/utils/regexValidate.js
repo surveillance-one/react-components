@@ -1,0 +1,3 @@
+export var regExDate = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+export var regExHour = /((1[0-2]|0?[1-9])?([AaPp][Mm]))/;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9saWIvdXRpbHMvcmVnZXhWYWxpZGF0ZS5qcyJdLCJuYW1lcyI6WyJyZWdFeERhdGUiLCJyZWdFeEhvdXIiXSwibWFwcGluZ3MiOiJBQUNBLE9BQU8sSUFBTUEsU0FBUyxHQUFHLDJCQUFsQjtBQUNQLE9BQU8sSUFBTUMsU0FBUyxHQUFHLGlDQUFsQiIsInNvdXJjZXNDb250ZW50IjpbIlxuZXhwb3J0IGNvbnN0IHJlZ0V4RGF0ZSA9IC9eXFxkezEsMn1cXC9cXGR7MSwyfVxcL1xcZHs0fSQvO1xuZXhwb3J0IGNvbnN0IHJlZ0V4SG91ciA9IC8oKDFbMC0yXXwwP1sxLTldKT8oW0FhUHBdW01tXSkpLztcbiJdfQ==
