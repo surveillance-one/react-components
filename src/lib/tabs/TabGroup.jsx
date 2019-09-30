@@ -1,4 +1,6 @@
-import React, { Children, cloneElement, useState } from "react";
+import React, {
+	Children, cloneElement, useState, useEffect
+} from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -8,8 +10,7 @@ import {
 	TabsList,
 	TabsContent,
 	Selector,
-	css_tabsbase,
-	css_tabsslider
+	TabListContainer
 } from "./styles";
 
 /**
@@ -22,17 +23,18 @@ import {
  * @author [Markus Hudobnik](https://github.com/rnarkus)
  */
 
-const TabGroupComponent = ({
-	children, className, active, primary, secondary, rounded, underline, slider, ...props
+const TabGroup = ({
+	children, className, active, primary, secondary, rounded, underline, slider, activeView, ...props
 }) => {
 	const [activeTab, setActiveTab] = useState(active);
-	const [activeRef, setActiveRef] = useState({
-		width: "",
-		left: ""
-	});
+	const [activeRef, setActiveRef] = useState({ width: "", left: "" });
+
+	if (activeView) activeView(activeTab);
 
 	return (
-		<div className={className} {...props}>
+		<TabListContainer
+			underline={underline}
+			slider={slider}>
 			<TabsList slider={slider}>
 				{slider && <Selector width={activeRef.width} left={activeRef.left}></Selector>}
 				{Children.map(children, (child, i) => cloneElement(child, {
@@ -53,17 +55,10 @@ const TabGroupComponent = ({
 					return child.props.children;
 				})}
 			</TabsContent>}
-		</div>
+		</TabListContainer>
 	);
 };
 
-const TabGroup = styled(TabGroupComponent)`
-	${css_tabsbase}
-
-	${TabsList} {
-		${p => p.slider && css_tabsslider}
-	}
-`;
 
 /** Default Props */
 TabGroup.defaultProps = {

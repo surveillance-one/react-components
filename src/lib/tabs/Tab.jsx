@@ -23,9 +23,10 @@ import {
 } from "./styles";
 
 const TabComponent = ({
-	label, className, onTabClick, onSendRef, item, slider, onClick, ...props
+	label, className, onTabClick, onSendRef, item, slider, onClick, forceCurrentTab, ...props
 }) => {
 	const ref = useRef(null);
+	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
 	useRefWidth(item, onSendRef, ref, slider, props.currentTab);
 
 	/* Fires Event if there is a onClick attached to the tab */
@@ -33,7 +34,10 @@ const TabComponent = ({
 		if (props.currentTab) onClick();
 	}, []);
 
-	const cb = useCallbackTab(item, onSendRef, onTabClick, ref, onClick, slider);
+	useEffect(() => {
+		if (forceCurrentTab) cb();
+	}, [forceCurrentTab]);
+
 	return (
 		<li
 			className={className}

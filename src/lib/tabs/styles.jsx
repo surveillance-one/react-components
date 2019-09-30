@@ -4,61 +4,36 @@ import { rgba } from "polished";
 import { globalStyles, base } from "../ui/styles/globals";
 import { defaultTheme } from "../ui/themes";
 
-
-/* *****************************TabGroup**************************** */
-
-/**
- * Styled-Component CSS
- * @name TabsBase
- * @see Tabs (components/Tabs)
- * @description <Tabs> base styles
- *
- * @param {object} globalStyles global styles
- */
-export const css_tabsbase = css`
-	/** Global Styles */
-	${globalStyles};
+export const TabListContainer = styled.div`
+		/** Global Styles */
+		${globalStyles};
 `;
 
-export const css_tabsslider = css`
-	background-color: #EEEEEE;
-	border-radius: 8px;
-	display: inline-flex;
-
-	div, li {
-		text-decoration:none;
-		/** display:inline-block; */
-		position:relative;
-		z-index:1;
-		transition-duration:0.6s;
-	}
-`;
-
-/**
- * Styled-Component
- * @name TabsList
- * @see Tabs (components/Tabs)
- * @description <Tabs> child ordered list
- */
 export const TabsList = styled.ol`
 	display: inline-flex;
 	position: relative;
 	padding-left: 0;
+	margin: 1rem 0
 
-	${({ slider }) => (slider ? "margin: auto" : "margin: 1rem 0")};
 	border-radius: .3rem;
-
 	font-weight: 400;
-
 	background: none;
+	${p => p.slider && `
+		margin: auto
+		background-color: #EEEEEE;
+		border-radius: 8px;
+		display: inline-flex;
+
+		div, li {
+			text-decoration:none;
+			/** display:inline-block; */
+			position:relative;
+			z-index:1;
+			transition-duration:0.6s;
+		}
+	`}
 `;
 
-/**
- * Styled-Component
- * @name Selector
- * @see Tabs (components/Tabs)
- * @description <Tabs> slider Selector
- */
 export const Selector = styled.div`
 	position: absolute !important;
 	background-color: #FFFFFF;
@@ -76,12 +51,6 @@ export const Selector = styled.div`
 	left: ${p => p.left}px;
 `;
 
-/**
- * Styled-Component
- * @name TabsContent
- * @see Tabs (components/Tabs)
- * @description <Tabs> child, displays content
- */
 export const TabsContent = styled.div`
 	position: relative;
 
@@ -99,16 +68,6 @@ export const TabsContent = styled.div`
 	}
 `;
 
-/* ******************************Tab**************************** */
-
-/**
- * Styled-Component CSS
- * @name TabBase
- * @see Tabs (components/Tabs)
- * @description <Tab> base styles
- *
- * @param {object} globalStyles global styles
- */
 export const css_tabbase = css`
 	/** Global Styles */
 	${globalStyles};
@@ -175,12 +134,6 @@ export const css_tabbase = css`
   }
 `;
 
-/**
- * Styled-Component
- * @name TabLabel
- * @see Tab (components/Tabs)
- * @description <Tabs.Tab> label
- */
 export const css_slider = css`
 	height: 1.75em;
 	margin: 2px !important;
@@ -207,15 +160,8 @@ export const css_slider = css`
 	&[current=true]:before {
 		opacity: 0;
 	}
-
-
 `;
-/**
- * Styled-Component
- * @name TabLabel
- * @see Tab (components/Tabs)
- * @description <Tabs.Tab> label
- */
+
 export const TabLabel = styled.span`
   display: block;
   position: static;
@@ -223,24 +169,12 @@ export const TabLabel = styled.span`
 	margin: auto;
 `;
 
-/**
- * Styled-Component
- * @name IconWrapper
- * @see Tab (components/Tabs)
- * @description <Tabs.Tab> icon wrapper
- */
 export const IconWrapper = styled.span`
   display: table-cell;
   text-align: center;
   box-shadow: -1px 0 0 0 transparent inset;
 `;
 
-/**
- * Styled-Component
- * @name TabIcons
- * @see Tab (components/Tab)
- * @description <Tabs.Tab> Icon
- */
 export const css_tabicons = css`
   display: ${p => (p.iconName ? "inline-flex" : "inline-block")};
   align-items: center;
@@ -253,14 +187,6 @@ export const css_tabicons = css`
   }
 `;
 
-/**
- * Styled-Component CSS
- * @name showIconOnlyOnActive
- * @see Tab (components/Tabs)
- * @description <Tab> shows the icon only when Active
- *
- * @param {object} IconWrapper CSS-in-JS
- */
 export const css_showicononlyonactive = css`
 	&:not(:hover) > ${IconWrapper} {
 		visibility: hidden;
@@ -278,12 +204,6 @@ export const css_showicononlyonactive = css`
 	}
 `;
 
-/**
- * Styled-Component CSS
- * @name tabCurrent
- * @see Tab (components/Tabs)
- * @description <Tab> shows the Active tab
- */
 export const css_tabcurrent = css`
 		background: rgba(224,225,226,1);
 		color: ${p => ((p.primary || p.secondary) ? "white" : "rgba(0,0,0,.6)")};
@@ -310,14 +230,6 @@ export const css_tabcurrent = css`
 		}
 `;
 
-/**
- * Styled-Component CSS
- * @name tabStyle
- * @see Tab (components/Tabs)
- * @description <Tab> Styles the tabs
- *
- * @param {string} type
- */
 export const tabStyle = (type) => {
 	const color = defaultTheme.COLOR[type];
 	const bgColor = defaultTheme.BG_COLOR[type];
@@ -336,26 +248,11 @@ export const tabStyle = (type) => {
 	}`;
 };
 
-/**
- * Styled-Component CSS
- * @name tabRounded
- * @see Tab (components/Tabs)
- * @description <Tab> Styles the tabs
- *
- * @param {string} type
- */
 export const css_tabrounded = css`
 	border-radius: 3rem;
 `;
 
-/**
- * Styled-Component CSS
- * @name tabRounded
- * @see Tab (components/Tabs)
- * @description <Tab> Styles the tabs
- *
- * @param {string} type
- */
+
 export const css_tabcurrentunderline = css`
 	color: black;
 	font-weight: 700;
