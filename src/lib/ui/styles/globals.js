@@ -9,13 +9,14 @@ export const globalStyles = css`{
   box-sizing: border-box;
 }`;
 
-export const IconWrapper = styled.span.attrs(p => ({
-	bgColor: p.bg ? "rgba(0,0,0,.1)" : "",
-}))`
+export const IconWrapper = styled.span`
   display: inline-flex;
   text-align: center;
-  background-color: ${p => p.bgColor}
-  box-shadow: -1px 0 0 0 transparent inset;
+  ${p => p.bg && css`
+    background-color: rgba(0,0,0,.1);
+    border: solid rgba(0,0,0,.1) 1px;
+    background-clip: padding-box;
+  `}
   padding: .75em;
   ${p => (p.bg ? "" : "margin: 0 !important")}
 `;
@@ -55,7 +56,7 @@ export const buttonStyle = (type) => {
     /* border: solid ${darken("0.05", bgColor)} 1px; */
     &:hover {
       color: ${color};
-      border-color: ${darken("0.1", bgColor)}
+      border-color: ${darken("0.05", bgColor)}
     }
     ${IconWrapper} {
       background-color: ${type === "secondary" ? "rgba(165,165,165,.1)" : ""};
@@ -108,7 +109,7 @@ export const base = css`
   
   &:hover {
     color: rgba(0,0,0,.8);
-    border: solid ${darken("0.2", "#dbdbdb")} 1px;
+    border: solid ${darken("0.05", "#dbdbdb")} 1px;
   }
 
   &:active,

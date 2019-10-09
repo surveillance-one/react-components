@@ -61,6 +61,7 @@ export const ButtonContainer = styled.button`
     
     ${IconWrapper} {
       background: ${p => ((p.squared || p.circle) ? "none" : "")};
+      border: ${p => ((p.squared || p.circle) ? "none" : "")};
       padding: ${p => ((p.squared || p.circle) ? "0" : ".75")};
       margin: 0;
       display: block;

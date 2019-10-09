@@ -7,6 +7,9 @@ import { defaultTheme } from "../ui/themes";
 export const TabListContainer = styled.div`
 		/** Global Styles */
 		${globalStyles};
+		&& {
+		display: flex;
+		}
 `;
 
 export const TabsList = styled.ol`
